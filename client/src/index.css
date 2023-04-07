@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: "Inter", sans-serif;
+html {
+  padding: env(safe-area-inset);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+/* 
+html {
+  background-color: aqua;
+} */
+
+.dark-theme {
+  background-color: #e5e5e5;
+}
+
+.light-theme {
+  background-color: #292524;
 }

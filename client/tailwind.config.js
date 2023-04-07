@@ -6,12 +6,6 @@ module.exports = {
       screens: {
         xs: "480px",
       },
-      colors: {
-        systemBackground: {
-          dark: "#FFFFFFFF",
-          light: "#000000FF",
-        },
-      },
       fontFamily: {
         inter: ["Inter var", "sans-serif"],
       },
