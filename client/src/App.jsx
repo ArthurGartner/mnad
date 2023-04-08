@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { SiteDown } from "./pages";
+import { Footer } from "./components";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
 
+  //Dark and light theme setup for entire background
   useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -29,7 +31,12 @@ function App() {
     document.body.classList.add("light-theme");
   };
 
-  return <SiteDown />;
+  return (
+    <div>
+      <SiteDown />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
