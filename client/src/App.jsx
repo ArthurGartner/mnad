@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { SiteDown } from "./pages";
-import { Footer } from "./components";
+import { Footer, Navbar } from "./components";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
+  const siteDown = false;
 
   //Dark and light theme setup for entire background
   useEffect(() => {
@@ -23,17 +25,27 @@ function App() {
   }, [isDark]);
 
   const darkMode = () => {
-    document.body.classList.remove("light-theme");
-    document.body.classList.add("dark-theme");
+    document.body.classList.add("light-theme");
+    document.body.classList.remove("dark-theme");
   };
   const lightMode = () => {
-    document.body.classList.remove("dark-theme");
-    document.body.classList.add("light-theme");
+    document.body.classList.add("dark-theme");
+    document.body.classList.remove("light-theme");
   };
 
   return (
     <div>
-      <SiteDown />
+      {(function () {
+        if (siteDown) {
+          return <SiteDown />;
+        } else {
+          return (
+            <BrowserRouter>
+              <Navbar />
+            </BrowserRouter>
+          );
+        }
+      })()}
       <Footer />
     </div>
   );
