@@ -4,6 +4,7 @@
 
 html {
   padding: env(safe-area-inset);
+  background-color: #fafafa;
 }
 
 html,
@@ -16,10 +17,6 @@ html {
   background-color: aqua;
 } */
 
-.dark-theme {
+.dark {
   background-color: #0a0a0a;
-}
-
-.light-theme {
-  background-color: #fafafa;
 }

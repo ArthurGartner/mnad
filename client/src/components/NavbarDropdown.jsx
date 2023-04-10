@@ -27,7 +27,7 @@ const MenuIcon = () => {
         <span className="rounded-md">
           <button
             type="button"
-            className="inline-flex items-center px-2 py-2 text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 dark:text-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+            className="inline-flex items-center py-2 text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 dark:text-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
             onClick={() => setIsOpen(!isOpen)}
           >
             <svg width="24" height="24" fill="none" aria-hidden="true">
@@ -45,7 +45,7 @@ const MenuIcon = () => {
 
       {isOpen && (
         <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
-          <div className="rounded-md bg-white shadow-xs">
+          <div className="rounded-md bg-neutral-100 dark:bg-neutral-900 shadow-xs">
             <div className="py-1">
               <a
                 href="#"
