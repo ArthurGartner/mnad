@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="text-center text-sm md:text-xs text-black dark:text-white font-semibold">
+    <div className="text-center text-sm md:text-xs text-black dark:text-white font-semibold mt-10">
       <div>
         Made with 🍺 by{" "}
         <a href="https://www.linkedin.com/in/arthurgartner/">

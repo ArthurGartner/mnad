@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { SiteDown } from "./pages";
-import { Footer, Navbar } from "./components";
+import { Footer, LoadingBar, Navbar } from "./components";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
@@ -55,6 +55,10 @@ function App() {
           return (
             <BrowserRouter>
               <Navbar setTheme={setTheme} darkTheme={darkTheme} theme={theme} />
+              <div className="w-full h-[55px] md:h-[40px]"></div>
+              <div className="w-full lg:w-[960px] xl:w-[1140px] m-auto px-5">
+                <LoadingBar />
+              </div>
             </BrowserRouter>
           );
         }
