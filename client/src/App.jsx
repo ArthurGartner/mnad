@@ -56,8 +56,8 @@ function App() {
             <BrowserRouter>
               <Navbar setTheme={setTheme} darkTheme={darkTheme} theme={theme} />
               <div className="w-full h-[55px] md:h-[40px]"></div>
-              <div className="w-full lg:w-[960px] xl:w-[1140px] m-auto px-5">
-                <LoadingBar />
+              <div className="w-full mt-56 lg:w-[960px] xl:w-[1140px] m-auto px-5">
+                <LoadingBar value="100" />
               </div>
             </BrowserRouter>
           );
