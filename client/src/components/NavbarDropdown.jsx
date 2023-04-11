@@ -30,7 +30,14 @@ const MenuIcon = () => {
             className="inline-flex items-center py-2 text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 dark:text-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <svg width="24" height="24" fill="none" aria-hidden="true">
+            <svg
+              width="24"
+              height="24"
+              fill="none"
+              aria-hidden="true"
+              className="w-[35px] h-[35px] md:w-[30px] md:h-[30px]"
+              viewBox="0 0 24 24"
+            >
               <path
                 d="M12 6v.01M12 12v.01M12 18v.01M12 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm0 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm0 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
                 stroke="currentColor"
@@ -49,20 +56,20 @@ const MenuIcon = () => {
             <div className="py-1">
               <a
                 href="#"
-                className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
+                className="block px-4 py-2 text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
               >
                 Menu Option 1
               </a>
               <a
                 href="#"
-                className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
+                className="block px-4 py-2 text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
               >
                 Menu Option 2
               </a>
               <a
                 href="#"
                 className="block px-4 py-2 text-sm leading-5
-                text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
+                text-gray-700 dark:text-gray-300 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
               >
                 Menu Option 3
               </a>

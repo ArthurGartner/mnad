@@ -4,22 +4,17 @@ import { SiteDown } from "./pages";
 import { Footer, Navbar } from "./components";
 
 function App() {
-  const [theme, setTheme] = useState("system");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
+  const [darkTheme, setDarkTheme] = useState(false);
   const siteDown = false;
 
   //Dark and light theme setup for entire background
   useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
-    mq.addEventListener("change", (evt) => {
+    mq.addEventListener("change", () => {
       updateTheme();
     });
-
-    if (localStorage.getItem("theme") != null) {
-      setTheme(localStorage.getItem("theme"));
-    }
-
-    updateTheme();
   }, []);
 
   useEffect(() => {
@@ -27,6 +22,7 @@ function App() {
   }, [theme]);
 
   const updateTheme = () => {
+    localStorage.setItem("theme", theme);
     if (theme === "system") {
       const mq = window.matchMedia("(prefers-color-scheme: dark)");
       if (mq.matches) {
@@ -40,10 +36,14 @@ function App() {
   };
 
   const darkMode = () => {
+    setDarkTheme(true);
+    document.documentElement.classList.remove("light");
     document.documentElement.classList.add("dark");
   };
   const lightMode = () => {
+    setDarkTheme(false);
     document.documentElement.classList.remove("dark");
+    document.documentElement.classList.add("light");
   };
 
   return (
@@ -54,7 +54,7 @@ function App() {
         } else {
           return (
             <BrowserRouter>
-              <Navbar setTheme={(setTheme, theme)} />
+              <Navbar setTheme={setTheme} darkTheme={darkTheme} theme={theme} />
             </BrowserRouter>
           );
         }
