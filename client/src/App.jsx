@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { SiteDown } from "./pages";
-import { Footer, LoadingBar, Navbar } from "./components";
+import { Footer, Header, LoadingBar, Navbar } from "./components";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
@@ -56,8 +56,14 @@ function App() {
             <BrowserRouter>
               <Navbar setTheme={setTheme} darkTheme={darkTheme} theme={theme} />
               <div className="w-full h-[55px] md:h-[40px]"></div>
-              <div className="w-full mt-56 lg:w-[960px] xl:w-[1140px] m-auto px-5">
-                <LoadingBar value="100" />
+              <div className="w-full lg:w-[960px] xl:w-[1140px] m-auto">
+                <div className="mx-3">
+                  <Header
+                    Title="The Bar"
+                    Subtitle="Drink recommendations based on world wide sentiment."
+                  />
+                  <LoadingBar value="100" className="" />
+                </div>
               </div>
             </BrowserRouter>
           );

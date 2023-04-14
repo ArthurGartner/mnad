@@ -21,8 +21,14 @@
   width: 0%;
 
   /* Style */
-  background: linear-gradient(to right, #6ef195, #00e3fd);
+  /* background: linear-gradient(to right, #6ef195, #00e3fd); */
+  /* background-color: green; */
   border-radius: 30px;
+  visibility: visible;
+  /* background-image: linear-gradient(to right, #6ef195, #00e3fd); */
+  background-size: auto auto;
+  background-position: 0 100%;
+  overflow: visible;
 }
 
 .progressbar-container {
@@ -46,4 +52,8 @@
   font-family: montserrat;
   font-weight: bold;
   font-size: 30px;
+}
+
+.mask {
+  visibility: visible;
 }
