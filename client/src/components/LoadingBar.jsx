@@ -71,7 +71,18 @@ function Progressbar({ value }) {
   }, [value]);
   return (
     <div>
-      <div className="mask"></div>
+      <motion.div
+        className="percentage-content text-end inline-block"
+        animate={{
+          width: `${value}%`,
+        }}
+        transition={{
+          duration: 1.8,
+          ease: "easeInOut",
+        }}
+      >
+        <div className="text-3xl font-semibold">{value}%</div>
+      </motion.div>
       <div className="progressbar-container">
         <div className={`progressbar w-full`}>
           <motion.div

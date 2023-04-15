@@ -62,7 +62,7 @@ function App() {
                     Title="The Bar"
                     Subtitle="Drink recommendations based on world wide sentiment."
                   />
-                  <LoadingBar value="100" className="" />
+                  <LoadingBar value="65" className="" />
                 </div>
               </div>
             </BrowserRouter>
