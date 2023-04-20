@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { SiteDown } from "./pages";
-import { Footer, Header, LoadingBar, Navbar } from "./components";
+import {
+  DrinkCarousel,
+  Footer,
+  Header,
+  LoadingBar,
+  Navbar,
+} from "./components";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
   const [darkTheme, setDarkTheme] = useState(false);
   const siteDown = false;
+  const [date, setDate] = useState("April 19, 2023");
 
   //Dark and light theme setup for entire background
   useEffect(() => {
@@ -62,7 +69,8 @@ function App() {
                     Title="The Bar"
                     Subtitle="Drink recommendations based on world wide sentiment."
                   />
-                  <LoadingBar value="65" className="" />
+                  <DrinkCarousel date={date} />
+                  <LoadingBar value="50" className="" />
                 </div>
               </div>
             </BrowserRouter>

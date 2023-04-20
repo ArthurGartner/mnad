@@ -36,10 +36,18 @@
 import "./progressbar.css";
 import { motion, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { useSpring, animated } from "react-spring";
 
 function Progressbar({ value }) {
   const [color1, setColor1] = useState("from-indigo-500");
   const [color2, setColor2] = useState("to-pink-500");
+  const [offSet, setOffSet] = useState(value);
+  const { number } = useSpring({
+    from: { number: 0 },
+    number: parseInt(value),
+    delay: 0,
+    config: { mass: 1, tension: 20, friction: 10 },
+  });
 
   const colorCombos = [
     ["from-indigo-400", "to-pink-400"],
@@ -50,9 +58,9 @@ function Progressbar({ value }) {
 
   // className="bar bg-gradient-to-r from-indigo-500 to-sky-500"
 
-  const progressTextRef = useRef(null);
+  // const progressTextRef = useRef(null);
   useEffect(() => {
-    const progressText = progressTextRef.current?.textContent;
+    // const progressText = progressTextRef.current?.textContent;
 
     const barColor =
       colorCombos[Math.floor(Math.random() * colorCombos.length)];
@@ -60,28 +68,36 @@ function Progressbar({ value }) {
     setColor1(barColor[0]);
     setColor2(barColor[1]);
 
-    if (progressText != null) {
-      animate(parseInt(progressText), value, {
-        duration: 2,
-        onUpdate: (cv) => {
-          progressTextRef.current.textContent = cv.toFixed(0);
-        },
-      });
-    }
+    var offset = parseInt(value);
+    setOffSet(offset >= 100 ? 100 : offset);
+
+    // if (progressText != null) {
+    //   animate(parseInt(progressText), value, {
+    //     duration: 2,
+    //     onUpdate: (cv) => {
+    //       progressTextRef.current.textContent = cv.toFixed(0);
+    //     },
+    //   });
+    // }
   }, [value]);
   return (
     <div>
       <motion.div
-        className="percentage-content text-end inline-block"
+        className="percentage-content text-end inline-block relative"
         animate={{
-          width: `${value}%`,
+          width: `min(calc(${parseInt(offSet)}% + 30px), 100%)`,
         }}
         transition={{
           duration: 1.8,
           ease: "easeInOut",
         }}
       >
-        <div className="text-3xl font-semibold">{value}%</div>
+        <div className="text-3xl font-semibold text-black dark:text-white">
+          <animated.div className="inline">
+            {number.to((value) => value.toFixed(0))}
+          </animated.div>
+          <div className="inline">%</div>
+        </div>
       </motion.div>
       <div className="progressbar-container">
         <div className={`progressbar w-full`}>
