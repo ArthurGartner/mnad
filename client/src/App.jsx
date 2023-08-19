@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { SiteDown } from "./pages";
 import {
+  DaySummary,
   DrinkCarousel,
   Footer,
   Header,
@@ -70,7 +71,12 @@ function App() {
                     Subtitle="Drink recommendations based on world wide sentiment."
                   />
                   <DrinkCarousel date={date} />
-                  <LoadingBar value="50" className="" />
+                  <div className="my-2">
+                    <LoadingBar value="50" />
+                  </div>
+                  <div className="my-2">
+                    <DaySummary />
+                  </div>
                 </div>
               </div>
             </BrowserRouter>

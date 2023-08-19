@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./DrinkSelection.css";
 import DrinkSummary from "./DrinkSummary";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretRight, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 
 function DrinkSelection(props) {
   const [items, setItems] = useState(props.items);
@@ -29,10 +31,13 @@ function DrinkSelection(props) {
     <div className="carousel-container w-100 flex h-fit justify-between">
       {/* Left button */}
       <button
-        className="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
+        className="hover:bg-neutral-100 dark:hover:bg-neutral-700 font-bold rounded"
         onClick={() => handleTransition("left")}
       >
-        <i className="fas fa-chevron-left"></i>
+        <FontAwesomeIcon
+          icon={faCaretLeft}
+          className="h-[50px] w-[50px] text-blue-500 dark:text-blue-400"
+        />
       </button>
 
       {/* Carousel item */}
@@ -42,10 +47,13 @@ function DrinkSelection(props) {
 
       {/* Right button */}
       <button
-        className="bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded button"
+        className="hover:bg-neutral-100 dark:hover:bg-neutral-700 font-bold rounded"
         onClick={() => handleTransition("right")}
       >
-        <i className="fas fa-chevron-right"></i>
+        <FontAwesomeIcon
+          icon={faCaretRight}
+          className="h-[50px] w-[50px] text-blue-500 dark:text-blue-400"
+        />
       </button>
     </div>
   );

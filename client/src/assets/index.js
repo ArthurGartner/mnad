@@ -1,3 +1,4 @@
 import logoCoconut from "./logo_coconut.svg";
-
-export { logoCoconut };
+import empty_glass from "./empty_glass.svg";
+import liquid from "./liquid.svg";
+export { logoCoconut, empty_glass, liquid };

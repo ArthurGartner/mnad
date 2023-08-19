@@ -10,3 +10,6 @@ export { default as DrinkSelection } from "./DrinkSelection";
 export { default as DrinkInfo } from "./DrinkInfo";
 export { default as DrinkPicture } from "./DrinkPicture";
 export { default as DrinkSummary } from "./DrinkSummary";
+export { default as DaySummary } from "./DaySummary";
+export { default as CoconutVisual } from "./CoconutVisual";
+export { default as DayStats } from "./DayStats";
