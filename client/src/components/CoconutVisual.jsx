@@ -1,14 +1,18 @@
 import React from "react";
-import { logoCoconut } from "../assets";
+import { BlankCoconut } from "../assets";
+import SVGModifier from "./SVGModifier";
 
 const CoconutVisual = () => {
   return (
-    <div className="w-100">
+    <div className="w-100 relative">
       <div className="text-center font-semibold text-4xl text-black dark:text-white">
         Balanced
       </div>
-      <div>
-        <img src={logoCoconut} alt="" />
+      <div className="relative">
+        <img src={BlankCoconut} className="absolute" alt="" />
+        <div className="relative">
+          <SVGModifier className="absolute" value={50} />
+        </div>
       </div>
     </div>
   );

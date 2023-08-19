@@ -1,5 +1,4 @@
 import React from "react";
-import { ReactComponent as EmptyGlass } from "../assets/empty_Glass.svg";
 import { ReactComponent as Liquid } from "../assets/liquid.svg";
 import { empty_glass } from "../assets";
 
@@ -13,7 +12,7 @@ const DrinkPicture = () => {
               <img className=" absolute h-full w-full" src={empty_glass} />
               <Liquid
                 className="h-full w-full absolute"
-                style={{ fill: "#9D702E" }}
+                style={{ fill: "indigo" }}
               />
             </div>
           </div>
