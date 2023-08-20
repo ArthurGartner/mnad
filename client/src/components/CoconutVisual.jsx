@@ -11,7 +11,7 @@ const CoconutVisual = () => {
       <div className="relative">
         <img src={BlankCoconut} className="absolute" alt="" />
         <div className="relative">
-          <SVGModifier className="absolute" value={50} />
+          <SVGModifier className="absolute" value={100} />
         </div>
       </div>
     </div>
