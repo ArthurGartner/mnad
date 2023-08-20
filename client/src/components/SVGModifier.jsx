@@ -50,7 +50,7 @@ const SVGModifier = ({ value }) => {
     >
       <defs>
         <style>
-          {`.smile-1{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:17px;}`}
+          {`.smile-1{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:30px;}`}
         </style>
       </defs>
       <path
