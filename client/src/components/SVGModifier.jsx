@@ -9,14 +9,6 @@ const SVGModifier = ({ value }) => {
 
   const startY = 758.64;
 
-  // Calculate the Y difference based on value
-  const deltaY = (50 - value) * 1.7; // Adjust multiplier to control curvature intensity
-
-  const controlPointX1 = midX - (endX - startX) / 4;
-  const controlPointX2 = midX + (endX - startX) / 4;
-  const controlPointY1 = startY - deltaY;
-  const controlPointY2 = startY - deltaY;
-
   useEffect(() => {
     // Calculate the Y difference based on value
     const deltaY = (50 - value) * 1.7; // Adjust multiplier to control curvature intensity

@@ -1,7 +1,5 @@
 import React from "react";
-import { ReactComponent as Liquid } from "../assets/liquid.svg";
-import { empty_glass } from "../assets";
-import SVGImage from "./SVGImage";
+import { SVGImage } from "../components";
 
 const DrinkPicture = () => {
   return (
@@ -17,7 +15,7 @@ const DrinkPicture = () => {
               <SVGImage
                 className="h-full w-full absolute"
                 url="https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass_full.svg"
-                fillColor="blue"
+                fillColor="brown"
               />
             </div>
           </div>

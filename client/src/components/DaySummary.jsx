@@ -1,6 +1,6 @@
 import React from "react";
 import CoconutVisual from "./CoconutVisual";
-import DayStats from "./DayStats";
+import { DayStats } from "../components";
 
 const DaySummary = (props) => {
   return (

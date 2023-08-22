@@ -6,7 +6,7 @@ const Header = ({ Title, Subtitle }) => {
       <h1 className="text-3xl md:text-4xl font-semibold text-black dark:text-white">
         {Title}
       </h1>
-      <h5 className="text-sm md:text-base font-semibold text-neutral-500">
+      <h5 className="text-sm md:text-base font-semibold text-neutral-400">
         {Subtitle}
       </h5>
     </div>

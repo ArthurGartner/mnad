@@ -12,16 +12,14 @@ import {
   faHandshake,
 } from "@fortawesome/free-solid-svg-icons";
 import { GiSodaCan } from "react-icons/gi";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const DrinkInfo = () => {
   return (
     <div className="w-100">
-      <div className="relative max-w-sm rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-900 shadow-2xl m-auto">
-        <div className="absolute text-xl mt-2 px-6 right-0">
-          <FontAwesomeIcon
-            icon={faHeart}
-            className="mr-2 text-pink-500 dark:text-pink-500"
-          />
+      <div className="relative max-w-sm rounded-3xl overflow-hidden bg-neutral-100 dark:bg-neutral-700 shadow-xl m-auto">
+        <div className="absolute flex text-xl mt-5 px-6 right-0">
+          <AiOutlineHeart className="mr-2 text-pink-500 dark:text-pink-500" />
           <FontAwesomeIcon
             icon={faThumbsDown}
             className="text-purple-500 dark:text-purple-400"
@@ -30,7 +28,7 @@ const DrinkInfo = () => {
         <div className="text-black dark:text-white font-bold text-xl text-center mt-2">
           Long Island Iced Tea
         </div>
-        <div className="text-xs md:text-sm font-semibold text-neutral-500 text-center">
+        <div className="text-xs md:text-sm font-semibold text-neutral-400 text-center">
           22% ABV | 86% <FontAwesomeIcon icon={faHeart} />
         </div>
         <div className="px-6 py-4">
@@ -53,7 +51,7 @@ const DrinkInfo = () => {
             <li className="my-2 flex">
               <FontAwesomeIcon
                 icon={faMartiniGlass}
-                className="my-auto mx-3 text-neutral-500"
+                className="my-auto mx-3 text-neutral-400"
               />
               <div>
                 1/2oz{" "}
@@ -62,13 +60,13 @@ const DrinkInfo = () => {
               </div>
               <FontAwesomeIcon
                 icon={faHandshake}
-                className="my-auto mx-3  text-neutral-500"
+                className="my-auto mx-3  text-neutral-400"
               />
             </li>
             <li className="my-2 flex">
               <FontAwesomeIcon
                 icon={faMartiniGlass}
-                className="my-auto mx-3  text-neutral-500"
+                className="my-auto mx-3  text-neutral-400"
               />
               <div>
                 1/2oz{" "}
@@ -79,32 +77,32 @@ const DrinkInfo = () => {
               </div>
               <FontAwesomeIcon
                 icon={faHandshake}
-                className="my-auto mx-3  text-neutral-500"
+                className="my-auto mx-3  text-neutral-400"
               />
             </li>
             <li className="my-2 flex">
               <FontAwesomeIcon
                 icon={faMartiniGlass}
-                className="my-auto mx-3  text-neutral-500"
+                className="my-auto mx-3  text-neutral-400"
               />
               <div>1/2oz Gin</div>
             </li>
             <li className="my-2 flex">
               <FontAwesomeIcon
                 icon={faMartiniGlass}
-                className="my-auto mx-3  text-neutral-500"
+                className="my-auto mx-3  text-neutral-400"
               />
               <div>1/2oz Tequila</div>
             </li>
             <li className="my-2 flex">
               <FontAwesomeIcon
                 icon={faLemon}
-                className="my-auto mx-3  text-neutral-500"
+                className="my-auto mx-3  text-neutral-400"
               />
               <div>Juice from 1/2 lemon</div>
             </li>
             <li className="my-2 flex">
-              <GiSodaCan className="my-auto mx-3  text-neutral-500" />
+              <GiSodaCan className="my-auto mx-3  text-neutral-400" />
               <div>1 splash of Coca-Cola</div>
             </li>
           </ul>

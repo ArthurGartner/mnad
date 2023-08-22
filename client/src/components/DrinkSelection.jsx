@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import "./DrinkSelection.css";
-import DrinkSummary from "./DrinkSummary";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretRight, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
+import { NavArrow, DrinkSummary } from "../components";
 
 function DrinkSelection(props) {
   const [items, setItems] = useState(props.items);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  //Will load current drink HERE
+  //Will load current drink HERE API CALL EXECUTE HERE
 
-  // Function to handle the transition between carousel items
+  // Function to handle the transition between carousel items, will probably be updated to call API on each click instead
   const handleTransition = (direction) => {
     if (direction === "left") {
       if (activeIndex === 0) {
@@ -31,25 +29,11 @@ function DrinkSelection(props) {
 
   return (
     <div className="carousel-container w-100 flex h-fit justify-between">
-      <div className="m-auto">
-        <button
-          className="hover:bg-blue-500 dark:hover:bg-blue-400 font-bold rounded-3xl h-[50px] w-[50px] text-blue-500 dark:text-blue-400 hover:text-neutral-100 dark:hover:text-neutral-700"
-          onClick={() => handleTransition("left")}
-        >
-          <FontAwesomeIcon icon={faCaretLeft} className="h-[50px] w-[50px]" />
-        </button>
-      </div>
+      <NavArrow handleFunction={handleTransition} dir="left" />
       <div className="grow">
         <DrinkSummary />
       </div>
-      <div className="m-auto">
-        <button
-          className="hover:bg-blue-500 dark:hover:bg-blue-400 font-bold rounded-3xl h-[50px] w-[50px] text-blue-500 dark:text-blue-400 hover:text-neutral-100 dark:hover:text-neutral-700"
-          onClick={() => handleTransition("right")}
-        >
-          <FontAwesomeIcon icon={faCaretRight} className="h-[50px] w-[50px]" />
-        </button>
-      </div>
+      <NavArrow handleFunction={handleTransition} dir="right" />
     </div>
   );
 }

@@ -1,12 +1,14 @@
 import React from "react";
 import { BlankCoconut } from "../assets";
-import SVGModifier from "./SVGModifier";
+import { SVGModifier } from "../components";
 
 const CoconutVisual = (props) => {
+  const desc = "Balanced";
+
   return (
     <div className="w-100 relative">
       <div className="text-center font-semibold text-4xl text-black dark:text-white">
-        Balanced
+        {desc}
       </div>
       <div className="relative">
         <img src={BlankCoconut} className="absolute" alt="" />

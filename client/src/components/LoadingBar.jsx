@@ -83,7 +83,7 @@ function Progressbar({ value }) {
           </motion.div>
         </div>
       </div>
-      <div className="flex justify-between w-100 text-lg font-semibold text-center text-neutral-500">
+      <div className="flex justify-between w-100 text-lg font-semibold text-center text-neutral-400">
         <div>Gloomy</div>
         <div>Cheerful</div>
       </div>
