@@ -2,11 +2,11 @@ import React from "react";
 import CoconutVisual from "./CoconutVisual";
 import DayStats from "./DayStats";
 
-const DaySummary = () => {
+const DaySummary = (props) => {
   return (
     <div className="w-100 flex justify-between">
       <div className="w-1/2">
-        <CoconutVisual />
+        <CoconutVisual sentiment={props.sentiment} />
       </div>
       <div className="w-1/2">
         <DayStats />

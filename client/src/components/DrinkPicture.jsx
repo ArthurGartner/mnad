@@ -17,7 +17,7 @@ const DrinkPicture = () => {
               <SVGImage
                 className="h-full w-full absolute"
                 url="https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass_full.svg"
-                fillColor="brown"
+                fillColor="blue"
               />
             </div>
           </div>

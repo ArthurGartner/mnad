@@ -8,6 +8,8 @@ function DrinkSelection(props) {
   const [items, setItems] = useState(props.items);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  //Will load current drink HERE
+
   // Function to handle the transition between carousel items
   const handleTransition = (direction) => {
     if (direction === "left") {
@@ -16,45 +18,38 @@ function DrinkSelection(props) {
       } else {
         setActiveIndex(activeIndex - 1);
       }
+      props.setSentimentVal(10);
     } else {
       if (activeIndex === items.length - 1) {
         setActiveIndex(0);
       } else {
         setActiveIndex(activeIndex + 1);
       }
+      props.setSentimentVal(90);
     }
-
-    console.log(activeIndex);
   };
 
   return (
     <div className="carousel-container w-100 flex h-fit justify-between">
-      {/* Left button */}
-      <button
-        className="hover:bg-neutral-100 dark:hover:bg-neutral-700 font-bold rounded"
-        onClick={() => handleTransition("left")}
-      >
-        <FontAwesomeIcon
-          icon={faCaretLeft}
-          className="h-[50px] w-[50px] text-blue-500 dark:text-blue-400"
-        />
-      </button>
-
-      {/* Carousel item */}
+      <div className="m-auto">
+        <button
+          className="hover:bg-blue-500 dark:hover:bg-blue-400 font-bold rounded-3xl h-[50px] w-[50px] text-blue-500 dark:text-blue-400 hover:text-neutral-100 dark:hover:text-neutral-700"
+          onClick={() => handleTransition("left")}
+        >
+          <FontAwesomeIcon icon={faCaretLeft} className="h-[50px] w-[50px]" />
+        </button>
+      </div>
       <div className="grow">
         <DrinkSummary />
       </div>
-
-      {/* Right button */}
-      <button
-        className="hover:bg-neutral-100 dark:hover:bg-neutral-700 font-bold rounded"
-        onClick={() => handleTransition("right")}
-      >
-        <FontAwesomeIcon
-          icon={faCaretRight}
-          className="h-[50px] w-[50px] text-blue-500 dark:text-blue-400"
-        />
-      </button>
+      <div className="m-auto">
+        <button
+          className="hover:bg-blue-500 dark:hover:bg-blue-400 font-bold rounded-3xl h-[50px] w-[50px] text-blue-500 dark:text-blue-400 hover:text-neutral-100 dark:hover:text-neutral-700"
+          onClick={() => handleTransition("right")}
+        >
+          <FontAwesomeIcon icon={faCaretRight} className="h-[50px] w-[50px]" />
+        </button>
+      </div>
     </div>
   );
 }

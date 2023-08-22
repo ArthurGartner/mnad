@@ -17,11 +17,6 @@ const SVGModifier = ({ value }) => {
   const controlPointY1 = startY - deltaY;
   const controlPointY2 = startY - deltaY;
 
-  console.log(controlPointX1);
-  console.log(controlPointX2);
-  console.log(controlPointY1);
-  console.log(controlPointY2);
-
   useEffect(() => {
     // Calculate the Y difference based on value
     const deltaY = (50 - value) * 1.7; // Adjust multiplier to control curvature intensity

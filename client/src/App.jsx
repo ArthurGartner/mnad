@@ -15,6 +15,7 @@ function App() {
   const [darkTheme, setDarkTheme] = useState(false);
   const siteDown = false;
   const [date, setDate] = useState("April 19, 2023");
+  const [sentimentVal, setSentimentVal] = useState(50);
 
   //Dark and light theme setup for entire background
   useEffect(() => {
@@ -70,12 +71,15 @@ function App() {
                     Title="The Bar"
                     Subtitle="Drink recommendations based on world wide sentiment."
                   />
-                  <DrinkCarousel date={date} />
+                  <DrinkCarousel
+                    curDate={date}
+                    setSentimentVal={setSentimentVal}
+                  />
                   <div className="my-2">
-                    <LoadingBar value="50" />
+                    <LoadingBar value={sentimentVal} />
                   </div>
                   <div className="my-2">
-                    <DaySummary />
+                    <DaySummary sentiment={sentimentVal} />
                   </div>
                 </div>
               </div>
