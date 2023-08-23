@@ -7,7 +7,7 @@ const CoconutVisual = (props) => {
 
   return (
     <div className="w-100 relative">
-      <div className="text-center font-semibold text-4xl text-black dark:text-white">
+      <div className="text-center font-semibold text-xl md:text-4xl text-black dark:text-white">
         {desc}
       </div>
       <div className="relative">

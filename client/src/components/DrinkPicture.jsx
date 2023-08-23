@@ -7,16 +7,17 @@ const DrinkPicture = () => {
       <div className="h-full">
         <div className="relative drink-container h-full">
           <div className="h-full">
-            <div className="drink-glass relative h-full w-full">
+            <div className="drink-glass h-full w-full overflow-hidden">
               <img
-                className="absolute h-full w-full"
+                className="absolute h-full w-full object-cover"
                 src="https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass.svg"
               />
-              <SVGImage
-                className="h-full w-full absolute"
-                url="https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass_full.svg"
-                fillColor="brown"
-              />
+              <div className="absolute h-full w-full object-cover">
+                <SVGImage
+                  url="https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass_full.svg"
+                  fillColor="brown"
+                />
+              </div>
             </div>
           </div>
         </div>

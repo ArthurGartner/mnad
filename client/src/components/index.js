@@ -16,3 +16,4 @@ export { default as DayStats } from "./DayStats";
 export { default as NavArrow } from "./NavArrow";
 export { default as SVGModifier } from "./SVGModifier";
 export { default as SVGImage } from "./SVGImage";
+export { default as DrinkName } from "./DrinkName";

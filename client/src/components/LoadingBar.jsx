@@ -58,7 +58,7 @@ function Progressbar({ value }) {
           ease: "easeInOut",
         }}
       >
-        <div className="text-3xl font-semibold text-black dark:text-white">
+        <div className="text-xl md:text-3xl font-semibold text-black dark:text-white">
           <animated.div className="inline">
             {number.to((value) => value.toFixed(0))}
           </animated.div>
@@ -66,7 +66,7 @@ function Progressbar({ value }) {
         </div>
       </motion.div>
       <div className="progressbar-container">
-        <div className={`progressbar w-full`}>
+        <div className={`progressbar w-full h-[15px] md:h-[30px]`}>
           <motion.div
             className={`bar overflow-hidden`}
             animate={{
@@ -83,7 +83,7 @@ function Progressbar({ value }) {
           </motion.div>
         </div>
       </div>
-      <div className="flex justify-between w-100 text-lg font-semibold text-center text-neutral-400">
+      <div className="flex justify-between w-100 text-sm md:text-lg font-semibold text-center text-neutral-400">
         <div>Gloomy</div>
         <div>Cheerful</div>
       </div>
