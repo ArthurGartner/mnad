@@ -30,11 +30,6 @@ function DrinkSelection(props) {
   }, [carouselContainerRef]);
 
   useEffect(() => {
-    console.log(`startX has been updated to: ${xstart}`);
-  }, [xstart]);
-  useEffect(() => {
-    console.log(`EndX has been updated to: ${xend}`);
-
     const distance = xend - xstart;
 
     if (distance > 50) {
