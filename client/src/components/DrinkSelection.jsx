@@ -8,6 +8,19 @@ function DrinkSelection(props) {
   const carouselContainerRef = useRef(null);
   const [xstart, setXStart] = useState(0);
   const [xend, setXEnd] = useState(0);
+  const [liqGlass, setLiqGlass] = useState(null);
+
+  useEffect(() => {
+    const glass = {
+      glassUrl:
+        "https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass.svg",
+      svgImg:
+        "https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass_full.svg",
+      liqColor: "green",
+    };
+
+    setLiqGlass(glass);
+  }, []);
 
   useEffect(() => {
     // Assign touch event handlers if the ref exists
@@ -61,6 +74,16 @@ function DrinkSelection(props) {
       } else {
         setActiveIndex(activeIndex - 1);
       }
+
+      var glass = {
+        glassUrl:
+          "https://mightneedadrink.s3.amazonaws.com/drink-images/cocktail_glass.svg",
+        svgImg:
+          "https://mightneedadrink.s3.amazonaws.com/drink-images/cocktail_glass_full.svg",
+        liqColor: "orange",
+      };
+
+      setLiqGlass(glass);
       props.setSentimentVal(10);
     } else {
       if (activeIndex === items.length - 1) {
@@ -68,6 +91,16 @@ function DrinkSelection(props) {
       } else {
         setActiveIndex(activeIndex + 1);
       }
+      var glass = {
+        glassUrl:
+          "https://mightneedadrink.s3.amazonaws.com/drink-images/pousse_cafe_glass.svg",
+        svgImg:
+          "https://mightneedadrink.s3.amazonaws.com/drink-images/pousse_cafe_drink_full.svg",
+        liqColor: "pink",
+      };
+
+      setLiqGlass(glass);
+
       props.setSentimentVal(90);
     }
   };
@@ -79,7 +112,11 @@ function DrinkSelection(props) {
     >
       <NavArrow handleFunction={handleTransition} dir="left" />
       <div className="grow">
-        <DrinkSummary />
+        <DrinkSummary
+          glassUrl={liqGlass?.glassUrl}
+          svgImg={liqGlass?.svgImg}
+          liqColor={liqGlass?.liqColor}
+        />
       </div>
       <NavArrow handleFunction={handleTransition} dir="right" />
     </div>

@@ -26,6 +26,9 @@ function DrinkCarousel(props) {
         <div className="text-xs md:text-sm font-semibold text-neutral-400 text-center">
           {percent}% ABV | {liked}% <FontAwesomeIcon icon={faHeart} />
         </div>
+        <div className="text-xs md:text-sm font-semibold text-blue-500 dark:text-blue-400 text-center">
+          View Drink Information
+        </div>
       </div>
     </div>
   );

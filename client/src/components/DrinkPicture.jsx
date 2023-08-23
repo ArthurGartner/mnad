@@ -1,7 +1,7 @@
 import React from "react";
 import { SVGImage } from "../components";
 
-const DrinkPicture = () => {
+const DrinkPicture = (props) => {
   return (
     <>
       <div className="h-full">
@@ -10,13 +10,10 @@ const DrinkPicture = () => {
             <div className="drink-glass h-full w-full overflow-hidden">
               <img
                 className="absolute h-full w-full object-cover"
-                src="https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass.svg"
+                src={props.glassUrl}
               />
               <div className="absolute h-full w-full object-cover">
-                <SVGImage
-                  url="https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass_full.svg"
-                  fillColor="brown"
-                />
+                <SVGImage url={props.svgImg} fillColor={props.liqColor} />
               </div>
             </div>
           </div>
