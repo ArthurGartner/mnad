@@ -8,7 +8,7 @@ const DaySummary = (props) => {
       <div className="w-1/2 mx-auto">
         <CoconutVisual sentiment={props.sentiment} />
       </div>
-      <div className="w-1/2 mx-auto">
+      <div className="md:w-1/2 mx-auto">
         <DayStats />
       </div>
     </div>
