@@ -19,3 +19,4 @@ export { default as SVGImage } from "./SVGImage";
 export { default as DrinkName } from "./DrinkName";
 export { default as BarChart } from "./BarChart";
 export { default as DiffPercentBar } from "./DiffPercentBar";
+export { default as IndustryBar } from "./IndustryBar";

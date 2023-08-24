@@ -2,7 +2,7 @@ import { motion, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "react-spring";
 
-function DiffPercentBar({ value }) {
+function DiffPercentBar({ value, reverse = false }) {
   const [color1, setColor1] = useState("from-indigo-500");
   const [color2, setColor2] = useState("to-pink-500");
   const [offSet, setOffSet] = useState(value);
@@ -20,7 +20,6 @@ function DiffPercentBar({ value }) {
     ["from-violet-400", "to-teal-400"],
   ];
 
-  const progressTextRef = useRef(null);
   useEffect(() => {
     const barColor =
       colorCombos[Math.floor(Math.random() * colorCombos.length)];
@@ -28,24 +27,16 @@ function DiffPercentBar({ value }) {
     setColor2(barColor[1]);
     var offset = parseInt(value);
     setOffSet(offset >= 100 ? 100 : offset);
-    const progressText = progressTextRef.current?.textContent;
-
-    if (progressText != null) {
-      animate(parseInt(progressText), value, {
-        duration: 2,
-        onUpdate: (cv) => {
-          progressTextRef.current.textContent = cv.toFixed(0);
-        },
-      });
-    }
   }, [value]);
 
   return (
     <div>
       <div className="flex row align-middle">
-        <div className="w-full h-4 md:h-8 rounded-full bg-transparent overflow-hidden">
+        <div className="w-full h-4 md:h-8 rounded-full bg-transparent overflow-hidden relative">
           <motion.div
-            className="h-full rounded-full"
+            className={`h-full rounded-full ${
+              reverse ? "right-0" : "left-0"
+            } absolute`}
             animate={{
               width: `${value}%`,
             }}
@@ -55,7 +46,9 @@ function DiffPercentBar({ value }) {
             }}
           >
             <div
-              className={`h-full w-full rounded-full bg-gradient-to-r ${color1} ${color2}`}
+              className={`h-full w-full rounded-full ${
+                reverse ? "bg-gradient-to-l" : "bg-gradient-to-r"
+              } ${color1} ${color2}`}
             ></div>
           </motion.div>
         </div>
