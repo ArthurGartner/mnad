@@ -1,14 +1,9 @@
-.fade-enter,
-.fade-exit-active {
-  opacity: 0;
-}
-
-.fade-enter-active,
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-enter-active,
-.fade-exit-active {
-  transition: opacity 500ms;
+.vertical-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 5px solid gray;
+  z-index: 1;
 }
