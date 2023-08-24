@@ -9,7 +9,7 @@ const BarChart = () => {
   };
   const industry2 = {
     name: "Finance",
-    diff: 50,
+    diff: -100,
   };
   const industry3 = {
     name: "Healthcare",
@@ -25,7 +25,9 @@ const BarChart = () => {
           <div className="industry-labels text-left text-lg">
             {industryArray.map((industryObject, index) => (
               <div className="h-[50px] flex justify-center items-center">
-                <div>{industryObject.name}</div>
+                <div className="text-sm md:text-xl font-semibold">
+                  {industryObject.name}
+                </div>
               </div>
             ))}
           </div>

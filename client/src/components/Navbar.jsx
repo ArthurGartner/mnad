@@ -4,7 +4,7 @@ import { logoCoconut } from "../assets";
 import { NavbarDropdown, ThemeToggle } from ".";
 const Navbar = ({ setTheme, darkTheme, theme }) => {
   return (
-    <header className="fixed w-full h-[55px] md:h-[40px] bg-neutral-100 dark:bg-neutral-700 shadow-sm">
+    <header className="fixed w-full h-[55px] md:h-[40px] bg-neutral-100 dark:bg-neutral-700 shadow-sm z-50">
       <div className="flex justify-between items-center h-full w-full lg:w-[960px] xl:w-[1140px] m-auto">
         <Link to="/">
           <img
