@@ -30,6 +30,44 @@ export function getCurrentDateString() {
   return formattedDate;
 }
 
+export function reduceDateByOneDay(dateString) {
+  // Convert the dateString to a Date object
+  const date = new Date(dateString);
+
+  // Make sure the date is valid
+  if (isNaN(date)) {
+    return "Invalid date";
+  }
+
+  // Reduce the date by one day
+  date.setDate(date.getDate() - 1);
+
+  // Format the new date as a string in the format "Month Day, Year"
+  const options = { month: "long", day: "numeric", year: "numeric" };
+  const newDateString = date.toLocaleDateString("en-US", options);
+
+  return newDateString;
+}
+
+export function addOneDayToDate(dateString) {
+  // Convert the dateString to a Date object
+  const date = new Date(dateString);
+
+  // Make sure the date is valid
+  if (isNaN(date)) {
+    return "Invalid date";
+  }
+
+  // Add one day to the date
+  date.setDate(date.getDate() + 1);
+
+  // Format the new date as a string in the format "Month Day, Year"
+  const options = { month: "long", day: "numeric", year: "numeric" };
+  const newDateString = date.toLocaleDateString("en-US", options);
+
+  return newDateString;
+}
+
 export function getSentimentPhrase(value) {
   // Ensure value is within 0-100 range
   if (value < 0 || value > 100) {

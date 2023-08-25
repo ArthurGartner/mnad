@@ -11,7 +11,7 @@ const DrinkSummary = (props) => {
   const liqColor = "green";
   return (
     <div className="w-100 flex justify-center md:justify-between h-full">
-      <div className="w-1/2">
+      <div className="md:w-1/2 w-full">
         <div className="h-full w-full">
           <DrinkPicture
             glassUrl={props.glassUrl}
