@@ -13,6 +13,9 @@ const Navbar = ({ setTheme, darkTheme, theme }) => {
             className="h-[40px] md:h-[35px] mx-2"
           />
         </Link>
+        <div className="text-xl font-semibold text-black dark:text-white">
+          ALPHA VERSION
+        </div>
         <div className="mx-2">
           <ThemeToggle
             setTheme={setTheme}

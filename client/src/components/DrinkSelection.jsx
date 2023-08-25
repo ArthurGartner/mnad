@@ -3,12 +3,15 @@ import "./DrinkSelection.css";
 import { NavArrow, DrinkSummary } from "../components";
 
 function DrinkSelection(props) {
-  // const [items, setItems] = useState(props.items);
-  // const [activeIndex, setActiveIndex] = useState(0);
   const carouselContainerRef = useRef(null);
   const [xstart, setXStart] = useState(0);
   const [xend, setXEnd] = useState(0);
+  const [liqGlass, setLiqGlass] = useState(null);
   const [drinkData, setDrinkData] = useState(null);
+
+  useEffect(() => {
+    setDrinkData(props.drinkData);
+  }, [props]);
 
   useEffect(() => {
     // Assign touch event handlers if the ref exists
@@ -31,10 +34,6 @@ function DrinkSelection(props) {
   }, [carouselContainerRef]);
 
   useEffect(() => {
-    setDrinkData(props.drinkData);
-  }, [props]);
-
-  useEffect(() => {
     const distance = xend - xstart;
 
     if (distance > 50) {
@@ -49,32 +48,25 @@ function DrinkSelection(props) {
   const touchStartHandler = (e) => {
     const newStartX = e.touches[0].clientX;
     setXStart(newStartX);
-    console.log("STARTED");
   };
 
   const touchMoveHandler = (e) => {
     // Usually used for preventing default swipe actions of the browser
-    console.log("TEST");
   };
 
   const touchEndHandler = (e) => {
     setXEnd(e.changedTouches[0].clientX);
-    console.log("COMPLETED");
   };
 
   const handleTransition = (direction) => {
     if (direction === "left") {
-      props.setSentimentVal(10);
       props.decreaseDate();
+      props.setSentimentVal(10);
     } else {
-      props.setSentimentVal(90);
       props.increaseDate();
+      props.setSentimentVal(90);
     }
   };
-
-  if (!drinkData) {
-    return <></>;
-  }
 
   return (
     <div
@@ -83,12 +75,7 @@ function DrinkSelection(props) {
     >
       <NavArrow handleFunction={handleTransition} dir="left" />
       <div className="grow">
-        <DrinkSummary
-          glassUrl={drinkData?.glass_url}
-          svgImg={drinkData?.liquid_url}
-          liqColor={drinkData?.liqColor}
-          drinkData={drinkData}
-        />
+        {drinkData && <DrinkSummary drinkData={drinkData} />}
       </div>
       <NavArrow handleFunction={handleTransition} dir="right" />
     </div>
