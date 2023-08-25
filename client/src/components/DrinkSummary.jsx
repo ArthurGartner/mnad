@@ -21,7 +21,7 @@ const DrinkSummary = (props) => {
         </div>
       </div>
       <div className="hidden w-1/2 md:block">
-        <DrinkInfo />
+        <DrinkInfo drinkData={props.drinkData} />
       </div>
     </div>
   );

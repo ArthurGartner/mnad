@@ -25,7 +25,7 @@ const BarChart = () => {
           <div className="industry-labels text-left text-lg">
             {industryArray.map((industryObject, index) => (
               <div className="h-[50px] flex justify-center items-center">
-                <div className="text-sm md:text-xl font-semibold">
+                <div className="text-sm md:text-xl font-semibold text-black dark:text-white">
                   {industryObject.name}
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretUp,
@@ -14,7 +14,13 @@ import {
 import { GiSodaCan } from "react-icons/gi";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
-const DrinkInfo = () => {
+const DrinkInfo = (props) => {
+  const [drinkData, setDrinkData] = useState(null);
+
+  useEffect(() => {
+    setDrinkData(props.drinkData);
+  }, [props]);
+
   return (
     <div className="w-100">
       <div className="relative max-w-sm rounded-3xl overflow-hidden bg-neutral-100 dark:bg-neutral-700 shadow-xl m-auto">
@@ -26,21 +32,15 @@ const DrinkInfo = () => {
           />
         </div>
         <div className="text-black dark:text-white font-bold text-xl text-center mt-2">
-          Long Island Iced Tea
+          {drinkData?.strDrink}
         </div>
         <div className="text-xs md:text-sm font-semibold text-neutral-400 text-center">
-          22% ABV | 86% <FontAwesomeIcon icon={faHeart} />
+          {drinkData?.abv.$numberDecimal}% ABV | 86%{" "}
+          <FontAwesomeIcon icon={faHeart} />
         </div>
         <div className="px-6 py-4">
           <p className="text-black dark:text-white text-base">
-            The Long Island iced tea, or Long Island ice tea, is an IBA official
-            cocktail, typically made with vodka, tequila, light rum, triple sec,
-            gin, and a splash of cola. Despite its name, the cocktail does not
-            typically contain iced tea, but is named for having the same amber
-            hue as iced tea. <br></br>
-            <br></br> The drink has a much higher alcohol concentration
-            (approximately 22 percent) than most highball drinks due to the
-            relatively small amount of mixer.
+            {drinkData?.strInstructions}
           </p>
         </div>
         <div>

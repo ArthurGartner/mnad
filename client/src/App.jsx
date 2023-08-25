@@ -10,25 +10,57 @@ import {
   Navbar,
 } from "./components";
 
+import { getCurrentDateString } from "../util/functions";
+
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
   const [darkTheme, setDarkTheme] = useState(false);
   const siteDown = false;
-  const [date, setDate] = useState("April 19, 2023");
-  const [sentimentVal, setSentimentVal] = useState(50);
+  const [date, setDate] = useState(null);
+  const [sentimentVal, setSentimentVal] = useState(0);
+  const [curDrink, setCurDrink] = useState(null);
 
-  //Dark and light theme setup for entire background
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-
-    mq.addEventListener("change", () => {
-      updateTheme();
-    });
-  }, []);
-
-  useEffect(() => {
-    updateTheme();
-  }, [theme]);
+  //This will be replaced by API call
+  const drinkData = {
+    _id: {
+      $oid: "64e7e3651168da0691242a77",
+    },
+    idDrink: "15997",
+    strDrink: "GG",
+    strDrinkAlternate: null,
+    strTags: null,
+    strVideo: null,
+    strCategory: "Ordinary Drink",
+    strIBA: null,
+    strAlcoholic: "Optional alcohol",
+    strGlass: "Collins Glass",
+    strInstructions:
+      "Pour the Galliano liqueur over ice. Fill the remainder of the glass with ginger ale and thats all there is to it. You now have a your very own GG.",
+    strInstructionsES: null,
+    strInstructionsDE:
+      "Den Galliano-Likör über Eis gießen. Füllen Sie den Rest des Glases mit Ginger Ale und das ist alles, was dazu gehört. Du hast jetzt ein eigenes GG.",
+    strInstructionsFR: null,
+    strInstructionsIT:
+      "Versare il liquore Galliano su ghiaccio.\r\nRiempi il resto del bicchiere con ginger ale e questo è tutto.\r\nOra hai il tuo GG personale.",
+    "strInstructionsZH-HANS": null,
+    "strInstructionsZH-HANT": null,
+    strDrinkThumb:
+      "https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg",
+    strImageSource: null,
+    strImageAttribution: null,
+    strCreativeCommonsConfirmed: "No",
+    dateModified: "2016-07-18 22:06:00",
+    strIngredient: ["Galliano", "Ginger ale", "Ice"],
+    strMeasure: ["2 1/2 shots "],
+    abv: {
+      $numberDecimal: "15",
+    },
+    glass_url:
+      "https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass.svg",
+    liquid_url:
+      "https://mightneedadrink.s3.amazonaws.com/drink-images/collins_glass_full.svg",
+    liqColor: "green",
+  };
 
   const updateTheme = () => {
     localStorage.setItem("theme", theme);
@@ -55,6 +87,28 @@ function App() {
     document.documentElement.classList.add("light");
   };
 
+  //Dark and light theme setup for entire background
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+    mq.addEventListener("change", () => {
+      updateTheme();
+    });
+
+    //Set date to today
+    setDate(getCurrentDateString());
+
+    //Set curDrink
+    setCurDrink(drinkData);
+
+    //Set sentiment
+    setSentimentVal(50);
+  }, []);
+
+  useEffect(() => {
+    updateTheme();
+  }, [theme]);
+
   return (
     <div>
       {(function () {
@@ -74,6 +128,7 @@ function App() {
                   <DrinkCarousel
                     curDate={date}
                     setSentimentVal={setSentimentVal}
+                    drinkData={curDrink}
                   />
                   <div className="my-2">
                     <LoadingBar value={sentimentVal} />
