@@ -21,3 +21,10 @@ export const sentimentLevel = {
   95: "Exuberant",
   100: "Euphoric",
 };
+
+export const industryColors = {
+  Business: "bg-amber-400",
+  Technology: "bg-indigo-400",
+  Health: "bg-emerald-400",
+  Science: "bg-rose-400",
+};

@@ -71,7 +71,7 @@ function DrinkSelection(props) {
   return (
     <div
       ref={carouselContainerRef}
-      className="carousel-container w-100 flex h-[300px] md:h-fit justify-between"
+      className="carousel-container w-100 flex h-[400px] md:4-[600px] md:h-fit justify-between"
     >
       <NavArrow handleFunction={handleTransition} dir="left" />
       <div className="grow">

@@ -17,7 +17,7 @@ function DrinkCarousel(props) {
   }
 
   return (
-    <div className="h-[500px]">
+    <div className="h-[500px] md:h-[650px]">
       <ViewDate date={props.curDate} />
       <DrinkSelection
         setSentimentVal={props.setSentimentVal}

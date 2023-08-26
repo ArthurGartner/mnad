@@ -1,17 +1,25 @@
 import { motion, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "react-spring";
+import { industryColors } from "../../util/dictionary";
 
-function DiffPercentBar({ value, reverse = false }) {
+function DiffPercentBar({ value, reverse = false, name, passedbgColor }) {
   const [color1, setColor1] = useState("from-indigo-500");
   const [color2, setColor2] = useState("to-pink-500");
   const [offSet, setOffSet] = useState(value);
+  const [bgColor, setbgColor] = useState(null);
   const { number } = useSpring({
     from: { number: 0 },
     number: parseInt(value),
     delay: 0,
     config: { mass: 1, tension: 20, friction: 10 },
   });
+
+  useEffect(() => {
+    console.log(passedbgColor);
+    setbgColor(passedbgColor);
+    console.log(passedbgColor);
+  }, [passedbgColor]);
 
   const colorCombos = [
     ["from-indigo-400", "to-pink-400"],
@@ -20,14 +28,12 @@ function DiffPercentBar({ value, reverse = false }) {
     ["from-violet-400", "to-teal-400"],
   ];
 
-  useEffect(() => {
-    const barColor =
-      colorCombos[Math.floor(Math.random() * colorCombos.length)];
-    setColor1(barColor[0]);
-    setColor2(barColor[1]);
-    var offset = parseInt(value);
-    setOffSet(offset >= 100 ? 100 : offset);
-  }, [value]);
+  // useEffect(() => {
+  //   const barColor =
+  //     colorCombos[Math.floor(Math.random() * colorCombos.length)];
+  //   setColor1(barColor[0]);
+  //   setColor2(barColor[1]);
+  // }, [value]);
 
   return (
     <div>
@@ -46,9 +52,10 @@ function DiffPercentBar({ value, reverse = false }) {
             }}
           >
             <div
-              className={`h-full w-full rounded-full ${
-                reverse ? "bg-gradient-to-l" : "bg-gradient-to-r"
-              } ${color1} ${color2}`}
+              // className={`h-full w-full rounded-full ${
+              //   reverse ? "bg-gradient-to-l" : "bg-gradient-to-r"
+              // } ${color1} ${color2}`}
+              className={`h-full w-full rounded-full bg-teal-400`}
             ></div>
           </motion.div>
         </div>

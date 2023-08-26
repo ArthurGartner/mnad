@@ -8,11 +8,39 @@ const BarChart = () => {
     diff: -75,
   };
   const industry2 = {
-    name: "Finance",
+    name: "Business",
     diff: -100,
   };
   const industry3 = {
-    name: "Healthcare",
+    name: "Health",
+    diff: -25,
+  };
+  const industry4 = {
+    name: "Science",
+    diff: -25,
+  };
+  const industry5 = {
+    name: "Enery",
+    diff: -25,
+  };
+  const industry6 = {
+    name: "Entertainment",
+    diff: -25,
+  };
+  const industry7 = {
+    name: "Sports",
+    diff: -25,
+  };
+  const industry8 = {
+    name: "Transportation",
+    diff: -25,
+  };
+  const industry9 = {
+    name: "Social Issues",
+    diff: -25,
+  };
+  const industry10 = {
+    name: "Art & Culture",
     diff: -25,
   };
 
@@ -34,7 +62,10 @@ const BarChart = () => {
           <div className="percent-diff-bar grow relative">
             <div>
               {industryArray.map((industryObject, index) => (
-                <IndustryBar value={industryObject.diff} />
+                <IndustryBar
+                  value={industryObject.diff}
+                  name={industryObject.name}
+                />
               ))}
               <div className="vertical-line"></div>
             </div>

@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Target the scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4a5568; /* Tailwind's 'gray-700' */
+  border-radius: 6px; /* Making it round */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3748; /* Tailwind's 'gray-800' */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #edf2f7; /* Tailwind's 'gray-100' */
+}

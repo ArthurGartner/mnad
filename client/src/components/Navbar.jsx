@@ -5,7 +5,7 @@ import { NavbarDropdown, ThemeToggle } from ".";
 const Navbar = ({ setTheme, darkTheme, theme }) => {
   return (
     <header className="fixed w-full h-[55px] md:h-[40px] bg-neutral-100 dark:bg-neutral-700 shadow-sm z-50">
-      <div className="flex justify-between items-center h-full w-full lg:w-[960px] xl:w-[1140px] m-auto">
+      <div className="flex justify-between items-center h-full w-full lg:w-[960px] xl:w-[1140px] m-auto relative">
         <Link to="/">
           <img
             src={logoCoconut}
@@ -13,8 +13,11 @@ const Navbar = ({ setTheme, darkTheme, theme }) => {
             className="h-[40px] md:h-[35px] mx-2"
           />
         </Link>
-        <div className="text-xl font-semibold text-black dark:text-white">
-          ALPHA VERSION
+        <div className="flex w-full justify-center items-center font-semibold text-black dark:text-white absolute">
+          <div>
+            <div className="text-sm">ALPHA VERSION</div>
+            <div className="text-sm text-center">Testing Only</div>
+          </div>
         </div>
         <div className="mx-2">
           <ThemeToggle

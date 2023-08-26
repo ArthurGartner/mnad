@@ -13,6 +13,7 @@ const IndustryBar = (props) => {
                   <DiffPercentBar
                     value={props.value < 0 ? Math.abs(props.value) : 0}
                     reverse={true}
+                    name={props.name}
                   />
                 </div>
               </div>
@@ -22,7 +23,11 @@ const IndustryBar = (props) => {
             <div className="h-[50px] w-full">
               <div className="justify-center">
                 <div className="mt-[20px] md:mt-[10px]">
-                  <DiffPercentBar value={props.value >= 0 ? props.value : 0} />
+                  <DiffPercentBar
+                    value={props.value >= 0 ? props.value : 0}
+                    name={props.name}
+                    passedbgColor={"bg-teal-400"}
+                  />
                 </div>
               </div>
             </div>

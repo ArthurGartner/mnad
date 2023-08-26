@@ -22,10 +22,12 @@ const DrinkPicture = (props) => {
                 src={drinkData?.glass_url}
               />
               <div className="absolute h-full w-full object-cover">
-                <SVGImage
-                  url={drinkData?.liquid_url}
-                  fillColor={drinkData?.liqColor}
-                />
+                {drinkData?.liquid_url && (
+                  <SVGImage
+                    url={drinkData?.liquid_url}
+                    fillColor={drinkData?.liqColor}
+                  />
+                )}
               </div>
             </div>
           </div>
