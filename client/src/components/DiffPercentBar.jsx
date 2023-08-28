@@ -1,7 +1,6 @@
 import { motion, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "react-spring";
-import { industryColors } from "../../util/dictionary";
 
 function DiffPercentBar({ value, reverse = false, name, passedbgColor }) {
   const [color1, setColor1] = useState("from-indigo-500");
@@ -35,6 +34,13 @@ function DiffPercentBar({ value, reverse = false, name, passedbgColor }) {
   //   setColor2(barColor[1]);
   // }, [value]);
 
+  const industryColors = {
+    Business: "bg-amber-400",
+    Technology: "bg-indigo-400",
+    Health: "bg-emerald-400",
+    Science: "bg-rose-400",
+  };
+
   return (
     <div>
       <div className="flex row align-middle">
@@ -55,7 +61,7 @@ function DiffPercentBar({ value, reverse = false, name, passedbgColor }) {
               // className={`h-full w-full rounded-full ${
               //   reverse ? "bg-gradient-to-l" : "bg-gradient-to-r"
               // } ${color1} ${color2}`}
-              className={`h-full w-full rounded-full bg-teal-400`}
+              className={`h-full w-full rounded-full ${industryColors[name]}`}
             ></div>
           </motion.div>
         </div>
