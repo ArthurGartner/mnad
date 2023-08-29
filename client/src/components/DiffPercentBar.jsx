@@ -15,9 +15,7 @@ function DiffPercentBar({ value, reverse = false, name, passedbgColor }) {
   });
 
   useEffect(() => {
-    console.log(passedbgColor);
     setbgColor(passedbgColor);
-    console.log(passedbgColor);
   }, [passedbgColor]);
 
   const colorCombos = [
