@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { SiteDown } from "./pages";
 import {
+  Articles,
   DaySummary,
   DrinkCarousel,
   Footer,
@@ -116,6 +117,9 @@ function App() {
                   </div>
                   <div className="my-2">
                     <DaySummary sentiment={sentimentVal} />
+                  </div>
+                  <div>
+                    <Articles />
                   </div>
                 </div>
               </div>
