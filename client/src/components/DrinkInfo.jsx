@@ -61,7 +61,7 @@ const DrinkInfo = (props) => {
             </h1>
             <ul className="px-6 text-lg font-semibold text-black dark:text-white mb-6">
               {drinkData.ingredients.map((ingredient, index) => (
-                <li className="my-2 flex h-[20px] md:h-[30px]">
+                <li className="my-2 flex h-[25px] md:h-[30px]">
                   <div className="my-auto mr-3 text-lg md:text-2xl  text-neutral-400">
                     {ingredientIcons[ingredient.type]}
                   </div>
