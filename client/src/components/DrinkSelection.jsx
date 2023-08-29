@@ -75,7 +75,9 @@ function DrinkSelection(props) {
     >
       <NavArrow handleFunction={handleTransition} dir="left" />
       <div className="grow">
-        {drinkData && <DrinkSummary drinkData={drinkData} />}
+        {drinkData && (
+          <DrinkSummary drinkData={drinkData} viewPic={props.viewPic} />
+        )}
       </div>
       <NavArrow handleFunction={handleTransition} dir="right" />
     </div>

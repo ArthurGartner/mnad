@@ -1,3 +1,15 @@
+import { BiSolidDrink, BiSolidBeer, BiSolidLemon } from "react-icons/bi";
+import { TbBottleFilled } from "react-icons/tb";
+import { LuMilk } from "react-icons/lu";
+import {
+  GiSodaCan,
+  GiPowder,
+  GiStarShuriken,
+  GiManualJuicer,
+} from "react-icons/gi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCocktail } from "@fortawesome/free-solid-svg-icons";
+
 export const sentimentLevel = {
   0: "Gloomy",
   5: "Miserable",
@@ -27,4 +39,17 @@ export const industryColors = {
   Technology: "bg-indigo-400",
   Health: "bg-emerald-400",
   Science: "bg-rose-400",
+};
+
+export const ingredientIcons = {
+  "Alcoholic Spirits": <FontAwesomeIcon icon={faCocktail} />,
+  "Beers and Lagers": <BiSolidBeer />,
+  "Bitters and Aperitifs": <TbBottleFilled />,
+  "Dairy and Non-Dairy": <LuMilk />,
+  "Flavorings and Syrups": <BiSolidDrink />,
+  "Fresh Fruits and Garnishes": <BiSolidLemon />,
+  "Fresh and Bottled Juices": <GiManualJuicer />,
+  "Soft Drinks and Sodas": <GiSodaCan />,
+  "Spices and Others": <GiPowder />,
+  Unknown: <GiStarShuriken />,
 };

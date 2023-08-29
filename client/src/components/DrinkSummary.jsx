@@ -15,13 +15,17 @@ const DrinkSummary = (props) => {
   }
 
   return (
-    <div className="w-100 flex justify-center md:justify-between h-full">
-      <div className="md:w-1/2 w-full">
-        <div className="h-full w-full">
+    <div className="w-100 md:flex md:justify-between h-full relative">
+      <div className={`md:w-1/2 w-full ${props.viewPic ? "h-full" : ""}`}>
+        <div
+          className={`${props.viewPic ? "" : "hidden md:block"} h-full w-full`}
+        >
           <DrinkPicture drinkData={drinkData} />
         </div>
       </div>
-      <div className="hidden w-1/2 md:block">
+      <div
+        className={`${props.viewPic ? "hidden" : ""} w-100 md:w-1/2 md:block`}
+      >
         <DrinkInfo drinkData={props.drinkData} />
       </div>
     </div>

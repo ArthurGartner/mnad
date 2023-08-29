@@ -7,10 +7,16 @@ function DrinkCarousel(props) {
   const liked = "86";
 
   const [drinkData, setDrinkData] = useState(null);
+  const [viewPic, setViewPic] = useState(false);
 
   useEffect(() => {
     setDrinkData(props.drinkData);
   }, [props]);
+
+  const handleView = () => {
+    setViewPic(!viewPic);
+    console.log("HELLO");
+  };
 
   if (!drinkData) {
     return <></>;
@@ -24,6 +30,7 @@ function DrinkCarousel(props) {
         drinkData={drinkData}
         increaseDate={props.increaseDate}
         decreaseDate={props.decreaseDate}
+        viewPic={viewPic}
       />
       <div className="md:hidden w-full">
         <div className="text-black dark:text-white font-bold text-md text-center w-full">
@@ -33,8 +40,12 @@ function DrinkCarousel(props) {
           {drinkData?.abv.$numberDecimal}% ABV | {liked}%{" "}
           <FontAwesomeIcon icon={faHeart} />
         </div>
-        <div className="text-xs md:text-sm font-semibold text-blue-500 dark:text-blue-400 text-center">
-          View Drink Information
+        <div
+          className="text-xs md:text-sm font-semibold text-blue-500 dark:text-blue-400 text-center hover:cursor-pointer"
+          onClick={handleView}
+        >
+          {viewPic && "View Drink Information"}
+          {!viewPic && "View Drink Picture"}
         </div>
       </div>
     </div>
