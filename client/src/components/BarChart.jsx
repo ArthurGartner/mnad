@@ -5,46 +5,57 @@ import { IndustryBar, DiffPercentBar } from "../components";
 const BarChart = () => {
   const industry1 = {
     name: "Technology",
-    diff: -75,
+    diff: -100,
   };
   const industry2 = {
     name: "Business",
-    diff: -100,
+    diff: 80,
   };
   const industry3 = {
     name: "Health",
-    diff: -25,
+    diff: 75,
   };
   const industry4 = {
     name: "Science",
-    diff: -25,
+    diff: -70,
   };
   const industry5 = {
-    name: "Enery",
-    diff: -25,
+    name: "Energy",
+    diff: 60,
   };
   const industry6 = {
     name: "Entertainment",
-    diff: -25,
+    diff: -40,
   };
   const industry7 = {
     name: "Sports",
-    diff: -25,
+    diff: -30,
   };
   const industry8 = {
     name: "Transportation",
-    diff: -25,
+    diff: 30,
   };
   const industry9 = {
     name: "Social Issues",
-    diff: -25,
+    diff: 22,
   };
   const industry10 = {
     name: "Art & Culture",
-    diff: -25,
+    diff: -10,
   };
 
-  const industryArray = [industry1, industry2, industry3];
+  const industryArray = [
+    industry1,
+    industry2,
+    industry3,
+    industry4,
+    industry5,
+    industry6,
+    industry7,
+    industry8,
+    industry9,
+    industry10,
+  ];
 
   return (
     <>

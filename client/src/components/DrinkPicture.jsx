@@ -28,7 +28,7 @@ const DrinkPicture = (props) => {
     // Calculate the total volume of all liquid ingredients
     for (let object of objects) {
       if (object.form === "liquid") {
-        totalVolume += object.volume_oz.$numberDecimal;
+        totalVolume += parseFloat(object.volume_oz.$numberDecimal);
       }
     }
 

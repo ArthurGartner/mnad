@@ -37,6 +37,12 @@ function DiffPercentBar({ value, reverse = false, name, passedbgColor }) {
     Technology: "bg-indigo-400",
     Health: "bg-emerald-400",
     Science: "bg-rose-400",
+    Energy: "bg-sky-400",
+    Entertainment: "bg-fuchsia-400",
+    Sports: "bg-yellow-400",
+    Transportation: "bg-teal-400",
+    "Social Issues": "bg-purple-400",
+    "Art & Culture": "bg-pink-400",
   };
 
   return (
