@@ -78,13 +78,13 @@ const DrinkPicture = (props) => {
             <div className="drink-glass h-full w-full overflow-hidden">
               <img
                 className="absolute h-full w-full object-cover"
-                src={drinkData?.glass_url}
+                src={drinkData?.drinkGlass[0]?.glass_url}
               />
               <div className="absolute h-full w-full object-cover">
-                {drinkData?.liquid_url && (
+                {drinkData?.drinkGlass[0]?.liquid_url && (
                   <SVGImage
                     key={drinkColor} // Key based on `drinkColor`
-                    url={drinkData?.liquid_url}
+                    url={drinkData?.drinkGlass[0]?.liquid_url}
                     fillColor={drinkColor}
                   />
                 )}

@@ -12,16 +12,17 @@ import {
 } from "./components";
 
 import { getCurrentDateString } from "../util/functions";
-import { base_api, getRandomDrink } from "../util/constants";
+import { base_api, getRandomDrink, getDayData } from "../util/constants";
 import { reduceDateByOneDay, addOneDayToDate } from "../util/functions";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
   const [darkTheme, setDarkTheme] = useState(false);
   const siteDown = false;
-  const [date, setDate] = useState(null);
-  const [sentimentVal, setSentimentVal] = useState(0);
+  const [date, setDate] = useState("08/29/2023");
+  const [sentimentVal, setSentimentVal] = useState(50);
   const [curDrink, setCurDrink] = useState(null);
+  const [dayData, setDayData] = useState(null);
 
   const updateTheme = () => {
     localStorage.setItem("theme", theme);
@@ -57,36 +58,44 @@ function App() {
     });
 
     //Set date to today
-    setDate(getCurrentDateString());
-
-    //Set sentiment
-    setSentimentVal(50);
+    // setDate(getCurrentDateString());
   }, []);
 
   useEffect(() => {
     updateTheme();
   }, [theme]);
 
+  // useEffect(() => {
+  //   fetch(`${base_api}${getRandomDrink}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setCurDrink(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(
+  //         "There was an error fetching the extension data: ",
+  //         error
+  //       );
+  //     });
+  // }, [date]);
+
   useEffect(() => {
-    fetch(`${base_api}${getRandomDrink}`)
+    fetch(`${base_api}${getDayData}?date=${date}`)
       .then((response) => response.json())
       .then((data) => {
-        setCurDrink(data);
-      })
-      .catch((error) => {
-        console.error(
-          "There was an error fetching the extension data: ",
-          error
-        );
+        setDayData(data);
+        setCurDrink(data.drinkDetails[0]);
+        //Set sentiment
+        setSentimentVal(data.average_sentiment);
       });
-  }, [date]);
+  }, []);
 
   const increaseDate = () => {
-    setDate(addOneDayToDate(date));
+    // setDate(addOneDayToDate(date));
   };
 
   const decreaseDate = () => {
-    setDate(reduceDateByOneDay(date));
+    // setDate(reduceDateByOneDay(date));
   };
 
   return (
@@ -108,7 +117,7 @@ function App() {
                   <DrinkCarousel
                     curDate={date}
                     setSentimentVal={setSentimentVal}
-                    drinkData={curDrink}
+                    drinkData={dayData?.drinkDetails}
                     increaseDate={increaseDate}
                     decreaseDate={decreaseDate}
                   />
@@ -119,7 +128,7 @@ function App() {
                     <DaySummary sentiment={sentimentVal} />
                   </div>
                   <div>
-                    <Articles />
+                    <Articles dayData={dayData?.articles} />
                   </div>
                 </div>
               </div>

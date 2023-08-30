@@ -7,7 +7,7 @@ function DrinkCarousel(props) {
   const liked = "86";
 
   const [drinkData, setDrinkData] = useState(null);
-  const [viewPic, setViewPic] = useState(false);
+  const [viewPic, setViewPic] = useState(true);
 
   useEffect(() => {
     setDrinkData(props.drinkData);
