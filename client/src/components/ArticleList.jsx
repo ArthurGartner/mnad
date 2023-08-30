@@ -1,51 +1,18 @@
 import React, { useState, useEffect } from "react";
+import Tag from "./Tag";
+import { base_api, getDayData } from "../../util/constants";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState(null);
+  const date = encodeURIComponent("08/29/2023");
 
   useEffect(() => {
-    const sample = {
-      _type: "News",
-      webSearchUrl:
-        "https://www.bing.com/news/search?q=top+stories&form=TNSA02",
-      value: [
-        {
-          _type: "NewsArticle",
-          name: "Georgia election case updates: Black Voices for Trump member held without bond",
-          url: "https://www.msn.com/en-us/news/politics/georgia-election-case-updates-black-voices-for-trump-member-held-without-bond/ar-AA1fFhbg",
-          image: {
-            _type: "ImageObject",
-            thumbnail: {
-              _type: "ImageObject",
-              contentUrl:
-                "https://www.bing.com/th?id=ORMS.57bc84734ec6204de3f1b560513b332b&pid=Wdp",
-              width: 1600,
-              height: 900,
-            },
-            isLicensed: true,
-          },
-          description:
-            "Former President Donald Trump and the 18 other defendants charged by Fulton County District Attorney Fani Willis for their alleged efforts to overturn the results of the 2020 presidential election in",
-          provider: [
-            {
-              _type: "Organization",
-              name: "ABC News",
-              image: {
-                _type: "ImageObject",
-                thumbnail: {
-                  _type: "ImageObject",
-                  contentUrl:
-                    "https://www.bing.com/th?id=ODF.-LMnifaGw_NvPvJr_0E9tA&pid=news",
-                },
-              },
-            },
-          ],
-          datePublished: "2023-08-25T21:44:44.0000000Z",
-        },
-      ],
-    };
-    setArticles(sample.value);
-    console.log(articles);
+    fetch(`${base_api}${getDayData}?date=${date}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setArticles(data.articles);
+        console.log(data);
+      });
   }, []);
 
   if (!articles) {
@@ -68,21 +35,41 @@ const ArticleList = () => {
         </div>
         <div>
           {articles.map((article) => (
-            <a href={article.url} target="_blank">
-              <div className="dark:hover:bg-neutral-800 hover:bg-neutral-200 rounded-3xl hover:cursor-pointer">
-                <div className="flex my-3">
+            <a href={article.article_url} target="_blank">
+              <div className="dark:hover:bg-neutral-800 hover:bg-neutral-200 rounded-3xl hover:cursor-pointer p-2">
+                <div className="flex my-3 overflow-hidden">
                   <img
-                    src={article?.image?.thumbnail?.contentUrl}
+                    src={article?.thumbnail}
                     className="h-[100px] w-[100px] rounded-2xl m-auto mr-[10px]"
                   />
-                  <div>
-                    <div className="font-semibold text-sm md:text-xl text-black dark:text-white">
-                      {article.name}
+                  <div className="h-[100px]">
+                    <div className="relative">
+                      <div className="font-semibold text-sm md:text-xl text-black dark:text-white line-clamp-2">
+                        {article.headline}
+                      </div>
                     </div>
-                    <div className="font-semibold text-xs md:text-sm text-black dark:text-white">
-                      {article.description}...
+
+                    <div className="relative">
+                      <div className="font-semibold text-xs md:text-sm text-black dark:text-white line-clamp-2">
+                        {article.description}...
+                      </div>
+                    </div>
+
+                    <div>
+                      <div>
+                        <Tag val={article.sentiment_score} />
+                      </div>
                     </div>
                   </div>
+
+                  <style jsx>{`
+                    .line-clamp-2 {
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    }
+                  `}</style>
                 </div>
               </div>
             </a>

@@ -83,6 +83,7 @@ const DrinkPicture = (props) => {
               <div className="absolute h-full w-full object-cover">
                 {drinkData?.liquid_url && (
                   <SVGImage
+                    key={drinkColor} // Key based on `drinkColor`
                     url={drinkData?.liquid_url}
                     fillColor={drinkColor}
                   />
