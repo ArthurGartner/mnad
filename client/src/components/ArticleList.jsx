@@ -4,6 +4,12 @@ import { base_api, getDayData } from "../../util/constants";
 
 const ArticleList = (dayData) => {
   const [articles, setArticles] = useState(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    // Detect if the device supports touch events
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   useEffect(() => {
     setArticles(dayData.articles.dayData);
@@ -31,12 +37,19 @@ const ArticleList = (dayData) => {
           {articles &&
             articles.map((article) => (
               <a href={article.article_url} target="_blank">
-                <div className="dark:hover:bg-neutral-800 hover:bg-neutral-200 rounded-3xl hover:cursor-pointer p-2">
+                <div
+                  className={`${
+                    isTouchDevice
+                      ? ""
+                      : "dark:hover:bg-neutral-800 hover:bg-neutral-200"
+                  } rounded-3xl hover:cursor-pointer p-2`}
+                >
                   <div className="flex my-3 overflow-hidden">
                     <img
                       src={article?.thumbnail}
                       className="h-[100px] w-[100px] rounded-2xl m-auto mr-[10px]"
                     />
+
                     <div className="h-[100px]">
                       <div className="relative">
                         <div className="font-semibold text-sm md:text-xl text-black dark:text-white line-clamp-2">

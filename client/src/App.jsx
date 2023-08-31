@@ -19,7 +19,7 @@ function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
   const [darkTheme, setDarkTheme] = useState(false);
   const siteDown = false;
-  const [date, setDate] = useState("08/29/2023");
+  const [date, setDate] = useState(null);
   const [sentimentVal, setSentimentVal] = useState(50);
   const [curDrink, setCurDrink] = useState(null);
   const [dayData, setDayData] = useState(null);
@@ -58,7 +58,7 @@ function App() {
     });
 
     //Set date to today
-    // setDate(getCurrentDateString());
+    setDate(getCurrentDateString());
   }, []);
 
   useEffect(() => {
@@ -80,22 +80,39 @@ function App() {
   // }, [date]);
 
   useEffect(() => {
-    fetch(`${base_api}${getDayData}?date=${date}`)
+    fetch(`${base_api}${getDayData}?date=${convertDateToNumerical(date)}`)
       .then((response) => response.json())
       .then((data) => {
         setDayData(data);
-        setCurDrink(data.drinkDetails[0]);
+        console.log(data);
+        setCurDrink(data?.drinkDetails[0]);
         //Set sentiment
         setSentimentVal(data.average_sentiment);
       });
-  }, []);
+  }, [date]);
+
+  function convertDateToNumerical(inputDate) {
+    const date = new Date(inputDate);
+
+    if (isNaN(date.getTime())) {
+      // Invalid date
+      return "Invalid date";
+    }
+
+    // Padding single digit numbers with a leading zero
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // getMonth() returns 0-based month
+    const day = String(date.getDate()).padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${month}/${day}/${year}`;
+  }
 
   const increaseDate = () => {
-    // setDate(addOneDayToDate(date));
+    setDate(addOneDayToDate(date));
   };
 
   const decreaseDate = () => {
-    // setDate(reduceDateByOneDay(date));
+    setDate(reduceDateByOneDay(date));
   };
 
   return (
