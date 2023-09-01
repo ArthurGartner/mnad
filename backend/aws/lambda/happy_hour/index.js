@@ -1,5 +1,7 @@
 const axios = require("axios");
 const MongoClient = require("mongodb").MongoClient;
+const AWS = require("aws-sdk");
+const comprehend = new AWS.Comprehend();
 
 exports.handler = async (event) => {
   // Get MongoDB URI and RapidAPI key from environment variables
@@ -23,6 +25,7 @@ exports.handler = async (event) => {
         headers: {
           "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
           "x-rapidapi-key": RAPIDAPI_KEY,
+          "x-bingapis-sdk": "true",
         },
       }
     );
@@ -30,30 +33,57 @@ exports.handler = async (event) => {
     const newsData = response.data;
     const articles = [];
 
+    var sentimentSum = 0;
+
     // Iterate through each news object
     for (const news of newsData.value) {
+      var params = {
+        LanguageCode: "en",
+        Text: news.name + " " + news.description,
+      };
+
+      const result = await comprehend.detectSentiment(params).promise();
+
+      const Positive = result.SentimentScore.Positive;
+      const Negative = result.SentimentScore.Negative;
+      const Neutral = result.SentimentScore.Neutral;
+      const Mixed = result.SentimentScore.Mixed;
+
+      const cheerfulScore = Math.round(
+        ((Positive - Negative) * (1 - Mixed) + Neutral * Mixed + 1) * 50
+      );
+
       const article = {
         headline: news.name,
         description: news.description,
-        thumbnail: news.image.thumbnail.contentUrl,
+        thumbnail: news.image?.thumbnail?.contentUrl,
         article_url: news.url,
-        sentiment_score: 50, // Assigning a static integer value of 50 for sentiment score
+        sentiment_score: cheerfulScore, // Assigning a static integer value of 50 for sentiment score
       };
       articles.push(article);
+
+      sentimentSum += cheerfulScore;
     }
 
     // Insert the articles array into MongoDB
-    await daysCollection.insertOne({ articles: articles });
+    await daysCollection.insertOne({
+      articles: articles,
+      drink: "GG",
+      average_sentiment: Math.round(sentimentSum / articles.length),
+    });
 
     return {
       statusCode: 200,
-      body: JSON.stringify("Data inserted successfully!"),
+      // body: JSON.stringify("Data inserted successfully!"),
+      body: JSON.stringify({
+        body: JSON.stringify("Data added succesfully!"),
+      }),
     };
   } catch (error) {
     console.error(error);
     return {
       statusCode: 500,
-      body: JSON.stringify("An error occurred!"),
+      body: JSON.stringify("An error occurred!: " + error),
     };
   } finally {
     await client.close();

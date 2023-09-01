@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws": "0.0.3-2",
+    "aws-sdk": "^2.1449.0",
     "axios": "^1.5.0",
     "mongodb": "^6.0.0"
   }

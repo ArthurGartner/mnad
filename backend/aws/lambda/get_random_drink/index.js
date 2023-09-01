@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
   });
   await client.connect();
 
-  const db = client.db("mnad");
+  const db = client.db("mnda");
   const collection = db.collection("drinks");
 
   let randomDrink;

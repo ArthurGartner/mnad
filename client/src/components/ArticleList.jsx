@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Tag from "./Tag";
-import { base_api, getDayData } from "../../util/constants";
+import { SVGModifier } from "../components";
+import { BlankCoconut } from "../assets";
 
 const ArticleList = (dayData) => {
   const [articles, setArticles] = useState(null);
@@ -45,12 +46,19 @@ const ArticleList = (dayData) => {
                   } rounded-3xl hover:cursor-pointer p-2 my-5`}
                 >
                   <div className="flex overflow-hidden">
-                    <div className="w-[100px] min-w-[100px] rounded-2xl">
-                      {article?.thumbnail && (
+                    <div className="w-[100px] min-w-[100px] rounded-2xl relative">
+                      {article?.thumbnail ? (
                         <img
                           src={article?.thumbnail}
                           className="object-cover min-w-[100px] aspect-square p-1 rounded-2xl"
                         />
+                      ) : (
+                        <div className="relative">
+                          <img src={BlankCoconut} className="absolute" alt="" />
+                          <div className="relative">
+                            <SVGModifier value={article?.sentiment_score} />
+                          </div>
+                        </div>
                       )}
                     </div>
                     <div className="flex flex-col justify-between h-fit">

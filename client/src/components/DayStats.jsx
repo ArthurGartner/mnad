@@ -11,7 +11,7 @@ const DayStats = () => {
       <div className="w-100 h-full flex flex-col">
         <div className="pt-3 pl-5">
           <div className="text-base md:text-2xl font-semibold text-neutral-400">
-            Industry Change
+            Sentiment Change
           </div>
           <div className="font-semibold text-3xl md:text-5xl text-black dark:text-white">
             <span className="text-red-500 dark:text-red-400">

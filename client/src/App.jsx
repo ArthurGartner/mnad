@@ -24,7 +24,7 @@ function App() {
   const [darkTheme, setDarkTheme] = useState(false);
   const siteDown = false;
   const [date, setDate] = useState(null);
-  const [sentimentVal, setSentimentVal] = useState(50);
+  const [sentimentVal, setSentimentVal] = useState(0);
   const [dayData, setDayData] = useState(null);
 
   const updateTheme = () => {
@@ -116,10 +116,10 @@ function App() {
                     decreaseDate={decreaseDate}
                   />
                   <div className="my-2">
-                    <LoadingBar value={sentimentVal} />
+                    <LoadingBar value={dayData?.average_sentiment || 0} />
                   </div>
                   <div className="my-2">
-                    <DaySummary sentiment={sentimentVal} />
+                    <DaySummary sentiment={dayData?.average_sentiment || 0} />
                   </div>
                   <div>
                     <Articles dayData={dayData?.articles} />
