@@ -11,9 +11,13 @@ import {
   Navbar,
 } from "./components";
 
-import { getCurrentDateString } from "../util/functions";
 import { base_api, getRandomDrink, getDayData } from "../util/constants";
-import { reduceDateByOneDay, addOneDayToDate } from "../util/functions";
+import {
+  reduceDateByOneDay,
+  addOneDayToDate,
+  convertDateToNumerical,
+  getDateString,
+} from "../util/functions";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
@@ -58,29 +62,19 @@ function App() {
     });
 
     //Set date to today
-    setDate(getCurrentDateString());
+    var curDate = Date.now();
+    setDate(curDate);
   }, []);
 
   useEffect(() => {
     updateTheme();
   }, [theme]);
 
-  // useEffect(() => {
-  //   fetch(`${base_api}${getRandomDrink}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setCurDrink(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(
-  //         "There was an error fetching the extension data: ",
-  //         error
-  //       );
-  //     });
-  // }, [date]);
-
   useEffect(() => {
-    fetch(`${base_api}${getDayData}?date=${convertDateToNumerical(date)}`)
+    if (!date) return;
+    fetch(
+      `${base_api}${getDayData}?date=${convertDateToNumerical(new Date(date))}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setDayData(data);
@@ -91,28 +85,12 @@ function App() {
       });
   }, [date]);
 
-  function convertDateToNumerical(inputDate) {
-    const date = new Date(inputDate);
-
-    if (isNaN(date.getTime())) {
-      // Invalid date
-      return "Invalid date";
-    }
-
-    // Padding single digit numbers with a leading zero
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // getMonth() returns 0-based month
-    const day = String(date.getDate()).padStart(2, "0");
-    const year = date.getFullYear();
-
-    return `${month}/${day}/${year}`;
-  }
-
   const increaseDate = () => {
-    setDate(addOneDayToDate(date));
+    setDate(addOneDayToDate(new Date(date)));
   };
 
   const decreaseDate = () => {
-    setDate(reduceDateByOneDay(date));
+    setDate(reduceDateByOneDay(new Date(date)));
   };
 
   return (
@@ -132,7 +110,7 @@ function App() {
                     Subtitle="Drink recommendations based on world wide sentiment."
                   />
                   <DrinkCarousel
-                    curDate={date}
+                    curDate={getDateString(new Date(date))}
                     setSentimentVal={setSentimentVal}
                     drinkData={dayData?.drinkDetails}
                     increaseDate={increaseDate}
