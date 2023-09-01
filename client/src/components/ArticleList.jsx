@@ -42,27 +42,32 @@ const ArticleList = (dayData) => {
                     isTouchDevice
                       ? ""
                       : "dark:hover:bg-neutral-800 hover:bg-neutral-200"
-                  } rounded-3xl hover:cursor-pointer p-2`}
+                  } rounded-3xl hover:cursor-pointer p-2 my-5`}
                 >
-                  <div className="flex my-3 overflow-hidden">
-                    <img
-                      src={article?.thumbnail}
-                      className="h-[100px] w-[100px] rounded-2xl m-auto mr-[10px]"
-                    />
-
-                    <div className="h-[100px]">
-                      <div className="relative">
-                        <div className="font-semibold text-sm md:text-xl text-black dark:text-white line-clamp-2">
-                          {article.headline}
+                  <div className="flex overflow-hidden">
+                    <div className="w-[100px] min-w-[100px] rounded-2xl">
+                      {article?.thumbnail && (
+                        <img
+                          src={article?.thumbnail}
+                          className="object-cover min-w-[100px] aspect-square p-1 rounded-2xl"
+                        />
+                      )}
+                    </div>
+                    <div className="flex flex-col justify-between h-fit">
+                      <div>
+                        <div>
+                          <div className="relative">
+                            <div className="font-semibold text-sm md:text-xl text-black dark:text-white line-clamp-2">
+                              {article.headline}
+                            </div>
+                          </div>
+                          <div className="relative">
+                            <div className="font-semibold text-xs md:text-sm text-black dark:text-white line-clamp-2">
+                              {article.description}...
+                            </div>
+                          </div>
                         </div>
                       </div>
-
-                      <div className="relative">
-                        <div className="font-semibold text-xs md:text-sm text-black dark:text-white line-clamp-2">
-                          {article.description}...
-                        </div>
-                      </div>
-
                       <div>
                         <div>
                           <Tag val={article.sentiment_score} />
