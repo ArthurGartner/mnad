@@ -13,11 +13,11 @@ body {
 }
 
 .dark {
-  background-color: #262626;
+  background-color: #171717;
 }
 
 .light {
-  background-color: #fafafa;
+  background-color: #f5f5f5;
 }
 
 ::-webkit-scrollbar {

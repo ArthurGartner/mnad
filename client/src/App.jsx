@@ -25,7 +25,6 @@ function App() {
   const siteDown = false;
   const [date, setDate] = useState(null);
   const [sentimentVal, setSentimentVal] = useState(50);
-  const [curDrink, setCurDrink] = useState(null);
   const [dayData, setDayData] = useState(null);
 
   const updateTheme = () => {

@@ -73,13 +73,22 @@ function DrinkSelection(props) {
       ref={carouselContainerRef}
       className="carousel-container w-100 flex h-[400px] md:4-[600px] md:h-fit justify-between"
     >
-      <NavArrow handleFunction={handleTransition} dir="left" />
-      <div className="grow">
-        {drinkData && (
+      <div className="flex h-[400px] md:4-[600px]">
+        <NavArrow handleFunction={handleTransition} dir="left" />
+      </div>
+
+      <div className="grow align-middle">
+        {drinkData ? (
           <DrinkSummary drinkData={drinkData} viewPic={props.viewPic} />
+        ) : (
+          <div className="text-black dark:text-white flex justify-center items-center h-full">
+            <div className="font-semibold text-3xl">NO DRINK FOUND</div>
+          </div>
         )}
       </div>
-      <NavArrow handleFunction={handleTransition} dir="right" />
+      <div className=" flex h-[400px] md:4-[600px]">
+        <NavArrow handleFunction={handleTransition} dir="right" />
+      </div>
     </div>
   );
 }

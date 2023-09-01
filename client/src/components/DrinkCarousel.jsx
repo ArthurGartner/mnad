@@ -18,10 +18,6 @@ function DrinkCarousel(props) {
     console.log("HELLO");
   };
 
-  if (!drinkData) {
-    return <></>;
-  }
-
   return (
     <div className="h-[500px] md:h-[650px]">
       <ViewDate date={props.curDate} />
