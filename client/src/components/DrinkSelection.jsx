@@ -61,19 +61,17 @@ function DrinkSelection(props) {
   const handleTransition = (direction) => {
     if (direction === "left") {
       props.decreaseDate();
-      props.setSentimentVal(10);
     } else {
       props.increaseDate();
-      props.setSentimentVal(90);
     }
   };
 
   return (
     <div
       ref={carouselContainerRef}
-      className="carousel-container w-100 flex h-[400px] md:4-[600px] md:h-fit justify-between"
+      className="carousel-container w-100 flex h-[400px] md:h-[600px] justify-between"
     >
-      <div className="flex h-[400px] md:4-[600px]">
+      <div className="flex h-[400px] md:h-[600px]">
         <NavArrow handleFunction={handleTransition} dir="left" />
       </div>
 
@@ -86,7 +84,7 @@ function DrinkSelection(props) {
           </div>
         )}
       </div>
-      <div className=" flex h-[400px] md:4-[600px]">
+      <div className=" flex h-[400px] md:h-[600px]">
         <NavArrow handleFunction={handleTransition} dir="right" />
       </div>
     </div>

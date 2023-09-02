@@ -7,6 +7,7 @@ exports.handler = async (event) => {
   // Get MongoDB URI and RapidAPI key from environment variables
   const MONGODB_URI = process.env.MONGODB_URI;
   const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
+  const OPENAI_KEY = process.env.OPENAI_API_KEY;
 
   // Connect to MongoDB
   const client = new MongoClient(MONGODB_URI, {
@@ -53,12 +54,39 @@ exports.handler = async (event) => {
         ((Positive - Negative) * (1 - Mixed) + Neutral * Mixed + 1) * 50
       );
 
+      //Get category
+      const prompt = `Headline: ${news.name}\nDescription: ${news.description}\n\nBased on the above headline and description, please categorize this news article into one of the following categories:\n\n- Politics\n- World\n- Business\n- Technology\n- Science\n- Health\n- Sports\n- Entertainment\n- Travel\n- Education\n- Environment\n- Culture\n- Automotive\n- Food & Drink\n- Fashion\n- Real Estate\n- Opinion\n- Religion\n- Lifestyle\n- Local News\n- Law & Crime\n- Weather\n- Aerospace & Defense\n- Arts\n- Finance\n- Human Rights\n- Social Issues\n\nCategory:`;
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${OPENAI_KEY}`,
+        },
+      };
+
+      const data = {
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0.1,
+      };
+
+      const response = await axios.post(
+        "https://api.openai.com/v1/chat/completions",
+        data,
+        config
+      );
+
+      const category =
+        response.data.choices[0].message?.content ||
+        response.data.choices[0].text.trim();
+
       const article = {
         headline: news.name,
         description: news.description,
         thumbnail: news.image?.thumbnail?.contentUrl,
         article_url: news.url,
-        sentiment_score: cheerfulScore, // Assigning a static integer value of 50 for sentiment score
+        sentiment_score: cheerfulScore,
+        category: category,
       };
       articles.push(article);
 
