@@ -93,11 +93,37 @@ exports.handler = async (event) => {
       sentimentSum += cheerfulScore;
     }
 
+    const average_sentiment = Math.round(sentimentSum / articles.length);
+
+    const drinksCollection = db.collection("drinks");
+
+    // Count the total number of drinks with an 'abv' and 'ingredienthas' field
+    const totalDrinks = await drinksCollection.countDocuments({
+      abv: { $exists: true },
+      ingredients: { $exists: true },
+    });
+
+    if (totalDrinks === 0) {
+      return "No drinks found with both an ABV and ingredients.";
+    }
+
+    // Calculate the index based on the rank
+    const index = Math.floor((average_sentiment / 100) * totalDrinks);
+
+    // Fetch the drink at the calculated index, sorted by 'abv' in descending order
+    const drink = await drinksCollection
+      .find({ abv: { $exists: true }, ingredients: { $exists: true } })
+      .sort({ abv: -1 }) // Sort in descending order
+      .skip(index)
+      .limit(1)
+      .toArray();
+
     // Insert the articles array into MongoDB
     await daysCollection.insertOne({
       articles: articles,
-      drink: "GG",
-      average_sentiment: Math.round(sentimentSum / articles.length),
+      drink: drink[0].strDrink,
+      average_sentiment: average_sentiment,
+      day: new Date(),
     });
 
     return {

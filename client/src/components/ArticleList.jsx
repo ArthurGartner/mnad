@@ -22,7 +22,7 @@ const ArticleList = (dayData) => {
 
   return (
     <>
-      <div className="rounded-3xl overflow-hidden bg-neutral-100 dark:bg-neutral-700 shadow-xl p-4">
+      <div className="rounded-3xl overflow-hidden bg-neutral-100 dark:bg-neutral-700 shadow-xl p-4 border border-neutral-200 dark:border-neutral-700">
         <div className="flex">
           <div className="h-[25px] w-[25px] md:h-[40px] md:w-[40px] flex justify-center align-middle">
             <img
@@ -61,7 +61,7 @@ const ArticleList = (dayData) => {
                         </div>
                       )}
                     </div>
-                    <div className="flex flex-col justify-between h-fit">
+                    <div className="flex flex-col justify-between h-fit pl-2 md:pl-5">
                       <div>
                         <div>
                           <div className="relative">

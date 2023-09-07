@@ -6,34 +6,35 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 function DrinkCarousel(props) {
   const liked = "86";
 
-  const [drinkData, setDrinkData] = useState(null);
+  const [dayData, setDayData] = useState(null);
   const [viewPic, setViewPic] = useState(true);
+  const [yesterdayData, setYesterdayData] = useState(null);
 
   useEffect(() => {
-    setDrinkData(props.drinkData);
+    setDayData(props.dayData);
+    setYesterdayData(props.yesterdayData);
   }, [props]);
 
   const handleView = () => {
     setViewPic(!viewPic);
-    console.log("HELLO");
   };
 
   return (
     <div className="h-[500px] md:h-[650px]">
-      <ViewDate date={props.curDate} />
+      <ViewDate date={props.curDate} abvDiff={props.abvDiff} />
       <DrinkSelection
         setSentimentVal={props.setSentimentVal}
-        drinkData={drinkData}
+        drinkData={dayData?.drinkDetails}
         increaseDate={props.increaseDate}
         decreaseDate={props.decreaseDate}
         viewPic={viewPic}
       />
       <div className="md:hidden w-full">
         <div className="text-black dark:text-white font-bold text-md text-center w-full">
-          {drinkData?.strDrink}
+          {dayData?.drinkData?.strDrink}
         </div>
         <div className="text-xs md:text-sm font-semibold text-neutral-400 text-center">
-          {drinkData?.abv.$numberDecimal}% ABV | {liked}%{" "}
+          {dayData?.drinkData?.abv}% ABV | {liked}%{" "}
           <FontAwesomeIcon icon={faHeart} />
         </div>
         <div

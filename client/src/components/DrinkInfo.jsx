@@ -28,7 +28,7 @@ const DrinkInfo = (props) => {
 
   return (
     <div className="w-100">
-      <div className="relative max-w-sm rounded-3xl overflow-hidden bg-neutral-100 dark:bg-neutral-700 shadow-xl m-auto h-[400px] md:h-[600px]">
+      <div className="relative max-w-sm rounded-3xl overflow-hidden bg-neutral-100 dark:bg-neutral-700 shadow-xl m-auto h-[400px] md:h-[600px] border border-neutral-200 dark:border-neutral-700">
         <div className="hidden md:block">
           <div className="absolute flex text-xl mt-5 px-6 right-0">
             <AiOutlineHeart className="mr-2 text-pink-500 dark:text-pink-500" />
@@ -41,8 +41,7 @@ const DrinkInfo = (props) => {
             {drinkData?.strDrink}
           </div>
           <div className="text-xs md:text-sm font-semibold text-neutral-400 text-center">
-            {drinkData?.abv.$numberDecimal}% ABV | 86%{" "}
-            <FontAwesomeIcon icon={faHeart} />
+            {drinkData?.abv}% ABV | 86% <FontAwesomeIcon icon={faHeart} />
           </div>
         </div>
 

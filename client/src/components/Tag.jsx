@@ -65,7 +65,7 @@ const Tag = (props) => {
         style={{ backgroundColor: tagColor }}
         className={`inline-block px-[10px] rounded-xl text-sm md:text-base font-semibold text-white `}
       >
-        Sentiment Score of {props.val}
+        Sentiment: {props.val}
       </div>
     </>
   );

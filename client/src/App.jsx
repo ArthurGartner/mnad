@@ -26,6 +26,9 @@ function App() {
   const [date, setDate] = useState(null);
   const [sentimentVal, setSentimentVal] = useState(0);
   const [dayData, setDayData] = useState(null);
+  const [tomorrowData, setTomorrowData] = useState(null);
+  const [yesterdayData, setYesterdayData] = useState(null);
+  const [abvDiff, setAbvDiff] = useState(0);
 
   const updateTheme = () => {
     localStorage.setItem("theme", theme);
@@ -60,9 +63,10 @@ function App() {
       updateTheme();
     });
 
-    //Set date to today
-    var curDate = Date.now();
-    setDate(curDate);
+    // //Set date to today
+    // var curDate = Date.now();
+    // setDate(curDate);
+    loadToday();
   }, []);
 
   useEffect(() => {
@@ -70,26 +74,90 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
-    if (!date) return;
+    if (dayData && yesterdayData) {
+      setAbvDiff(dayData?.drinkDetails?.abv - yesterdayData?.drinkDetails?.abv);
+    }
+  }, [dayData, yesterdayData]);
+
+  // useEffect(() => {
+  //   if (!date) return;
+  //   fetch(
+  //     `${base_api}${getDayData}?date=${convertDateToNumerical(new Date(date))}`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setDayData(data);
+  //       console.log(data);
+  //       setCurDrink(data?.drinkDetails[0]);
+  //       //Set sentiment
+  //       setSentimentVal(data.average_sentiment);
+  //     });
+  // }, [date]);
+
+  const loadToday = () => {
+    //Set date to today
+    var curDate = Date.now();
+    setDate(curDate);
     fetch(
-      `${base_api}${getDayData}?date=${convertDateToNumerical(new Date(date))}`
+      `${base_api}${getDayData}?date=${convertDateToNumerical(
+        new Date(curDate)
+      )}`
     )
       .then((response) => response.json())
       .then((data) => {
         setDayData(data);
-        console.log(data);
         setCurDrink(data?.drinkDetails[0]);
         //Set sentiment
         setSentimentVal(data.average_sentiment);
       });
-  }, [date]);
+
+    fetch(
+      `${base_api}${getDayData}?date=${convertDateToNumerical(
+        new Date(reduceDateByOneDay(new Date(curDate)))
+      )}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setYesterdayData(data);
+      });
+  };
 
   const increaseDate = () => {
-    setDate(addOneDayToDate(new Date(date)));
+    // setDate(addOneDayToDate(new Date(date)));
+    setYesterdayData(dayData);
+    setDayData(tomorrowData);
+
+    var newDate = addOneDayToDate(new Date(date));
+    setDate(newDate);
+
+    fetch(
+      `${base_api}${getDayData}?date=${convertDateToNumerical(
+        new Date(addOneDayToDate(new Date(newDate)))
+      )}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setTomorrowData(data);
+      });
   };
 
   const decreaseDate = () => {
-    setDate(reduceDateByOneDay(new Date(date)));
+    // setDate(reduceDateByOneDay(new Date(date)));
+    setTomorrowData(dayData);
+    setDayData(yesterdayData);
+
+    var newDate = reduceDateByOneDay(new Date(date));
+    setDate(newDate);
+
+    fetch(
+      `${base_api}${getDayData}?date=${convertDateToNumerical(
+        new Date(reduceDateByOneDay(new Date(newDate)))
+      )}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setYesterdayData(data);
+      });
   };
 
   return (
@@ -111,15 +179,21 @@ function App() {
                   <DrinkCarousel
                     curDate={getDateString(new Date(date))}
                     setSentimentVal={setSentimentVal}
-                    drinkData={dayData?.drinkDetails}
+                    dayData={dayData}
                     increaseDate={increaseDate}
                     decreaseDate={decreaseDate}
+                    abvDiff={abvDiff}
+                    yesterdayData={yesterdayData}
                   />
                   <div className="my-2">
                     <LoadingBar value={dayData?.average_sentiment || 0} />
                   </div>
                   <div className="my-2">
-                    <DaySummary sentiment={dayData?.average_sentiment || 0} />
+                    <DaySummary
+                      dayData={dayData}
+                      yesterdayData={yesterdayData}
+                      sentiment={dayData?.average_sentiment || 0}
+                    />
                   </div>
                   <div>
                     <Articles dayData={dayData?.articles} />

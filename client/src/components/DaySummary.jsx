@@ -12,7 +12,7 @@ const DaySummary = (props) => {
       </div>
 
       <div className="md:w-1/2 mx-auto md:ml-3">
-        <DayStats />
+        <DayStats yesterdayData={props.yesterdayData} dayData={props.dayData} />
       </div>
     </div>
   );

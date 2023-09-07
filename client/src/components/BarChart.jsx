@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./BarChart.css";
 import { IndustryBar, DiffPercentBar } from "../components";
 
-const BarChart = () => {
+const BarChart = (props) => {
   const [maxDiff, setMaxDiff] = useState(10);
 
   const industry1 = {
