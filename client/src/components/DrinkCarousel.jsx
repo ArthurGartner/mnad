@@ -13,6 +13,7 @@ function DrinkCarousel(props) {
   useEffect(() => {
     setDayData(props.dayData);
     setYesterdayData(props.yesterdayData);
+    console.log(props.dayData);
   }, [props]);
 
   const handleView = () => {
@@ -31,10 +32,10 @@ function DrinkCarousel(props) {
       />
       <div className="md:hidden w-full">
         <div className="text-black dark:text-white font-bold text-md text-center w-full">
-          {dayData?.drinkData?.strDrink}
+          {dayData?.drinkDetails?.strDrink}
         </div>
         <div className="text-xs md:text-sm font-semibold text-neutral-400 text-center">
-          {dayData?.drinkData?.abv}% ABV | {liked}%{" "}
+          {dayData?.drinkDetails?.abv}% ABV | {liked}%{" "}
           <FontAwesomeIcon icon={faHeart} />
         </div>
         <div

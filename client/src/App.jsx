@@ -63,9 +63,6 @@ function App() {
       updateTheme();
     });
 
-    // //Set date to today
-    // var curDate = Date.now();
-    // setDate(curDate);
     loadToday();
   }, []);
 
@@ -75,24 +72,10 @@ function App() {
 
   useEffect(() => {
     if (dayData && yesterdayData) {
-      setAbvDiff(dayData?.drinkDetails?.abv - yesterdayData?.drinkDetails?.abv);
+      var diff = dayData?.drinkDetails?.abv - yesterdayData?.drinkDetails?.abv;
+      setAbvDiff(parseFloat(diff.toFixed(2)));
     }
   }, [dayData, yesterdayData]);
-
-  // useEffect(() => {
-  //   if (!date) return;
-  //   fetch(
-  //     `${base_api}${getDayData}?date=${convertDateToNumerical(new Date(date))}`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setDayData(data);
-  //       console.log(data);
-  //       setCurDrink(data?.drinkDetails[0]);
-  //       //Set sentiment
-  //       setSentimentVal(data.average_sentiment);
-  //     });
-  // }, [date]);
 
   const loadToday = () => {
     //Set date to today
@@ -106,9 +89,12 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setDayData(data);
-        setCurDrink(data?.drinkDetails[0]);
         //Set sentiment
         setSentimentVal(data.average_sentiment);
+      })
+      .catch((error) => {
+        console.log(error);
+        setDayData(null);
       });
 
     fetch(
@@ -119,6 +105,9 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setYesterdayData(data);
+      })
+      .catch((error) => {
+        setYesterdayData(null);
       });
   };
 
@@ -138,6 +127,9 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setTomorrowData(data);
+      })
+      .catch((error) => {
+        setTomorrowData(null);
       });
   };
 
@@ -156,7 +148,11 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        setYesterdayData(data);
+        if (data?.message == "No documents found") setYesterdayData(null);
+        else setYesterdayData(data);
+      })
+      .catch((error) => {
+        setYesterdayData(null);
       });
   };
 

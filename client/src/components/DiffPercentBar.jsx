@@ -25,24 +25,33 @@ function DiffPercentBar({ value, reverse = false, name, passedbgColor }) {
     ["from-violet-400", "to-teal-400"],
   ];
 
-  // useEffect(() => {
-  //   const barColor =
-  //     colorCombos[Math.floor(Math.random() * colorCombos.length)];
-  //   setColor1(barColor[0]);
-  //   setColor2(barColor[1]);
-  // }, [value]);
-
   const industryColors = {
-    Business: "bg-amber-400",
-    Technology: "bg-indigo-400",
-    Health: "bg-emerald-400",
-    Science: "bg-rose-400",
-    Energy: "bg-sky-400",
-    Entertainment: "bg-fuchsia-400",
+    Politics: "bg-amber-400",
+    World: "bg-indigo-400",
+    Business: "bg-emerald-400",
+    Technology: "bg-rose-400",
+    Science: "bg-sky-400",
+    Health: "bg-fuchsia-400",
     Sports: "bg-yellow-400",
-    Transportation: "bg-teal-400",
-    "Social Issues": "bg-purple-400",
-    "Art & Culture": "bg-pink-400",
+    Entertainment: "bg-teal-400",
+    Travel: "bg-purple-400",
+    Education: "bg-pink-400",
+    Environment: "bg-pink-400",
+    Culture: "bg-pink-400",
+    "Food & Drink": "bg-pink-400",
+    Fashion: "bg-pink-400",
+    "Real Estate": "bg-pink-400",
+    Opinion: "bg-pink-400",
+    Religion: "bg-pink-400",
+    Lifestyle: "bg-pink-400",
+    "Local News": "bg-pink-400",
+    "Law & Crime": "bg-pink-400",
+    Weather: "bg-pink-400",
+    "Aerospace & Defense": "bg-pink-400",
+    Arts: "bg-pink-400",
+    Finance: "bg-pink-400",
+    "Human Rights": "bg-pink-400",
+    "Social Issues": "bg-pink-400",
   };
 
   return (
@@ -62,9 +71,6 @@ function DiffPercentBar({ value, reverse = false, name, passedbgColor }) {
             }}
           >
             <div
-              // className={`h-full w-full rounded-full ${
-              //   reverse ? "bg-gradient-to-l" : "bg-gradient-to-r"
-              // } ${color1} ${color2}`}
               className={`h-full w-full rounded-full ${industryColors[name]}`}
             ></div>
           </motion.div>

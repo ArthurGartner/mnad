@@ -3,72 +3,68 @@ import "./BarChart.css";
 import { IndustryBar, DiffPercentBar } from "../components";
 
 const BarChart = (props) => {
-  const [maxDiff, setMaxDiff] = useState(10);
+  const [maxDiff, setMaxDiff] = useState(0);
+  const [dayData, setDayData] = useState(null);
+  const [yesterdayData, setYesterdayData] = useState(null);
+  const [industryDiff, setIndustryDiff] = useState(null);
 
-  const industry1 = {
-    name: "Technology",
-    diff: -95,
-  };
-  const industry2 = {
-    name: "Business",
-    diff: 80,
-  };
-  const industry3 = {
-    name: "Health",
-    diff: 75,
-  };
-  const industry4 = {
-    name: "Science",
-    diff: -70,
-  };
-  const industry5 = {
-    name: "Energy",
-    diff: 60,
-  };
-  const industry6 = {
-    name: "Entertainment",
-    diff: -40,
-  };
-  const industry7 = {
-    name: "Sports",
-    diff: -30,
-  };
-  const industry8 = {
-    name: "Transportation",
-    diff: 30,
-  };
-  const industry9 = {
-    name: "Social Issues",
-    diff: 22,
-  };
-  const industry10 = {
-    name: "Art & Culture",
-    diff: -10,
-  };
+  useEffect(() => {
+    if (props?.dayData) setDayData(props.dayData);
+    if (props?.yesterdayData) setYesterdayData(props.yesterdayData);
+  }, [props]);
 
-  const industryArray = [
-    industry1,
-    industry2,
-    industry3,
-    industry4,
-    industry5,
-    industry6,
-    industry7,
-    industry8,
-    industry9,
-    industry10,
-  ];
+  useEffect(() => {
+    // Calculate average sentiment for each array
+    if (!dayData || !yesterdayData) return;
+    const averages1 = calculateAverageSentiment(dayData.articles);
+    const averages2 = calculateAverageSentiment(yesterdayData.articles);
 
-  industryArray.forEach((industry) => {
-    if (Math.abs(industry.diff) > maxDiff) setMaxDiff(Math.abs(industry.diff));
-  });
+    // Calculate the differences
+    const differences = [];
+    for (const [category, avg1] of Object.entries(averages1)) {
+      const avg2 = averages2[category] || 0; // Assume 0 if category is not present in the second array
+      const diff = avg1 - avg2;
+      differences.push({
+        name: category,
+        diff: parseFloat(diff.toFixed(2)),
+      });
+
+      if (Math.abs(diff) > maxDiff) setMaxDiff(Math.abs(diff));
+    }
+
+    // Sort the differences
+    differences.sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff));
+    setIndustryDiff(differences);
+  }, [dayData, yesterdayData]);
+
+  // Function to calculate average sentiment for each category
+  function calculateAverageSentiment(array) {
+    const categorySums = {};
+    const categoryCounts = {};
+    for (const article of array) {
+      const { category, sentiment_score } = article;
+      if (!categorySums[category]) {
+        categorySums[category] = 0;
+        categoryCounts[category] = 0;
+      }
+      categorySums[category] += sentiment_score;
+      categoryCounts[category]++;
+    }
+    const categoryAverages = {};
+    for (const [category, sum] of Object.entries(categorySums)) {
+      categoryAverages[category] = sum / categoryCounts[category];
+    }
+    return categoryAverages;
+  }
+
+  if (!industryDiff) return <></>;
 
   return (
     <>
       <div className="h-full w-full">
         <div className="flex">
           <div className="industry-labels text-left text-lg">
-            {industryArray.map((industryObject, index) => (
+            {industryDiff.map((industryObject, index) => (
               <div className="h-[50px] flex justify-center items-center">
                 <div className="text-sm md:text-xl font-semibold text-black dark:text-white">
                   {industryObject.name}
@@ -78,9 +74,9 @@ const BarChart = (props) => {
           </div>
           <div className="percent-diff-bar grow">
             <div className="relative">
-              {industryArray.map((industryObject, index) => (
+              {industryDiff.map((industryObject, index) => (
                 <IndustryBar
-                  value={industryObject.diff}
+                  value={Math.round((industryObject.diff / maxDiff) * 100)}
                   name={industryObject.name}
                 />
               ))}
