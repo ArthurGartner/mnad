@@ -10,8 +10,7 @@ const NavArrow = (props) => {
     setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
 
-  const baseClasses =
-    "font-bold rounded-3xl h-[50px] w-[50px] text-blue-500 dark:text-blue-400";
+  const baseClasses = "font-bold rounded-3xl h-[50px] w-[50px]";
   const hoverClasses =
     "hover:bg-blue-500 dark:hover:bg-blue-400 hover:text-neutral-100 dark:hover:text-neutral-700";
 
@@ -19,8 +18,14 @@ const NavArrow = (props) => {
     <>
       <div className="m-auto">
         <button
-          className={`${baseClasses} ${isTouchDevice ? "" : hoverClasses}`}
-          onClick={() => props.handleFunction(props.dir)}
+          className={`${baseClasses} ${
+            props.disabled
+              ? "text-neutral-500 dark:text-neutral-400 cursor-default"
+              : "text-blue-500 dark:text-blue-400"
+          } ${isTouchDevice || props.disabled ? "" : hoverClasses}`}
+          onClick={() => {
+            if (!props.disabled) props.handleFunction(props.dir);
+          }}
         >
           <FontAwesomeIcon
             icon={props.dir === "left" ? faCaretLeft : faCaretRight}

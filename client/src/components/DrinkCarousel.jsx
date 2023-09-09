@@ -13,7 +13,6 @@ function DrinkCarousel(props) {
   useEffect(() => {
     setDayData(props.dayData);
     setYesterdayData(props.yesterdayData);
-    console.log(props.dayData);
   }, [props]);
 
   const handleView = () => {
@@ -29,6 +28,9 @@ function DrinkCarousel(props) {
         increaseDate={props.increaseDate}
         decreaseDate={props.decreaseDate}
         viewPic={viewPic}
+        dayData={dayData}
+        yesterdayData={yesterdayData}
+        tomorrowData={props.tomorrowData}
       />
       <div className="md:hidden w-full">
         <div className="text-black dark:text-white font-bold text-md text-center w-full">

@@ -93,7 +93,6 @@ function App() {
         setSentimentVal(data.average_sentiment);
       })
       .catch((error) => {
-        console.log(error);
         setDayData(null);
       });
 
@@ -104,6 +103,7 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
+        if (data?.message == "No documents found") setYesterdayData(null);
         setYesterdayData(data);
       })
       .catch((error) => {
@@ -126,7 +126,8 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        setTomorrowData(data);
+        if (data?.message == "No documents found") setTomorrowData(null);
+        else setTomorrowData(data);
       })
       .catch((error) => {
         setTomorrowData(null);
@@ -180,6 +181,7 @@ function App() {
                     decreaseDate={decreaseDate}
                     abvDiff={abvDiff}
                     yesterdayData={yesterdayData}
+                    tomorrowData={tomorrowData}
                   />
                   <div className="my-2">
                     <LoadingBar value={dayData?.average_sentiment || 0} />

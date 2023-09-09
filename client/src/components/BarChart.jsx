@@ -15,9 +15,17 @@ const BarChart = (props) => {
 
   useEffect(() => {
     // Calculate average sentiment for each array
-    if (!dayData || !yesterdayData) return;
+    if (
+      !dayData ||
+      !yesterdayData ||
+      !dayData.articles ||
+      !yesterdayData.articles
+    )
+      return;
     const averages1 = calculateAverageSentiment(dayData.articles);
     const averages2 = calculateAverageSentiment(yesterdayData.articles);
+
+    var diffMax = 0;
 
     // Calculate the differences
     const differences = [];
@@ -29,8 +37,11 @@ const BarChart = (props) => {
         diff: parseFloat(diff.toFixed(2)),
       });
 
-      if (Math.abs(diff) > maxDiff) setMaxDiff(Math.abs(diff));
+      if (Math.abs(diff) > diffMax) diffMax = Math.abs(diff);
     }
+
+    console.log(diffMax);
+    setMaxDiff(diffMax);
 
     // Sort the differences
     differences.sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff));
@@ -76,7 +87,11 @@ const BarChart = (props) => {
             <div className="relative">
               {industryDiff.map((industryObject, index) => (
                 <IndustryBar
-                  value={Math.round((industryObject.diff / maxDiff) * 100)}
+                  value={
+                    maxDiff == 0
+                      ? 0
+                      : Math.round((industryObject.diff / maxDiff) * 100)
+                  }
                   name={industryObject.name}
                 />
               ))}

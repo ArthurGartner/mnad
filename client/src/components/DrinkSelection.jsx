@@ -72,7 +72,11 @@ function DrinkSelection(props) {
       className="carousel-container w-100 flex h-[400px] md:h-[600px] justify-between"
     >
       <div className="flex h-[400px] md:h-[600px]">
-        <NavArrow handleFunction={handleTransition} dir="left" />
+        <NavArrow
+          handleFunction={handleTransition}
+          disabled={props.yesterdayData == null ? true : false}
+          dir="left"
+        />
       </div>
 
       <div className="grow align-middle">
@@ -85,7 +89,11 @@ function DrinkSelection(props) {
         )}
       </div>
       <div className=" flex h-[400px] md:h-[600px]">
-        <NavArrow handleFunction={handleTransition} dir="right" />
+        <NavArrow
+          handleFunction={handleTransition}
+          disabled={props.tomorrowData == null ? true : false}
+          dir="right"
+        />
       </div>
     </div>
   );
