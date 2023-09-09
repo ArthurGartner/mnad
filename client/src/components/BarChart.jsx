@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./BarChart.css";
-import { IndustryBar, DiffPercentBar } from "../components";
+import { IndustryBar } from "../components";
 
 const BarChart = (props) => {
   const [maxDiff, setMaxDiff] = useState(0);
@@ -39,8 +39,6 @@ const BarChart = (props) => {
 
       if (Math.abs(diff) > diffMax) diffMax = Math.abs(diff);
     }
-
-    console.log(diffMax);
     setMaxDiff(diffMax);
 
     // Sort the differences
@@ -76,7 +74,10 @@ const BarChart = (props) => {
         <div className="flex">
           <div className="industry-labels text-left text-lg">
             {industryDiff.map((industryObject, index) => (
-              <div className="h-[50px] flex justify-center items-center">
+              <div
+                key={index}
+                className="h-[50px] flex justify-center items-center"
+              >
                 <div className="text-sm md:text-xl font-semibold text-black dark:text-white">
                   {industryObject.name}
                 </div>
@@ -87,6 +88,7 @@ const BarChart = (props) => {
             <div className="relative">
               {industryDiff.map((industryObject, index) => (
                 <IndustryBar
+                  key={index}
                   value={
                     maxDiff == 0
                       ? 0

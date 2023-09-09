@@ -5,15 +5,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 function DrinkCarousel(props) {
   const liked = "86";
-
-  const [dayData, setDayData] = useState(null);
   const [viewPic, setViewPic] = useState(true);
-  const [yesterdayData, setYesterdayData] = useState(null);
-
-  useEffect(() => {
-    setDayData(props.dayData);
-    setYesterdayData(props.yesterdayData);
-  }, [props]);
 
   const handleView = () => {
     setViewPic(!viewPic);
@@ -24,20 +16,20 @@ function DrinkCarousel(props) {
       <ViewDate date={props.curDate} abvDiff={props.abvDiff} />
       <DrinkSelection
         setSentimentVal={props.setSentimentVal}
-        drinkData={dayData?.drinkDetails}
+        drinkData={props.dayData?.drinkDetails}
         increaseDate={props.increaseDate}
         decreaseDate={props.decreaseDate}
         viewPic={viewPic}
-        dayData={dayData}
-        yesterdayData={yesterdayData}
+        dayData={props.dayData}
+        yesterdayData={props.yesterdayData}
         tomorrowData={props.tomorrowData}
       />
       <div className="md:hidden w-full">
         <div className="text-black dark:text-white font-bold text-md text-center w-full">
-          {dayData?.drinkDetails?.strDrink}
+          {props.dayData?.drinkDetails?.strDrink}
         </div>
         <div className="text-xs md:text-sm font-semibold text-neutral-400 text-center">
-          {dayData?.drinkDetails?.abv}% ABV | {liked}%{" "}
+          {props.dayData?.drinkDetails?.abv}% ABV | {liked}%{" "}
           <FontAwesomeIcon icon={faHeart} />
         </div>
         <div

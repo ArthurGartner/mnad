@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./DrinkPicture.css";
 
 const SVGImage = ({ url, fillColor }) => {
   const [dataUrl, setDataUrl] = useState(null);
@@ -26,6 +27,8 @@ const SVGImage = ({ url, fillColor }) => {
         console.error("Error fetching the SVG: ", error);
       });
   }, [url, fillColor]);
+
+  if (!dataUrl) return <></>;
 
   return <img src={dataUrl} className="absolute h-full w-full object-cover" />;
 };

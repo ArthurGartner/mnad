@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./DrinkSelection.css";
-import { NavArrow, DrinkSummary } from "../components";
+import { NavArrow, DrinkSummary, LoadingIcon } from "../components";
 
 function DrinkSelection(props) {
   const carouselContainerRef = useRef(null);
   const [xstart, setXStart] = useState(0);
   const [xend, setXEnd] = useState(0);
-  const [liqGlass, setLiqGlass] = useState(null);
   const [drinkData, setDrinkData] = useState(null);
 
   useEffect(() => {
@@ -59,19 +58,18 @@ function DrinkSelection(props) {
   };
 
   const handleTransition = (direction) => {
-    if (direction === "left") {
+    if (direction === "left" && props.yesterdayData != null) {
       props.decreaseDate();
-    } else {
+    } else if (props.tomorrowData != null) {
       props.increaseDate();
     }
   };
-
   return (
     <div
       ref={carouselContainerRef}
       className="carousel-container w-100 flex h-[400px] md:h-[600px] justify-between"
     >
-      <div className="flex h-[400px] md:h-[600px]">
+      <div className="flex h-[400px] md:h-[600px] w-[50px]">
         <NavArrow
           handleFunction={handleTransition}
           disabled={props.yesterdayData == null ? true : false}
@@ -84,11 +82,11 @@ function DrinkSelection(props) {
           <DrinkSummary drinkData={drinkData} viewPic={props.viewPic} />
         ) : (
           <div className="text-black dark:text-white flex justify-center items-center h-full">
-            <div className="font-semibold text-3xl">NO DRINK FOUND</div>
+            <LoadingIcon />
           </div>
         )}
       </div>
-      <div className=" flex h-[400px] md:h-[600px]">
+      <div className=" flex h-[400px] md:h-[600px] w-[50px]">
         <NavArrow
           handleFunction={handleTransition}
           disabled={props.tomorrowData == null ? true : false}

@@ -8,6 +8,7 @@ import {
   Footer,
   Header,
   LoadingBar,
+  LoadingIcon,
   Navbar,
 } from "./components";
 

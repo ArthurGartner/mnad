@@ -7,10 +7,10 @@ const ArticleList = (dayData) => {
   const [articles, setArticles] = useState(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
-  useEffect(() => {
-    // Detect if the device supports touch events
-    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
-  }, []);
+  // useEffect(() => {
+  //   // Detect if the device supports touch events
+  //   setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  // }, []);
 
   useEffect(() => {
     setArticles(dayData.articles.dayData);
@@ -36,8 +36,8 @@ const ArticleList = (dayData) => {
         </div>
         <div>
           {articles &&
-            articles.map((article) => (
-              <a href={article.article_url} target="_blank">
+            articles.map((article, index) => (
+              <a key={index} href={article.article_url} target="_blank">
                 <div
                   className={`${
                     isTouchDevice
@@ -82,15 +82,6 @@ const ArticleList = (dayData) => {
                         </div>
                       </div>
                     </div>
-
-                    <style jsx>{`
-                      .line-clamp-2 {
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
-                      }
-                    `}</style>
                   </div>
                 </div>
               </a>

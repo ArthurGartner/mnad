@@ -75,7 +75,7 @@ const DrinkPicture = (props) => {
       <div className="h-full">
         <div className="relative drink-container h-full">
           <div className="h-full">
-            <div className="drink-glass h-full w-full overflow-hidden">
+            <div className="drink-glass h-full w-full overflow-hidden svg-drink">
               <img
                 className="absolute h-full w-full object-cover"
                 src={drinkData?.drinkGlass[0]?.glass_url}

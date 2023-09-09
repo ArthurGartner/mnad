@@ -19,9 +19,7 @@ const NavArrow = (props) => {
       <div className="m-auto">
         <button
           className={`${baseClasses} ${
-            props.disabled
-              ? "text-neutral-500 dark:text-neutral-400 cursor-default"
-              : "text-blue-500 dark:text-blue-400"
+            props.disabled ? "hidden" : "text-blue-500 dark:text-blue-400"
           } ${isTouchDevice || props.disabled ? "" : hoverClasses}`}
           onClick={() => {
             if (!props.disabled) props.handleFunction(props.dir);

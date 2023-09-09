@@ -22,3 +22,4 @@ export { default as DiffPercentBar } from "./DiffPercentBar";
 export { default as IndustryBar } from "./IndustryBar";
 export { default as Articles } from "./Articles";
 export { default as Tag } from "./Tag";
+export { default as LoadingIcon } from "./LoadingIcon";
