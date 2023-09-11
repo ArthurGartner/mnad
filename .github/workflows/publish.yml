@@ -13,8 +13,11 @@ jobs:
       - name: git-checkout
         uses: actions/checkout@v2
 
+      - name: Change directory
+        uses: actions/checkout@v2
+
       - name: Install all dependencies
-        run: npm install
+        run: cd client
 
       - name: Build
         run: npm run build # The build command of your project
