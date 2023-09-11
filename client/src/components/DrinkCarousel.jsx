@@ -31,7 +31,11 @@ function DrinkCarousel(props) {
         curDate={props.curDate}
         next5pm={props.next5pm}
       />
-      <div className={`${props.dayData == null && "hidden"} md:hidden w-full`}>
+      <div
+        className={`${
+          (props.dayData == null || props.dayData == false) && "hidden"
+        } md:hidden w-full`}
+      >
         <div className="text-black dark:text-white font-bold text-md text-center w-full">
           {props.dayData?.drinkDetails?.strDrink}
         </div>
