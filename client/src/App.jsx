@@ -8,16 +8,16 @@ import {
   Footer,
   Header,
   LoadingBar,
-  LoadingIcon,
   Navbar,
+  CountdownClock,
 } from "./components";
 
-import { base_api, getRandomDrink, getDayData } from "../util/constants";
+import { base_api, getDayData } from "../util/constants";
 import {
   reduceDateByOneDay,
   addOneDayToDate,
   convertDateToNumerical,
-  getDateString,
+  getNext5PMEastern,
 } from "../util/functions";
 
 function App() {
@@ -30,6 +30,12 @@ function App() {
   const [tomorrowData, setTomorrowData] = useState(null);
   const [yesterdayData, setYesterdayData] = useState(null);
   const [abvDiff, setAbvDiff] = useState(0);
+  const [next5pm, setNext5pm] = useState(null);
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   const updateTheme = () => {
     localStorage.setItem("theme", theme);
@@ -70,6 +76,42 @@ function App() {
   useEffect(() => {
     updateTheme();
   }, [theme]);
+
+  useEffect(() => {
+    setNext5pm(getNext5PMEastern(new Date()));
+  }, []);
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      // const start = new Date();
+      const end = new Date(next5pm);
+      const currentTime = new Date();
+
+      // If start date has not arrived, set timeLeft to zero
+      // if (currentTime < start) {
+      //   setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+      //   return;
+      // }
+
+      // If end date has passed, set timeLeft to zero
+      // if (currentTime >= end) {
+      //   setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+      //   return;
+      // }
+
+      const diffInSeconds = Math.floor((end - currentTime) / 1000);
+
+      const hours = Math.floor(diffInSeconds / 3600);
+      const minutes = Math.floor((diffInSeconds % 3600) / 60);
+      const seconds = diffInSeconds % 60;
+
+      setTimeLeft({ hours, minutes, seconds });
+    };
+
+    const timerID = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timerID);
+  }, [next5pm]);
 
   useEffect(() => {
     if (dayData && yesterdayData) {
@@ -183,6 +225,13 @@ function App() {
                     abvDiff={abvDiff}
                     yesterdayData={yesterdayData}
                     tomorrowData={tomorrowData}
+                    next5pm={
+                      <CountdownClock
+                        // startDate={new Date()}
+                        // endDate={new Date(next5pm)}
+                        timeLeft={timeLeft}
+                      />
+                    }
                   />
                   <div className="my-2">
                     <LoadingBar value={dayData?.average_sentiment || 0} />

@@ -6,7 +6,7 @@ import {
   LoadingIcon,
   CountdownClock,
 } from "../components";
-import { isTomorrow, getNext5PMEastern } from "../../util/functions";
+import { isTomorrow } from "../../util/functions";
 
 function DrinkSelection(props) {
   const carouselContainerRef = useRef(null);
@@ -110,10 +110,7 @@ function DrinkSelection(props) {
                   A new drink will be recommended in
                 </div>
                 <div className="text-center text-5xl md:text-8xl font-semibold">
-                  <CountdownClock
-                    startDate={new Date()}
-                    endDate={props.next5pm}
-                  />
+                  {props.next5pm}
                 </div>
               </div>
             </div>
