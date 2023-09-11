@@ -20,7 +20,7 @@ jobs:
         run: cd client
 
       - name: Build
-        run: npm run build # The build command of your project
+        run: vite run build # The build command of your project
 
       - name: Push
         uses: s0/git-publish-subdir-action@develop
