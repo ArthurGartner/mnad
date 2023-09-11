@@ -75,6 +75,7 @@ function DrinkSelection(props) {
       props.increaseDate();
     }
   };
+
   return (
     <div
       ref={carouselContainerRef}
@@ -89,13 +90,13 @@ function DrinkSelection(props) {
       </div>
 
       <div className="grow align-middle">
-        {drinkData ? (
+        {drinkData != null && drinkData != false ? (
           <DrinkSummary
             drinkData={drinkData}
             viewPic={props.viewPic}
             isTomorrow={isTomorrow}
           />
-        ) : Tomorrow ? (
+        ) : props.dayData == false || Tomorrow ? (
           <>
             {" "}
             <div className="text-black dark:text-white flex justify-center items-center h-full">

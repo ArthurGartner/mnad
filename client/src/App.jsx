@@ -131,7 +131,8 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        setDayData(data);
+        if (data?.message == "No documents found") setDayData(false);
+        else setDayData(data);
         //Set sentiment
         setSentimentVal(data.average_sentiment);
       })
