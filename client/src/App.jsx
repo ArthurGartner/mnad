@@ -175,7 +175,7 @@ function App() {
                     Subtitle="Drink recommendations based on world wide sentiment."
                   />
                   <DrinkCarousel
-                    curDate={getDateString(new Date(date))}
+                    curDate={date}
                     setSentimentVal={setSentimentVal}
                     dayData={dayData}
                     increaseDate={increaseDate}

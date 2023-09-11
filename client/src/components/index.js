@@ -23,3 +23,4 @@ export { default as IndustryBar } from "./IndustryBar";
 export { default as Articles } from "./Articles";
 export { default as Tag } from "./Tag";
 export { default as LoadingIcon } from "./LoadingIcon";
+export { default as CountdownClock } from "./CountdownClock";

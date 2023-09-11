@@ -2,18 +2,28 @@ import React, { useState, useEffect } from "react";
 import { ViewDate, DrinkSelection } from "./";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { getDateString, getNext5PMEastern } from "../../util/functions";
 
 function DrinkCarousel(props) {
   const liked = "86";
   const [viewPic, setViewPic] = useState(true);
+  const [next5pm, setNext5pm] = useState(null);
 
   const handleView = () => {
     setViewPic(!viewPic);
   };
 
+  useEffect(() => {
+    setNext5pm(getNext5PMEastern(new Date()));
+  }, []);
+
   return (
     <div className="h-[500px] md:h-[650px]">
-      <ViewDate date={props.curDate} abvDiff={props.abvDiff} />
+      <ViewDate
+        date={getDateString(new Date(props.curDate))}
+        abvDiff={props.abvDiff}
+        dayData={props.datData}
+      />
       <DrinkSelection
         setSentimentVal={props.setSentimentVal}
         drinkData={props.dayData?.drinkDetails}
@@ -23,8 +33,10 @@ function DrinkCarousel(props) {
         dayData={props.dayData}
         yesterdayData={props.yesterdayData}
         tomorrowData={props.tomorrowData}
+        curDate={props.curDate}
+        next5pm={next5pm}
       />
-      <div className="md:hidden w-full">
+      <div className={`${props.dayData == null && "hidden"} md:hidden w-full`}>
         <div className="text-black dark:text-white font-bold text-md text-center w-full">
           {props.dayData?.drinkDetails?.strDrink}
         </div>

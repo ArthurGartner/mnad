@@ -1,12 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./DrinkSelection.css";
-import { NavArrow, DrinkSummary, LoadingIcon } from "../components";
+import {
+  NavArrow,
+  DrinkSummary,
+  LoadingIcon,
+  CountdownClock,
+} from "../components";
+import { isTomorrow, getNext5PMEastern } from "../../util/functions";
 
 function DrinkSelection(props) {
   const carouselContainerRef = useRef(null);
   const [xstart, setXStart] = useState(0);
   const [xend, setXEnd] = useState(0);
   const [drinkData, setDrinkData] = useState(null);
+  const [Tomorrow, setTomorrow] = useState(false);
+
+  useEffect(() => {
+    setTomorrow(isTomorrow(new Date(props.curDate)));
+  }, [props.curDate]);
 
   useEffect(() => {
     setDrinkData(props.drinkData);
@@ -60,7 +71,7 @@ function DrinkSelection(props) {
   const handleTransition = (direction) => {
     if (direction === "left" && props.yesterdayData != null) {
       props.decreaseDate();
-    } else if (props.tomorrowData != null) {
+    } else if (props.dayData != null) {
       props.increaseDate();
     }
   };
@@ -79,7 +90,34 @@ function DrinkSelection(props) {
 
       <div className="grow align-middle">
         {drinkData ? (
-          <DrinkSummary drinkData={drinkData} viewPic={props.viewPic} />
+          <DrinkSummary
+            drinkData={drinkData}
+            viewPic={props.viewPic}
+            isTomorrow={isTomorrow}
+          />
+        ) : Tomorrow ? (
+          <>
+            {" "}
+            <div className="text-black dark:text-white flex justify-center items-center h-full">
+              <div>
+                <div className="text-xl md:text-3xl font-semibold text-center my-5">
+                  You're Early!
+                </div>
+                <div className="text-xl md:text-3xl font-semibold text-center my-5">
+                  Come back at 5PM Eastern for Happy Hour
+                </div>
+                <div className="text-md md:text-lg font-semibold text-center text-neutral-400 my-5">
+                  A new drink will be recommended in
+                </div>
+                <div className="text-center text-5xl md:text-8xl font-semibold">
+                  <CountdownClock
+                    startDate={new Date()}
+                    endDate={props.next5pm}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
         ) : (
           <div className="text-black dark:text-white flex justify-center items-center h-full">
             <LoadingIcon />
@@ -89,7 +127,9 @@ function DrinkSelection(props) {
       <div className=" flex h-[400px] md:h-[600px] w-[50px]">
         <NavArrow
           handleFunction={handleTransition}
-          disabled={props.tomorrowData == null ? true : false}
+          disabled={
+            props.drinkData == null && props.tomorrowData == null ? true : false
+          }
           dir="right"
         />
       </div>

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-const ViewDate = ({ date, abvDiff }) => {
+const ViewDate = ({ date, abvDiff, dayData }) => {
   const [isToday, setIsToday] = useState(false);
+  const [tomorrow, setTomorrow] = useState(false);
 
   useEffect(() => {
     setIsToday(dateToday(new Date(date)));
@@ -38,15 +39,19 @@ const ViewDate = ({ date, abvDiff }) => {
       </div>
       <div className="text-sm md:text-base h-[1.25rem] md:h-[1.5rem] font-semibold text-center text-neutral-400">
         {isToday && <span>Today</span>}
-        {abvDiff > 0 && (
-          <span className="text-green-500 dark:text-green-400 ml-2">
-            <FontAwesomeIcon icon={faCaretUp} /> {abvDiff}% ABV
-          </span>
-        )}
-        {abvDiff < 0 && (
-          <span className="text-red-500 dark:text-red-400 ml-2">
-            <FontAwesomeIcon icon={faCaretDown} /> {abvDiff}% ABV
-          </span>
+        {dayData != null && (
+          <>
+            {abvDiff > 0 && (
+              <span className="text-green-500 dark:text-green-400 ml-2">
+                <FontAwesomeIcon icon={faCaretUp} /> {abvDiff}% ABV
+              </span>
+            )}
+            {abvDiff < 0 && (
+              <span className="text-red-500 dark:text-red-400 ml-2">
+                <FontAwesomeIcon icon={faCaretDown} /> {abvDiff}% ABV
+              </span>
+            )}
+          </>
         )}
       </div>
     </div>
