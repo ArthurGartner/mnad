@@ -19,10 +19,10 @@ jobs:
           node-version: "14.x"
 
       - name: Change directory
-        uses: actions/checkout@v2
+        run: cd client
 
       - name: Install all dependencies
-        run: cd client
+        run: npm install
 
       - name: Build
         run: npm run build # The build command of your project
