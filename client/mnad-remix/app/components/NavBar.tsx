@@ -6,6 +6,15 @@ export default function NavBar() {
   const navRef = useRef<HTMLUListElement>(null);
   const location = useLocation();
 
+  const navLinks = {
+    "The Bar": "",
+    "Analytics & Trends": "data",
+    "All Drink": "drinks",
+    "Create Your Own": "create",
+    "Drinking Games": "games",
+    About: "about",
+  };
+
   const updateUnderline = (element: Element) => {
     const itemRect = element.getBoundingClientRect();
     const navRect = navRef.current?.getBoundingClientRect();
@@ -30,17 +39,21 @@ export default function NavBar() {
     }
   }, [location]);
 
+  Object.entries(navLinks).forEach(([key, value]) => {
+    console.log(`Key: ${key}, Value: ${value}`);
+  });
+
   return (
-    <nav className="bg-gray-100">
-      <ul ref={navRef} className="flex justify-around relative p-0">
-        {["Data", "About", "Drinks", "Games"].map((text) => (
-          <li key={text} className="mx-2">
+    <nav>
+      <ul ref={navRef} className="flex relative p-0">
+        {Object.entries(navLinks).map(([key, value]) => (
+          <li key={value} className="mx-[20px] text-[1.4rem] font-semibold">
             <NavLink
-              to={`/${text.toLowerCase()}`}
-              className="text-gray-700 no-underline hover:text-blue-500 font-sans"
+              to={`/${value.toLowerCase()}`}
+              className="text-gray-700 no-underline hover:text-primary-light "
               onClick={handleItemClick}
             >
-              {text}
+              {key}
             </NavLink>
           </li>
         ))}

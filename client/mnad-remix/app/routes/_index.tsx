@@ -9,5 +9,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  return <NavBar />;
+  return (
+    <>
+      <div>This is the index page</div>
+    </>
+  );
 }
