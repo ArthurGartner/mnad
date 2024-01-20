@@ -9,7 +9,7 @@ export default function NavBar() {
   const navLinks = {
     "The Bar": "",
     "Analytics & Trends": "data",
-    "All Drink": "drinks",
+    "All Drinks": "drinks",
     "Create Your Own": "create",
     "Drinking Games": "games",
     About: "about",
@@ -47,10 +47,10 @@ export default function NavBar() {
     <nav>
       <ul ref={navRef} className="flex relative p-0">
         {Object.entries(navLinks).map(([key, value]) => (
-          <li key={value} className="mx-[20px] text-[1.4rem] font-semibold">
+          <li key={value} className="text-nav-link mr-[30px] font-semibold">
             <NavLink
               to={`/${value.toLowerCase()}`}
-              className="text-gray-700 no-underline hover:text-primary-light "
+              className="text-gray-700 no-underline hover:text-primary-light"
               onClick={handleItemClick}
             >
               {key}

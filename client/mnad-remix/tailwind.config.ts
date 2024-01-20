@@ -12,6 +12,11 @@ export default {
           light: "#43f6e1",
           dark: "#6ad9cb",
         },
+        label: "#a2a2a2",
+      },
+      fontSize: {
+        "nav-link": "1.2rem",
+        "label-size": "1.6rem",
       },
     },
   },

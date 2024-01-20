@@ -31,11 +31,16 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Header />
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+        <div className="2xl:w-[2000px] mx-auto">
+          <Header />
+          <div className="px-[60px]">
+            {" "}
+            <Outlet />
+            <ScrollRestoration />
+            <Scripts />
+            <LiveReload />
+          </div>
+        </div>
       </body>
     </html>
   );
