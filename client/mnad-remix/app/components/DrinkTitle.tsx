@@ -9,7 +9,7 @@ type DrinkTitleProps = {
 export default function DrinkTitle({ drinkInfo }: DrinkTitleProps) {
   return (
     <>
-      <div className="font-semibold mb-[20px]">
+      <div className="font-semibold">
         <div className="text-label text-[1.6rem] h-[1.8rem]">Today's Drink</div>
         <div className="text-[2.5rem] h-[3.2rem]">Moscow Mule</div>
         <div className="text-label">

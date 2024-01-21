@@ -8,7 +8,7 @@ export default function BarDrinkHeroPic() {
           <img
             src={DrinkGlass}
             alt="Drink Glass"
-            className="scale-150 h-full mx-auto"
+            className="scale-[1.75] h-full mx-auto"
           />
         </div>
       </div>

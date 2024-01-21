@@ -33,7 +33,7 @@ export default function App() {
       <body>
         <div className="2xl:w-[2000px] mx-auto">
           <Header />
-          <div className="px-[60px]">
+          <div className="mx-[60px] overflow-hidden">
             {" "}
             <Outlet />
             <ScrollRestoration />
