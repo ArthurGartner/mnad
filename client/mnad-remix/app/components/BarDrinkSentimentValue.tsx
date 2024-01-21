@@ -1,15 +1,26 @@
-export default function BarDrinkSentimentValue() {
+import AnimatedNumber from "./AnimatedNumber";
+
+interface BarDrinkSentimentValueProps {
+  value: number;
+}
+
+const BarDrinkSentimentValue: React.FC<BarDrinkSentimentValueProps> = ({
+  value,
+}) => {
   return (
     <>
-      <div className="flex-col w-fit">
-        <div className="text-[10rem] text-label h-[35rem] w-auto">
-          <span className="text-[30rem] font-semibold text-orange-500">32</span>
-          %
-        </div>
-        <div className="text-end text-label-size text-label font-semibold">
+      <div className="flex-col w-full items-end">
+        <div className="text-start text-label-size text-label font-semibold mb-[-8rem]">
           Calculated Sentiment Score
+        </div>
+        <div>
+          <div className="text-[30rem] font-semibold text-orange-500">
+            <AnimatedNumber value={value || 0} />
+          </div>
         </div>
       </div>
     </>
   );
-}
+};
+
+export default BarDrinkSentimentValue;

@@ -1,14 +1,21 @@
+import { useEffect, useState } from "react";
 import BarDrinkSentimentValue from "./BarDrinkSentimentValue";
 import BarSentimentBar from "./BarSentimentBar";
 import BarSentimentLabel from "./BarSentimentLabel";
 import bgIcon from "~/assets/bg_vector_1.svg";
 
-export default function BarDinkSentimentReview() {
+interface BarDinkSentimentReviewProps {
+  sentimentValue: number;
+}
+
+const BarDinkSentimentReview: React.FC<BarDinkSentimentReviewProps> = ({
+  sentimentValue,
+}) => {
   return (
     <div>
-      <div className="flex relative">
+      <div className="flex relative mb-[-10rem]">
         <div className="w-3/5 z-10">
-          <BarDrinkSentimentValue />
+          <BarDrinkSentimentValue value={sentimentValue} />
         </div>
         <div className="flex w-full items-center justify-end z-10">
           <BarSentimentLabel />
@@ -19,8 +26,10 @@ export default function BarDinkSentimentReview() {
         />
       </div>
       <div className="py-[50px]">
-        <BarSentimentBar value={40} />
+        <BarSentimentBar value={sentimentValue} />
       </div>
     </div>
   );
-}
+};
+
+export default BarDinkSentimentReview;

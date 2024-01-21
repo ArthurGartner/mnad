@@ -4,7 +4,7 @@ interface BarSentimentBarProps {
 
 const BarSentimentBar: React.FC<BarSentimentBarProps> = ({ value }) => {
   // Ensure the value is within 0 to 100 range
-  const normalizedValue = Math.min(100, Math.max(0, value));
+  const normalizedValue = Math.min(100, Math.max(0, value || 0));
 
   return (
     <div>
@@ -15,7 +15,7 @@ const BarSentimentBar: React.FC<BarSentimentBarProps> = ({ value }) => {
         <div
           style={{
             width: `${normalizedValue}%`,
-            transition: "width 1s ease-in-out",
+            transition: "width 3s ease-in-out",
           }}
           className="bg-secondary-light h-full rounded-3xl"
         ></div>

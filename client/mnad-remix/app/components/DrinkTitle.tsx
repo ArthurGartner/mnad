@@ -14,7 +14,8 @@ export default function DrinkTitle({ drinkInfo }: DrinkTitleProps) {
         <div className="text-[2.5rem] h-[3.2rem]">Moscow Mule</div>
         <div className="text-label">
           <div>
-            {`${drinkInfo.abv}`}% ABV ICON 3% • {`${drinkInfo.liked}`}% Liked
+            {`${drinkInfo.abv}`}% ABV ICON 3% • {`${drinkInfo.liked}`}% Liked •
+            Recommended 27 Times
           </div>
         </div>
       </div>

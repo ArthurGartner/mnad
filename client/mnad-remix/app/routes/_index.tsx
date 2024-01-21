@@ -1,7 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useEffect, useState } from "react";
+import BarDayAnalytics from "~/components/BarDayAnalytics";
 import BarDrinkHero from "~/components/BarDrinkHero";
 import BarDinkSentimentReview from "~/components/BarDrinkSentimentReview";
-import NavBar from "~/components/NavBar";
 
 export const meta: MetaFunction = () => {
   return [
@@ -11,10 +12,17 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const [sentimentValue, setSentimentValue] = useState(0);
+
+  useEffect(() => {
+    setSentimentValue(100);
+  }, []);
+
   return (
     <>
       <BarDrinkHero />
-      <BarDinkSentimentReview />
+      <BarDinkSentimentReview sentimentValue={sentimentValue} />
+      <BarDayAnalytics sentimentValue={sentimentValue} />
     </>
   );
 }
