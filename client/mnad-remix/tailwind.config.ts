@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "./app/styles/colors";
 
 export default {
   content: ["./app/**/*.{js,jsx,ts,tsx}"],
@@ -22,6 +23,15 @@ export default {
           },
         },
         label: "#a2a2a2",
+        gloomyRed: {
+          light: colors.gloomyRed.light,
+        },
+        balancedYellow: {
+          light: colors.balancedYellow.light,
+        },
+        cheerfulGreen: {
+          light: colors.cheerfulGreen.light,
+        },
       },
       fontSize: {
         "nav-link": "1.2rem",
