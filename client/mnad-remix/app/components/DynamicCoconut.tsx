@@ -1,5 +1,4 @@
 import Coconut from "~/assets/coconut_dynamic.svg";
-import Smile from "~/assets/coconut_smile.svg";
 import SVGSmileModifier from "./SVGModifier";
 
 interface DynamicCoconutProps {
