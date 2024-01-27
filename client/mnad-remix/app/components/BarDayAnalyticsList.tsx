@@ -2,7 +2,7 @@ import BarDayAnalyticsCategory from "./BarDayAnalyticsCategory";
 
 const BarDayAnalyticsList: React.FC = () => {
   const categories = [
-    { name: "Entertainment", percent: 100 },
+    { name: "Entertainment", percent: +100 },
     { name: "Politics", percent: -1 },
     { name: "Technology", percent: -1 },
     { name: "Business", percent: -1 },
@@ -13,12 +13,7 @@ const BarDayAnalyticsList: React.FC = () => {
     <>
       <div>
         {categories.map((cat) => (
-          <div>
-            <BarDayAnalyticsCategory
-              category={cat.name}
-              percent={cat.percent}
-            />
-          </div>
+          <BarDayAnalyticsCategory category={cat.name} percent={cat.percent} />
         ))}
       </div>
     </>

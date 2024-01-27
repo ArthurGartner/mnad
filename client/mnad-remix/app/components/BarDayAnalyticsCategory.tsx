@@ -12,9 +12,9 @@ const BarDayAnalyticsCategory: React.FC<BarDayAnalyticsCategoryProps> = ({
   return (
     <>
       <div>
-        <div className="flex font-semibold">
-          <div className="text-[120px] leading-tight">
-            <AnimatedNumber value={percent} />
+        <div className="flex font-semibold items-end">
+          <div className="text-[120px] h-[137px] w-[350px] mr-[20px] leading-tight text-right">
+            <AnimatedNumber value={percent} plus={true} />
           </div>
           <div className="text-[70px] leading-tight">{category}</div>
         </div>

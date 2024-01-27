@@ -4,11 +4,13 @@ import colors from "~/styles/colors";
 interface AnimatedNumberProps {
   value: number;
   duration?: number;
+  plus?: boolean;
 }
 
 const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
   value,
   duration = 300,
+  plus = false,
 }) => {
   const [displayValue, setDisplayValue] = useState(value);
   const [textColor, setTextColor] = useState("red");
@@ -62,7 +64,12 @@ const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
     window.requestAnimationFrame(step);
   }, [value, duration, displayValue]);
 
-  return <div style={{ color: textColor }}>{Math.round(displayValue)}</div>;
+  return (
+    <div style={{ color: textColor }}>
+      {plus && Math.round(displayValue) > 0 && "+"}
+      {Math.round(displayValue)}
+    </div>
+  );
 };
 
 export default AnimatedNumber;

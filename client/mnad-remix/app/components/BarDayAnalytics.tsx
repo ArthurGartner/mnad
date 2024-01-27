@@ -19,7 +19,7 @@ const BarDayAnalytics: React.FC<BarDayAnalyticsProps> = ({
           />
           <DynamicCoconut sentimentValue={sentimentValue} />
         </div>
-        <div>
+        <div className="flex-col my-auto">
           <BarDayAnalyticsList />
         </div>
       </div>
