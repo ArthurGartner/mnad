@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { TiStarFullOutline } from "react-icons/ti";
 import colors from "~/styles/colors";
 
 interface AnimatedButtonProps {
@@ -35,12 +34,12 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         },
       });
       // Then revert the scale to 1
-      await iconControls.start({ scale: 1 });
+      await iconControls.start({ scale: 1, transition: { duration: 0.08 } });
       await buttonControls.start({
         backgroundColor: iconColor,
         transition: { duration: 0.25 },
       });
-      await iconControls.start({ color: colors.label });
+      await iconControls.start({ color: bgColor });
     } else {
       // If it was clicked, revert the scale to 1 and color to white
       iconControls.start({

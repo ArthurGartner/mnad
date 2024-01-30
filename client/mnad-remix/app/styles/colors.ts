@@ -10,8 +10,8 @@ export const colors = {
   },
   label: "#a2a2a2",
   inactiveButton: "#DADADA",
-  backgroundLight: "#fefce8",
-  disagreeRed: "#f43f5e",
+  backgroundLight: "#f6f6f6",
+  disagreeRed: "#ff3a30",
   favoriteYellow: "#ffcc00",
 };
 
