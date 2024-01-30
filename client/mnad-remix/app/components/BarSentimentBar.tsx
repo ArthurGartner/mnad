@@ -1,3 +1,5 @@
+import { getSentimentLabel } from "~/util/helperfunctions";
+
 interface BarSentimentBarProps {
   value: number; // Value between 0 and 100
 }
@@ -21,8 +23,8 @@ const BarSentimentBar: React.FC<BarSentimentBarProps> = ({ value }) => {
         ></div>
       </div>
       <div className="w-full flex justify-between text-label text-label-size font-semibold">
-        <div>Gloomy</div>
-        <div>Cheerful</div>
+        <div>{getSentimentLabel(0)}</div>
+        <div>{getSentimentLabel(100)}</div>
       </div>
     </div>
   );

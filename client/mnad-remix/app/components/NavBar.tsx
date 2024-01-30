@@ -39,10 +39,6 @@ export default function NavBar() {
     }
   }, [location]);
 
-  Object.entries(navLinks).forEach(([key, value]) => {
-    console.log(`Key: ${key}, Value: ${value}`);
-  });
-
   return (
     <nav>
       <ul ref={navRef} className="flex relative p-0">

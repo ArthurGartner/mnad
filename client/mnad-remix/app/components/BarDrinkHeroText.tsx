@@ -16,14 +16,14 @@ export default function BarDrinkHeroText() {
       <div className="flex">
         <div className="mr-2">
           <Button
-            label="View Ingredients"
+            label="Make Your Own"
             onClick={handleButtonClick}
             variant="primary"
           />
         </div>
 
         <Button
-          label="Did you Know?"
+          label="Did You Know?"
           onClick={handleButtonClick}
           variant="secondary"
         />

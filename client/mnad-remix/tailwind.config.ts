@@ -22,7 +22,8 @@ export default {
             light: "#05bfe8",
           },
         },
-        label: "#a2a2a2",
+        label: colors.label,
+        inactiveButton: colors.inactiveButton,
         gloomyRed: {
           light: colors.gloomyRed.light,
         },
@@ -31,6 +32,9 @@ export default {
         },
         cheerfulGreen: {
           light: colors.cheerfulGreen.light,
+        },
+        background: {
+          light: colors.backgroundLight,
         },
       },
       fontSize: {

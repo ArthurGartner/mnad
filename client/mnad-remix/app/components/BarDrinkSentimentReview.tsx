@@ -18,7 +18,7 @@ const BarDinkSentimentReview: React.FC<BarDinkSentimentReviewProps> = ({
           <BarDrinkSentimentValue value={sentimentValue} />
         </div>
         <div className="flex w-full items-center justify-end z-10">
-          <BarSentimentLabel />
+          <BarSentimentLabel sentimentValue={sentimentValue} />
         </div>
         <img
           src={bgIcon}

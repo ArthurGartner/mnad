@@ -30,7 +30,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-background-light">
         <div className="2xl:w-[2000px] mx-auto">
           <Header />
           <div className="px-[60px] overflow-hidden">

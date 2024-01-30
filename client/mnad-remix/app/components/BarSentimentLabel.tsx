@@ -1,29 +1,47 @@
 import { useState, useEffect } from "react";
-import TextValueChangeAnimation from "./AnimatedTextChange";
 import TextAppearAnimation from "./TextAppearAnimation";
+import { getSentimentLabel, interpolateColor } from "~/util/helperfunctions";
+import GradientText from "./GradientText";
 
-const BarSentimentLabel: React.FC = () => {
-  const [sentimentLabel, setSentimentLabel] = useState("Gloomy");
+interface BarSentimentLabelProps {
+  sentimentValue: number;
+}
+
+const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
+  sentimentValue,
+}) => {
+  const [sentimentLabel, setSentimentLabel] = useState(getSentimentLabel(0));
+  const colorRange = 3;
+
+  // useEffect(() => {
+  //   const delayed = async () => {
+  //     await new Promise((resolve) => setTimeout(resolve, 10000));
+  //   };
+
+  //   delayed().then(() => {
+  //     setSentimentLabel("Happy");
+  //   });
+  // }, []);
 
   useEffect(() => {
-    const delayed = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 10000));
+    const updateSentimentLabel = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      setSentimentLabel(getSentimentLabel(sentimentValue));
     };
-
-    delayed().then(() => {
-      setSentimentLabel("Happy");
-    });
-  }, []);
+    updateSentimentLabel();
+  }, [sentimentValue]);
 
   return (
     <>
       <div className="text-end font-semibold">
         <div className="text-[10rem]">
-          <TextAppearAnimation
-            text={sentimentLabel}
-            delay={0}
-            key={sentimentLabel}
-          />
+          {/* <GradientText
+            color1={interpolateColor(sentimentValue - colorRange)}
+            color2={interpolateColor(sentimentValue + colorRange)}
+          >
+
+          </GradientText> */}
+          <TextAppearAnimation text={sentimentLabel} key={sentimentLabel} />
         </div>
         <div className="text-label text-label-size">
           ICON 2% • Based on 15 Articles

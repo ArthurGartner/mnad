@@ -1,4 +1,5 @@
 import { Drink } from "~/util/types";
+import LikeDislike from "./LikeDislike";
 
 type DrinkTitleProps = {
   drinkInfo: Drink;
@@ -11,7 +12,12 @@ export default function DrinkTitle({ drinkInfo }: DrinkTitleProps) {
     <>
       <div className="font-semibold">
         <div className="text-label text-[1.6rem] h-[1.8rem]">Today's Drink</div>
-        <div className="text-[2.5rem] h-[3.2rem]">Moscow Mule</div>
+        <div className="flex justify-between">
+          <div className="text-[2.5rem] h-[3.2rem]">Moscow Mule</div>
+          <div className="my-auto">
+            <LikeDislike />
+          </div>
+        </div>
         <div className="text-label">
           <div>
             {`${drinkInfo.abv}`}% ABV ICON 3% • {`${drinkInfo.liked}`}% Liked •
