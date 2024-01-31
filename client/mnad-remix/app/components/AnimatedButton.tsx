@@ -26,8 +26,8 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         scale: [1, 2.25, 2.5, 2.6],
         color: [bgColor, bgColor, iconColor, iconColor],
         transition: {
-          duration: 0.5,
-          times: [0, 0.25, 0.5],
+          duration: 0.4,
+          times: [0, 0.25, 0.4],
           // type: "spring", // Use "spring" type for a bouncing effect
           // stiffness: 60, // Adjust the stiffness value to control the bounce
           // damping: 10,
