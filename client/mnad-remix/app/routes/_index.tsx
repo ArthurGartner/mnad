@@ -16,7 +16,7 @@ export default function Index() {
   const [sentimentValue, setSentimentValue] = useState(0);
 
   useEffect(() => {
-    setSentimentValue(5);
+    setSentimentValue(25);
   }, []);
 
   return (

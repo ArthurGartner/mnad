@@ -1,16 +1,24 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
+import GradientText from "./GradientText";
+import { interpolateColor } from "~/util/helperfunctions";
 
 interface TextAppearAnimationProps {
   text: string;
   delay?: number;
   key: string;
+  gradient?: boolean;
+  color1: string;
+  color2: string;
 }
 
 const TextAppearAnimation: React.FC<TextAppearAnimationProps> = ({
   text,
   delay = 0,
   key,
+  gradient = false,
+  color1,
+  color2,
 }) => {
   const controls = useAnimation();
 
@@ -41,7 +49,12 @@ const TextAppearAnimation: React.FC<TextAppearAnimationProps> = ({
       exit={exitAnimation} // Add exit animation
       transition={{ duration: 0.3 }} // Adjust the exit animation duration as needed
     >
-      {text}
+      {gradient && (
+        <GradientText color1={color1} color2={color2}>
+          {text}
+        </GradientText>
+      )}
+      {!gradient && <>{text}</>}
     </motion.div>
   );
 };

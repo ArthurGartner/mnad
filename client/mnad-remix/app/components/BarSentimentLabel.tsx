@@ -11,7 +11,7 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
   sentimentValue,
 }) => {
   const [sentimentLabel, setSentimentLabel] = useState(getSentimentLabel(0));
-  const colorRange = 3;
+  const colorRange = 20;
 
   // useEffect(() => {
   //   const delayed = async () => {
@@ -35,13 +35,13 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
     <>
       <div className="text-end font-semibold">
         <div className="text-[10rem]">
-          {/* <GradientText
+          <TextAppearAnimation
+            text={sentimentLabel}
+            key={sentimentLabel}
+            gradient={true}
             color1={interpolateColor(sentimentValue - colorRange)}
             color2={interpolateColor(sentimentValue + colorRange)}
-          >
-
-          </GradientText> */}
-          <TextAppearAnimation text={sentimentLabel} key={sentimentLabel} />
+          />
         </div>
         <div className="text-label text-label-size">
           ICON 2% • Based on 15 Articles
