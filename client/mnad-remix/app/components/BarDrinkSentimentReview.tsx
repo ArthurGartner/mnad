@@ -14,7 +14,7 @@ const BarDinkSentimentReview: React.FC<BarDinkSentimentReviewProps> = ({
   return (
     <div>
       <div className="flex relative mb-[-10rem]">
-        <div className="w-3/5 z-10">
+        <div className="w-3/5 z-10 overflow-hidden">
           <BarDrinkSentimentValue value={sentimentValue} />
         </div>
         <div className="flex w-full items-center justify-end z-10">

@@ -4,15 +4,13 @@ import DrinkTitle from "./DrinkTitle";
 
 interface BarDrinkHeroTextProps {
   openIngredients: () => void;
+  openDidYouKnow: () => void;
 }
 
 const BarDrinkHeroText: React.FC<BarDrinkHeroTextProps> = ({
   openIngredients,
+  openDidYouKnow,
 }) => {
-  const handleButtonClick = () => {
-    console.log("Button clicked");
-  };
-
   return (
     <>
       <DrinkTitle drinkInfo={{ abv: 30, liked: 88 }} />
@@ -30,7 +28,7 @@ const BarDrinkHeroText: React.FC<BarDrinkHeroTextProps> = ({
 
         <Button
           label="Did You Know?"
-          onClick={handleButtonClick}
+          onClick={openDidYouKnow}
           variant="secondary"
         />
       </div>

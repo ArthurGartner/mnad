@@ -5,6 +5,7 @@ import BarDayAnalytics from "~/components/BarDayAnalytics";
 import BarDrinkHero from "~/components/BarDrinkHero";
 import BarDinkSentimentReview from "~/components/BarDrinkSentimentReview";
 import Modal from "~/components/Modal";
+import ModalDidYouKnow from "~/components/ModalDidYouKnow";
 import ModalDrinkIngredients from "~/components/ModalDrinkIngredients";
 
 export const meta: MetaFunction = () => {
@@ -27,6 +28,10 @@ export default function Index() {
     setModalContent(<ModalDrinkIngredients />);
     setIsModalOpen(true);
   };
+  const openDidYouKnowModal = () => {
+    setModalContent(<ModalDidYouKnow />);
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     setSentimentValue(25);
@@ -37,7 +42,10 @@ export default function Index() {
       <div>
         {isModalOpen && <Modal onClose={closeModal} children={modalContent} />}
         <div className="relative">
-          <BarDrinkHero openIngredients={openIngredientsModal} />
+          <BarDrinkHero
+            openIngredients={openIngredientsModal}
+            openDidYouKnow={openDidYouKnowModal}
+          />
           <BarDinkSentimentReview sentimentValue={sentimentValue} />
           <BarDayAnalytics sentimentValue={sentimentValue} />
           <BarDateSelect />
