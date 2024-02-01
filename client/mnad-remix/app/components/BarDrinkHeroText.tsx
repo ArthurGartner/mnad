@@ -2,7 +2,13 @@ import BarDrinkHeroSummary from "./BarDrinkHeroSummary";
 import Button from "./Button";
 import DrinkTitle from "./DrinkTitle";
 
-export default function BarDrinkHeroText() {
+interface BarDrinkHeroTextProps {
+  openIngredients: () => void;
+}
+
+const BarDrinkHeroText: React.FC<BarDrinkHeroTextProps> = ({
+  openIngredients,
+}) => {
   const handleButtonClick = () => {
     console.log("Button clicked");
   };
@@ -17,7 +23,7 @@ export default function BarDrinkHeroText() {
         <div className="mr-2">
           <Button
             label="Make Your Own"
-            onClick={handleButtonClick}
+            onClick={openIngredients}
             variant="primary"
           />
         </div>
@@ -30,4 +36,6 @@ export default function BarDrinkHeroText() {
       </div>
     </>
   );
-}
+};
+
+export default BarDrinkHeroText;

@@ -1,14 +1,18 @@
 import BarDrinkHeroPic from "./BarDrinkHeroPic";
 import BarDrinkHeroText from "./BarDrinkHeroText";
 
-export default function BarDrinkHero() {
+interface BarDrinkHeroProps {
+  openIngredients: () => void;
+}
+
+const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({ openIngredients }) => {
   return (
     <>
       <div className="flex h-[40vh] relative z-10">
         <div className="w-3/5 flex items-center justify-center">
           <div className="flex">
             <div>
-              <BarDrinkHeroText />
+              <BarDrinkHeroText openIngredients={openIngredients} />
             </div>
           </div>
         </div>
@@ -16,4 +20,6 @@ export default function BarDrinkHero() {
       </div>
     </>
   );
-}
+};
+
+export default BarDrinkHero;

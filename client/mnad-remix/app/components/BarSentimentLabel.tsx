@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import TextAppearAnimation from "./TextAppearAnimation";
 import { getSentimentLabel, interpolateColor } from "~/util/helperfunctions";
 import GradientText from "./GradientText";
+import { sentimentLabelColorRange } from "~/util/constants";
 
 interface BarSentimentLabelProps {
   sentimentValue: number;
@@ -11,7 +12,6 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
   sentimentValue,
 }) => {
   const [sentimentLabel, setSentimentLabel] = useState(getSentimentLabel(0));
-  const colorRange = 20;
 
   // useEffect(() => {
   //   const delayed = async () => {
@@ -39,8 +39,8 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
             text={sentimentLabel}
             key={sentimentLabel}
             gradient={true}
-            color1={interpolateColor(sentimentValue - colorRange)}
-            color2={interpolateColor(sentimentValue + colorRange)}
+            color1={interpolateColor(sentimentValue - sentimentLabelColorRange)}
+            color2={interpolateColor(sentimentValue + sentimentLabelColorRange)}
           />
         </div>
         <div className="text-label text-label-size">
