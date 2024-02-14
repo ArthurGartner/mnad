@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import { useEffect, useState } from "react";
+import BarArticlesReview from "~/components/BarArticlesReview";
 import BarDateSelect from "~/components/BarDateSelect";
 import BarDayAnalytics from "~/components/BarDayAnalytics";
 import BarDrinkHero from "~/components/BarDrinkHero";
@@ -34,7 +35,7 @@ export default function Index() {
   };
 
   useEffect(() => {
-    setSentimentValue(25);
+    setSentimentValue(0);
   }, []);
 
   return (
@@ -49,6 +50,7 @@ export default function Index() {
           <BarDinkSentimentReview sentimentValue={sentimentValue} />
           <BarDayAnalytics sentimentValue={sentimentValue} />
           <BarDateSelect />
+          <BarArticlesReview />
         </div>
       </div>
     </>

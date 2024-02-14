@@ -5,12 +5,14 @@ interface AnimatedNumberProps {
   value: number;
   duration?: number;
   plus?: boolean;
+  color?: boolean;
 }
 
 const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
   value,
   duration = 300,
   plus = false,
+  color = true,
 }) => {
   const [displayValue, setDisplayValue] = useState(value);
   const [textColor, setTextColor] = useState("red");
@@ -35,7 +37,7 @@ const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
   }, [value, duration, displayValue]);
 
   return (
-    <div style={{ color: textColor }}>
+    <div style={color ? { color: textColor } : {}}>
       {plus && Math.round(displayValue) > 0 && "+"}
       {Math.round(displayValue)}
     </div>

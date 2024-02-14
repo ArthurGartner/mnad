@@ -17,12 +17,8 @@ const ModalDrinkIngredients: React.FC = () => {
             {abvValue}% ABV • {numIngredients} Ingredients • Suggested when
             sentiment is{" "}
             <GradientText
-              color1={interpolateColor(
-                averageSentimentScoreSuggested - sentimentLabelColorRange
-              )}
-              color2={interpolateColor(
-                averageSentimentScoreSuggested + sentimentLabelColorRange
-              )}
+              color1={interpolateColor(averageSentimentScoreSuggested)}
+              color2={interpolateColor(averageSentimentScoreSuggested)}
             >
               {getSentimentLabel(averageSentimentScoreSuggested)}
             </GradientText>

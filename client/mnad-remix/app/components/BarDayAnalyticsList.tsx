@@ -2,11 +2,11 @@ import BarDayAnalyticsCategory from "./BarDayAnalyticsCategory";
 
 const BarDayAnalyticsList: React.FC = () => {
   const categories = [
-    { name: "Entertainment", percent: +100 },
-    { name: "Politics", percent: -1 },
-    { name: "Technology", percent: -1 },
-    { name: "Business", percent: -1 },
-    { name: "Science", percent: -1 },
+    { name: "Entertainment", percent: 6 },
+    { name: "Politics", percent: 5 },
+    { name: "Technology", percent: 3 },
+    { name: "Business", percent: -2 },
+    { name: "Science", percent: -4 },
   ];
 
   return (
