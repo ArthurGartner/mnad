@@ -23,19 +23,23 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div
-      className={`flex items-center h-[50px] z-20 sticky top-0 bg-background-light ${
-        isScrolled ? "shadow-xl" : ""
-      }`}
-      style={headerStyle}
-    >
-      <div className="py-1 h-full w-[60px]">
-        <img src={Icon} alt="Icon" className="h-full" />
+    <>
+      <div
+        className={` z-20 sticky top-0 bg-background-light ${
+          isScrolled ? "shadow-xl" : ""
+        }`}
+        style={headerStyle}
+      >
+        <div className="flex items-center h-[50px] mx-auto 2xl:w-[2000px]">
+          <div className="py-1 h-full w-[60px]">
+            <img src={Icon} alt="Icon" className="h-full" />
+          </div>
+          <div>
+            <NavBar />
+          </div>
+        </div>
       </div>
-      <div>
-        <NavBar />
-      </div>
-    </div>
+    </>
   );
 };
 

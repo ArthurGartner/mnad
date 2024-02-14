@@ -1,5 +1,13 @@
+import ArticleItem from "./ArticleItem";
+
 const BarArticleList: React.FC = () => {
-  return <>Article List</>;
+  return (
+    <>
+      <div>
+        <ArticleItem />
+      </div>
+    </>
+  );
 };
 
 export default BarArticleList;

@@ -31,9 +31,9 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-background-light relative overflow-x-hidden">
-        <div className="2xl:w-[2000px] mx-auto">
+        <div className="w-full mx-auto">
           <Header />
-          <div className="px-[60px] overflow-hidden">
+          <div className="2xl:w-[2000px] px-[60px] overflow-hidden mx-auto">
             {" "}
             <Outlet />
             <ScrollRestoration />

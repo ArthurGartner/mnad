@@ -30,7 +30,7 @@ const BarArticlesReview: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="py-5">
+      <div className="pt-5 pb-[150px]">
         <BarArticleList />
       </div>
     </>
