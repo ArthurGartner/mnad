@@ -27,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
     <motion.button
       onClick={onClick}
       className={`${baseStyles} ${variantStyles}`}
+      whileHover={{ scale: 1.05 }}
     >
       {label}
     </motion.button>

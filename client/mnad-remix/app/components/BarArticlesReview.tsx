@@ -17,7 +17,7 @@ const BarArticlesReview: React.FC = () => {
         <div className="flex justify-between">
           <div className="text-[2.5rem] h-[3.2rem]">Articles from the Day</div>
         </div>
-        <div className="text-label">
+        <div className="text-label text-label-size">
           <div className="flex">
             <span style={{ marginRight: "4px" }}>
               <AnimatedNumber value={numArticles} color={false} />
