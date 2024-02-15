@@ -9,6 +9,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import stylesheet from "~/styles/tailwind.css";
+import customStyleSheet from "~/styles/custom.css";
 import Header from "./components/Header";
 
 export const links: LinksFunction = () => [
@@ -19,6 +20,7 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap",
   },
+  { rel: "stylesheet", href: customStyleSheet },
 ];
 
 export default function App() {

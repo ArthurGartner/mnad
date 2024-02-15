@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
 import SidebarMenuItem from "./SidebarMenuItem";
+import { BiSolidDrink } from "react-icons/bi";
+import { IoIosInformationCircle } from "react-icons/io";
+import { FaHammer } from "react-icons/fa";
+import { FaBaseballBatBall } from "react-icons/fa6";
+import { VscGraph } from "react-icons/vsc";
+import { RiBeerFill } from "react-icons/ri";
 
 const variants = {
   open: {
@@ -10,13 +16,32 @@ const variants = {
   },
 };
 
-const itemIds = [0, 1, 2, 3, 4];
+const menuIcons: { [key: string]: JSX.Element } = {
+  about: <IoIosInformationCircle />,
+  create: <FaHammer />,
+  games: <FaBaseballBatBall />,
+  data: <VscGraph />,
+  drinks: <RiBeerFill />,
+};
 
-const NavBarVerticalList: React.FC = () => {
+interface NavBarVerticalListProps {
+  navLinksObject: { [key: string]: string };
+}
+
+const NavBarVerticalList: React.FC<NavBarVerticalListProps> = ({
+  navLinksObject,
+}) => {
   return (
-    <motion.ul variants={variants}>
-      {itemIds.map((i) => (
-        <SidebarMenuItem i={i} key={i} />
+    <motion.ul variants={variants} className="py-5 px-[40px]">
+      {Object.entries(navLinksObject).map(([key, value]) => (
+        <div className="py-2 cursor-pointer">
+          <SidebarMenuItem
+            navLinkKey={key}
+            navLinkValue={value}
+            key={value}
+            icon={menuIcons[value] || <BiSolidDrink />}
+          />
+        </div>
       ))}
     </motion.ul>
   );

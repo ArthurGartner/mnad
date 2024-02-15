@@ -1,4 +1,7 @@
+import { NavLink } from "@remix-run/react";
 import { motion } from "framer-motion";
+import React from "react";
+import { useMatch, useResolvedPath } from "@remix-run/react";
 
 const variants = {
   open: {
@@ -17,18 +20,48 @@ const variants = {
   },
 };
 
-const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
+interface SidebarMenuItemProps {
+  navLinkKey: string;
+  navLinkValue: string;
+  icon: JSX.Element;
+}
 
-const SidebarMenuItem: React.FC = ({ i }) => {
-  const style = { border: `2px solid ${colors[i]}` };
+const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
+  navLinkKey,
+  navLinkValue,
+  icon,
+}) => {
+  // Resolve the path to account for relative paths
+  let resolved = useResolvedPath(`/${navLinkValue.toLowerCase()}`);
+  // Determine if the current route matches the link's destination
+  let match = useMatch({ path: resolved.pathname, end: true });
+
   return (
-    <motion.li
-      variants={variants}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <div className="icon-placeholder" style={style} />
-      <div className="text-placeholder" style={style} />
+    <motion.li variants={variants}>
+      <div className="flex">
+        <div className="text-nav-link mr-[30px] font-semibold">
+          <NavLink
+            to={`/${navLinkValue.toLowerCase()}`}
+            className={({ isActive }) =>
+              ` hover:text-primary-light ${
+                isActive ? "active-sidebar-link-active" : "active-sidebar-link"
+              }`
+            }
+          >
+            <div className="flex">
+              <div className="w-[35px]">
+                {React.cloneElement(icon, { className: "h-[25px] w-[25px]" })}
+              </div>
+              <div>{navLinkKey}</div>
+            </div>
+            <span
+              className={`block h-[4px] bg-primary-light transition-all duration-300 ${
+                match ? "w-full" : "w-0"
+              }`}
+            />
+          </NavLink>
+        </div>
+      </div>
     </motion.li>
   );
 };

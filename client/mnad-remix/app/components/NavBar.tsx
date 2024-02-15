@@ -6,11 +6,10 @@ import NavBarVerticalList from "./NavBarVerticalList";
 
 export default function NavBar() {
   const [underlineStyle, setUnderlineStyle] = useState({});
-  const [isOpen, toggleOpen] = useCycle(false, true);
+  const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef<HTMLUListElement>(null);
   const location = useLocation();
-  const containerRef = useRef(null);
-  // const { height } = useDimensions(containerRef);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const navLinks = {
     "The Bar": "",
@@ -37,6 +36,26 @@ export default function NavBar() {
   };
 
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        event.target instanceof Node &&
+        !containerRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    // Add event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [containerRef]);
+
+  useEffect(() => {
     const activeItem = navRef.current?.querySelector(
       `a[href='${location.pathname}']`
     );
@@ -53,15 +72,18 @@ export default function NavBar() {
         stiffness: 20,
         restDelta: 2,
       },
+      boxShadow:
+        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
     }),
     closed: {
-      clipPath: "circle(30px at 285px 8px)",
+      clipPath: "circle(30px at 335px 8px)",
       transition: {
         delay: 0.5,
         type: "spring",
         stiffness: 400,
         damping: 40,
       },
+      boxShadow: "none",
     },
   };
 
@@ -95,13 +117,13 @@ export default function NavBar() {
       >
         <div className="z-50"></div>
         <motion.div
-          className="absolute w-[300px] h-[700px] top-0 right-0 bg-background-light rounded-2xl"
+          className={`absolute w-[350px] h-auto top-0 right-0 bg-background-light rounded-2xl`}
           variants={sidebar}
         >
           <div className="text-end mt-[8px]">
-            <MenuToggle toggle={() => toggleOpen()} />
+            <MenuToggle toggle={() => setIsOpen(!isOpen)} />
           </div>
-          <NavBarVerticalList />
+          <NavBarVerticalList navLinksObject={navLinks} />
         </motion.div>
       </motion.div>
     </nav>
