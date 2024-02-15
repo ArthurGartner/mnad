@@ -34,7 +34,7 @@ const Header: React.FC = () => {
           <div className="py-1 h-full w-[60px]">
             <img src={Icon} alt="Icon" className="h-full" />
           </div>
-          <div>
+          <div className="w-full">
             <NavBar />
           </div>
         </div>

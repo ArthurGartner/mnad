@@ -13,6 +13,10 @@ export const colors = {
   backgroundLight: "#f6f6f6",
   disagreeRed: "#ff3a30",
   favoriteYellow: "#ffcc00",
+  text: {
+    light: "#000000",
+    dark: "#ffffff",
+  },
 };
 
 export default colors;
