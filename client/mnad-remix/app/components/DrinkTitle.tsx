@@ -10,8 +10,8 @@ type DrinkTitleProps = {
 export default function DrinkTitle({ drinkInfo }: DrinkTitleProps) {
   return (
     <>
-      <div className="font-semibold">
-        <div className="text-label text-[1.2rem] h-[1.2rem] md:text-[1.6rem] md:h-[1.8rem]">
+      <div className="font-semibold z-50">
+        <div className="text-label text-label-sm h-[1.2rem] md:text-[1.6rem] md:h-[1.8rem]">
           Today's Drink
         </div>
         <div className="flex justify-between items-center">
@@ -22,7 +22,7 @@ export default function DrinkTitle({ drinkInfo }: DrinkTitleProps) {
             <LikeDislike />
           </div>
         </div>
-        <div className="text-label text-[.75rem] h-[.8rem]">
+        <div className="text-label text-[.9rem] h-[.8rem]">
           <div>
             {`${drinkInfo.abv}`}% ABV ICON 3% • {`${drinkInfo.liked}`}% Liked •
             Recommended 27 Times

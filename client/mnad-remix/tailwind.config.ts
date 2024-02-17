@@ -42,6 +42,7 @@ export default {
         "nav-link-md": ".75rem",
         "nav-side": "1rem",
         "label-size": "1.6rem",
+        "label-sm": "1.2rem",
       },
     },
   },

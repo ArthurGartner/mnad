@@ -33,8 +33,8 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
 
   return (
     <>
-      <div className="text-end font-semibold">
-        <div className="text-[10rem]">
+      <div className="text-end font-semibold mt-[-5rem]">
+        <div className="text-[3rem] md:text-[10rem]">
           <TextAppearAnimation
             text={sentimentLabel}
             key={sentimentLabel}
@@ -43,7 +43,7 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
             color2={interpolateColor(sentimentValue + sentimentLabelColorRange)}
           />
         </div>
-        <div className="text-label text-label-size">
+        <div className="text-label text-[.9rem] h-[.8rem]">
           ICON 2% • Based on 15 Articles
         </div>
       </div>

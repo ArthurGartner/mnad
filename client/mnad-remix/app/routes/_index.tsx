@@ -35,7 +35,7 @@ export default function Index() {
   };
 
   useEffect(() => {
-    setSentimentValue(60);
+    setSentimentValue(50);
   }, []);
 
   return (

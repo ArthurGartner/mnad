@@ -13,8 +13,8 @@ const BarDinkSentimentReview: React.FC<BarDinkSentimentReviewProps> = ({
 }) => {
   return (
     <div>
-      <div className="flex relative mb-[-10rem]">
-        <div className="w-3/5 z-10 overflow-hidden">
+      <div className="md:flex relative mb-[-10rem] h-fit">
+        <div className="md:w-3/5 z-10 overflow-hidden">
           <BarDrinkSentimentValue value={sentimentValue} />
         </div>
         <div className="flex w-full items-center justify-end z-10">
@@ -22,10 +22,10 @@ const BarDinkSentimentReview: React.FC<BarDinkSentimentReviewProps> = ({
         </div>
         <img
           src={bgIcon}
-          className="absolute right-0 bottom-[15vh] scale-[2.2] z-[-1]"
+          className="hidden md:block absolute right-0 bottom-[15vh] scale-[2.2] z-[-1]"
         />
       </div>
-      <div className="py-[50px]">
+      <div className="py-5 mt-[11rem]">
         <BarSentimentBar value={sentimentValue} />
       </div>
     </div>

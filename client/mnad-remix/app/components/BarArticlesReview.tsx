@@ -13,11 +13,13 @@ const BarArticlesReview: React.FC = () => {
 
   return (
     <>
-      <div className="font-semibold">
+      <div className="font-semibold py-5">
         <div className="flex justify-between">
-          <div className="text-[2.5rem] h-[3.2rem]">Articles from the Day</div>
+          <div className="text-[1.6rem] h-[2rem] md:text-[2.5rem] md:h-[3.2rem] my-auto">
+            Articles from the Day
+          </div>
         </div>
-        <div className="text-label text-label-size">
+        <div className="text-label text-[.9rem] h-[.8rem]">
           <div className="flex">
             <span style={{ marginRight: "4px" }}>
               <AnimatedNumber value={numArticles} color={false} />
@@ -30,7 +32,7 @@ const BarArticlesReview: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="pt-5 pb-[150px]">
+      <div className="pb-[150px]">
         <BarArticleList />
       </div>
     </>

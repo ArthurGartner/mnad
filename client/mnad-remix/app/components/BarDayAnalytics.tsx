@@ -11,11 +11,11 @@ const BarDayAnalytics: React.FC<BarDayAnalyticsProps> = ({
 }) => {
   return (
     <>
-      <div className="w-full flex">
-        <div className="w-1/2 relative">
+      <div className="w-full md:flex">
+        <div className="md:w-1/2 relative">
           <img
             src={bgIcon}
-            className="absolute left-0 bottom-[-25vh] scale-[2.2] z-[-1]"
+            className="absolute md:left-0 bottom[-12vh] md:bottom-[-25vh] scale-[1.3] md:scale-[2.2] z-[-1]"
           />
           <DynamicCoconut sentimentValue={sentimentValue} />
         </div>
