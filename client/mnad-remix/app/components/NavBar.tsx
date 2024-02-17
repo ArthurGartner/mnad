@@ -74,6 +74,7 @@ export default function NavBar() {
       },
       boxShadow:
         "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+      opacity: 2,
     }),
     closed: {
       clipPath: "circle(30px at 335px 8px)",
@@ -84,15 +85,19 @@ export default function NavBar() {
         damping: 40,
       },
       boxShadow: "none",
+      opacity: 0,
     },
   };
 
   return (
-    <nav className="flex flex-row justify-between w-full">
-      <div>
+    <nav className="flex flex-row justify-end md:justify-between text-end w-full">
+      <div className="hidden md:inline">
         <ul ref={navRef} className="flex relative p-0">
           {Object.entries(navLinks).map(([key, value]) => (
-            <li key={value} className="text-nav-link mr-[30px] font-semibold">
+            <li
+              key={value}
+              className="text-nav-link-md lg:text-nav-link-lg mr-[30px] font-semibold"
+            >
               <NavLink
                 to={`/${value.toLowerCase()}`}
                 className="text-gray-700 no-underline hover:text-primary-light"
@@ -113,16 +118,15 @@ export default function NavBar() {
         animate={isOpen ? "open" : "closed"}
         custom={"1000px"}
         ref={containerRef}
-        className="relative"
+        className="relative inline md:hidden"
       >
-        <div className="z-50"></div>
+        <div className="text-end mt-[8px]">
+          <MenuToggle toggle={() => setIsOpen(!isOpen)} />
+        </div>
         <motion.div
-          className={`absolute w-[350px] h-auto top-0 right-0 bg-background-light rounded-2xl`}
+          className={`absolute w-[350px] h-auto top-[50px] right-0 bg-background-light rounded-2xl overflow-hidden`}
           variants={sidebar}
         >
-          <div className="text-end mt-[8px]">
-            <MenuToggle toggle={() => setIsOpen(!isOpen)} />
-          </div>
           <NavBarVerticalList navLinksObject={navLinks} />
         </motion.div>
       </motion.div>

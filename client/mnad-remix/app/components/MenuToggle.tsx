@@ -17,7 +17,7 @@ const Path = (props: any) => (
 const MenuToggle: React.FC<MenuToggleProps> = ({ toggle }) => {
   return (
     <button onClick={toggle} className="m-auto">
-      <svg width="23" height="23" viewBox="0 0 23 23">
+      <svg width="30" height="30" viewBox="0 0 23 23">
         <Path
           variants={{
             closed: { d: "M 2 2.5 L 20 2.5", stroke: colors.text.light },

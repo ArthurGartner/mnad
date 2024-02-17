@@ -39,7 +39,7 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
   return (
     <motion.li variants={variants}>
       <div className="flex">
-        <div className="text-nav-link mr-[30px] font-semibold">
+        <div className="text-[1rem] mr-[30px] font-semibold">
           <NavLink
             to={`/${navLinkValue.toLowerCase()}`}
             className={({ isActive }) =>
@@ -49,16 +49,22 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
             }
           >
             <div className="flex">
-              <div className="w-[35px]">
-                {React.cloneElement(icon, { className: "h-[25px] w-[25px]" })}
+              <div className="w-[30px]">
+                {React.cloneElement(icon, {
+                  className: `h-[20px] w-[20px] ${
+                    match ? "text-primary-light" : "text-black"
+                  }`,
+                })}
               </div>
-              <div>{navLinkKey}</div>
+              <div>
+                <div>{navLinkKey}</div>
+                <span
+                  className={`block h-[4px] bg-primary-light transition-all duration-300 ${
+                    match ? "w-full" : "w-0"
+                  }`}
+                />
+              </div>
             </div>
-            <span
-              className={`block h-[4px] bg-primary-light transition-all duration-300 ${
-                match ? "w-full" : "w-0"
-              }`}
-            />
           </NavLink>
         </div>
       </div>

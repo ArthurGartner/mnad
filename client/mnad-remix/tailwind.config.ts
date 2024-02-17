@@ -38,7 +38,9 @@ export default {
         },
       },
       fontSize: {
-        "nav-link": "1.2rem",
+        "nav-link-lg": "1.2rem",
+        "nav-link-md": ".75rem",
+        "nav-side": "1rem",
         "label-size": "1.6rem",
       },
     },
