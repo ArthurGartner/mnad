@@ -20,13 +20,15 @@
     "isbot": "^3.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^5.0.1"
+    "react-icons": "^5.0.1",
+    "react-lines-ellipsis": "^0.15.4"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.4.1",
     "@types/node": "^20.10.7",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/react-lines-ellipsis": "^0.15.5",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^9.0.0",

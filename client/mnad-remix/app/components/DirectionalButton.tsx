@@ -13,7 +13,7 @@ const DirectionalButton: React.FC<DirectionButtonProps> = ({ direction }) => {
         whileHover={{ scale: 1.25 }}
         initial={{ scale: 1 }}
       >
-        <div className="text-2xl md:text-5xl text-neutral-500">
+        <div className="text-2xl md:text-3xl lg:text-5xl text-neutral-500">
           <div>
             {direction == "left" && <FaChevronLeft />}
             {direction == "right" && <FaChevronRight />}

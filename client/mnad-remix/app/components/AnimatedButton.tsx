@@ -65,7 +65,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         onClick={handleClick}
       >
         {React.cloneElement(icon, {
-          className: "h-[15px] w-[15px] md:h-[30px] md:w-[30px]",
+          className: "h-[15px] w-[15px] lg:h-[30px] lg:w-[30px]",
         })}
       </motion.div>
     </motion.div>

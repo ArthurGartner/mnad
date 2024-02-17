@@ -16,7 +16,7 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
   return (
     <>
       <div className="md:flex lg:h-[40vh] relative">
-        <div className="md:w-7/12 flex md:items-center md:justify-center w-full relative">
+        <div className="lg:w-7/12 flex md:items-center md:justify-center w-full relative">
           <div className="w-full">
             <div className="w-full">
               <DrinkTitle drinkInfo={{ abv: 30, liked: 88 }} />
@@ -29,7 +29,7 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
               className="md:hidden absolute left-0 top-[20vh] scale-[1.5] z-[-1]"
             />
             <div className="py-5">
-              <div className="p-5 md:p-0 shadow-lg md:shadow-none bg-teal-50 md:bg-background-light rounded-lg border-5 border-neutral-100 md:border-none">
+              <div className="p-5 md:p-0 shadow-lg md:shadow-none bg-teal-50 md:bg-transparent rounded-lg border-5 border-neutral-100 md:border-none">
                 <BarDrinkHeroSummary />
               </div>
             </div>
@@ -49,7 +49,7 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
             </div>
           </div>
         </div>
-        <div className="hidden md:block grow">
+        <div className="hidden md:block w-3/5">
           <BarDrinkHeroPic />
         </div>
       </div>

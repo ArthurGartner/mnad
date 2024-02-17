@@ -9,7 +9,7 @@ export default function BarDrinkHeroPic() {
           <motion.img
             src={DrinkGlass}
             alt="Drink Glass"
-            className="w-full md:h-full mx-auto p-5 z-0"
+            className="w-full lg:h-full mx-auto p-5 z-0"
             initial={{ x: -100, opacity: 0, scale: 1.3 }} // Start from left and fully transparent
             animate={{ x: 0, opacity: 1, scale: 1.3 }} // End at original position and fully opaque
             transition={{ duration: 0.5 }} // Transition duration

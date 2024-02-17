@@ -46,3 +46,11 @@ export const interpolateColor = (value: number): string => {
 
   return `rgb(${Math.round(r)}, ${Math.round(g)}, 0)`;
 };
+
+export const formatDate = (date: Date): string => {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  }).format(date);
+};
