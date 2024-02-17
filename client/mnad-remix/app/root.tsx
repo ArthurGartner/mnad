@@ -35,7 +35,7 @@ export default function App() {
       <body className="bg-background-light relative overflow-x-hidden">
         <div className="w-full mx-auto">
           <Header />
-          <div className="2xl:w-[2000px] px-[60px] overflow-hidden mx-auto">
+          <div className="2xl:w-[2000px] px-3 md:px-[60px] overflow-hidden mx-auto mt-[35px] lg:mt-[50px]">
             {" "}
             <Outlet />
             <ScrollRestoration />

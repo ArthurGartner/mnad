@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "@remix-run/react";
 import MenuToggle from "./MenuToggle";
 import { motion, useCycle } from "framer-motion";
 import NavBarVerticalList from "./NavBarVerticalList";
+import TextAppearAnimation from "./TextAppearAnimation";
 
 export default function NavBar() {
   const [underlineStyle, setUnderlineStyle] = useState({});
@@ -10,6 +11,7 @@ export default function NavBar() {
   const navRef = useRef<HTMLUListElement>(null);
   const location = useLocation();
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [curPageName, setCurPageName] = useState("");
 
   const navLinks = {
     "The Bar": "",
@@ -31,9 +33,11 @@ export default function NavBar() {
     });
   };
 
-  const handleItemClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    updateUnderline(event.currentTarget);
-  };
+  const handleItemClick =
+    (pageName: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+      setCurPageName(pageName);
+      updateUnderline(event.currentTarget);
+    };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -101,7 +105,7 @@ export default function NavBar() {
               <NavLink
                 to={`/${value.toLowerCase()}`}
                 className="text-gray-700 no-underline hover:text-primary-light"
-                onClick={handleItemClick}
+                onClick={handleItemClick(key)}
               >
                 {key}
               </NavLink>
@@ -113,21 +117,31 @@ export default function NavBar() {
           />
         </ul>
       </div>
+      <div className="md:hidden grow items-center text-center font-semibold overflow-hidden">
+        <TextAppearAnimation
+          text={curPageName}
+          key={curPageName}
+          gradient={false}
+        />
+      </div>
       <motion.div
         initial={false}
         animate={isOpen ? "open" : "closed"}
         custom={"1000px"}
         ref={containerRef}
-        className="relative inline md:hidden"
+        className="relative inline md:hidden w-[60px]"
       >
-        <div className="text-end mt-[8px]">
+        <div className="text-end h-full flex justify-end">
           <MenuToggle toggle={() => setIsOpen(!isOpen)} />
         </div>
         <motion.div
-          className={`absolute w-[350px] h-auto top-[50px] right-0 bg-background-light rounded-2xl overflow-hidden`}
+          className={`absolute w-fit h-auto top-[40px] right-0 bg-background-light rounded-2xl overflow-hidden`}
           variants={sidebar}
         >
-          <NavBarVerticalList navLinksObject={navLinks} />
+          <NavBarVerticalList
+            navLinksObject={navLinks}
+            setCurPageName={setCurPageName}
+          />
         </motion.div>
       </motion.div>
     </nav>

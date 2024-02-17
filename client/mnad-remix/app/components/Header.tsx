@@ -30,7 +30,7 @@ const Header: React.FC = () => {
         }`}
         style={headerStyle}
       >
-        <div className="flex items-center h-[50px] mx-auto 2xl:w-[2000px] px-3 md:px-0">
+        <div className="flex items-center h-[35px] lg:h-[50px] mx-auto 2xl:w-[2000px] px-3 md:px-0">
           <div className="py-1 h-full w-[60px]">
             <img src={Icon} alt="Icon" className="h-full" />
           </div>

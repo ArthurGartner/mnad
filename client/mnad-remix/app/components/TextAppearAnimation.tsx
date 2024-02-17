@@ -8,8 +8,8 @@ interface TextAppearAnimationProps {
   delay?: number;
   key: string;
   gradient?: boolean;
-  color1: string;
-  color2: string;
+  color1?: string;
+  color2?: string;
 }
 
 const TextAppearAnimation: React.FC<TextAppearAnimationProps> = ({
@@ -17,8 +17,8 @@ const TextAppearAnimation: React.FC<TextAppearAnimationProps> = ({
   delay = 0,
   key,
   gradient = false,
-  color1,
-  color2,
+  color1 = "#000000",
+  color2 = "#000000",
 }) => {
   const controls = useAnimation();
 

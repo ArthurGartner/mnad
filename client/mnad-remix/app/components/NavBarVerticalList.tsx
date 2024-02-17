@@ -26,10 +26,12 @@ const menuIcons: { [key: string]: JSX.Element } = {
 
 interface NavBarVerticalListProps {
   navLinksObject: { [key: string]: string };
+  setCurPageName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const NavBarVerticalList: React.FC<NavBarVerticalListProps> = ({
   navLinksObject,
+  setCurPageName,
 }) => {
   return (
     <motion.ul variants={variants} className="py-5 px-[40px]">
@@ -40,6 +42,7 @@ const NavBarVerticalList: React.FC<NavBarVerticalListProps> = ({
             navLinkValue={value}
             key={value}
             icon={menuIcons[value] || <BiSolidDrink />}
+            setCurPageName={setCurPageName}
           />
         </div>
       ))}
