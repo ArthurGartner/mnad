@@ -46,7 +46,7 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
             color2={interpolateColor(sentimentValue + sentimentLabelColorRange)}
           />
         </div>
-        <div className="text-label text-[.9rem] h-[.8rem]">
+        <div className="text-label text-label-sm h-[1.2rem] md:text-[1.2rem] md:h-[1.4rem] lg:text-[1.6rem] lg:h-[1.8rem]">
           <AnimatedCaret value={sentimentChange} /> {Math.abs(sentimentChange)}%
           • Based on 15 Articles
         </div>

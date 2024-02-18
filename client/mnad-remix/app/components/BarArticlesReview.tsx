@@ -20,7 +20,7 @@ const BarArticlesReview: React.FC = () => {
             Articles from the Day
           </div>
         </div>
-        <div className="text-label text-[.9rem] h-[.8rem]">
+        <div className="text-label text-[.9rem] lg:text-[1rem] h-[.8rem]">
           <div className="flex">
             <span style={{ marginRight: "4px" }}>
               <AnimatedNumber value={numArticles} color={false} />

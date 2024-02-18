@@ -8,15 +8,15 @@ const ModalDidYouKnow: React.FC = () => {
     <>
       <div className="w-[75vw] md:w-[50vw] max-h-[80vh] font-semibold overflow-hidden">
         <div className="pb-5">
-          <div className="text-label text-label-sm h-[1.2rem]">
+          <div className="text-label text-label-sm h-[1.2rem] md:text-[1.2rem] md:h-[1.4rem] lg:text-[1.6rem] lg:h-[1.8rem]">
             Did You Know?
           </div>
-          <div className="text-[1.6rem] h-[2rem] md:text-[2.5rem] md:h-[3.2rem] my-auto">
+          <div className="text-[1.6rem] h-[2rem] lg:text-[2.5rem] lg:h-[3.2rem] my-auto">
             Moscow Mule
           </div>
-          <div className="text-label text-[.75rem]">
+          <div className="text-label text-[1rem] h-[.8rem] lg:text-[1rem] flex items-center text-center">
             <div>
-              Invented in {yearInvented} • Originated in {originLocation}
+              {yearInvented} • {originLocation}
             </div>
           </div>
         </div>

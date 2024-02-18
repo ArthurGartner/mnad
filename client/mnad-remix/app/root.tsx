@@ -32,7 +32,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-background-light relative overflow-x-hidden">
+      <body className="bg-background-light relative overflow-x-hidden min-w-[425px]">
         <div className="w-full mx-auto">
           <Header />
           <div className="2xl:w-[2000px] px-3 md:px-[60px] overflow-hidden mx-auto pt-[35px] lg:pt-[80px]">

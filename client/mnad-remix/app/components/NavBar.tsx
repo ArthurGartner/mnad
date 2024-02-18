@@ -50,14 +50,25 @@ export default function NavBar() {
       }
     };
 
-    // Add event listener
+    const handleResize = () => {
+      const activeItem = navRef.current?.querySelector(
+        `a[href='${location.pathname}']`
+      );
+      if (activeItem) {
+        updateUnderline(activeItem);
+      }
+    };
+
+    // Add event listeners
     document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("resize", handleResize);
     };
-  }, [containerRef]);
+  }, [containerRef, location]);
 
   useEffect(() => {
     const activeItem = navRef.current?.querySelector(

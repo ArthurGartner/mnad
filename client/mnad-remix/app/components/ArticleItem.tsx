@@ -1,7 +1,6 @@
 import { formatDate } from "~/util/helperfunctions";
 import ArticleRating from "./ArticleRating";
 import { useState } from "react";
-import LinesEllipsis from "react-lines-ellipsis";
 import DynamicCoconut from "./DynamicCoconut";
 import { motion } from "framer-motion";
 
@@ -17,12 +16,12 @@ const ArticleItem: React.FC = () => {
     <>
       <motion.div
         whileHover={{ scale: 1.05 }}
-        className="h-[130px] md:h-[200px] w-full rounded-xl bg-teal-50 shadow-xl px-3 cursor-pointer"
+        className="h-[150px] md:h-[200px] w-full rounded-xl bg-teal-50 shadow-xl px-3 cursor-pointer"
       >
         <div className="h-full py-[15px] flex">
           <div className="h-full">
-            <div className="h-[100px] w-[100px] md:h-[170px] md:w-[170px] mr-[5px] md:mr-[25px] rounded-md md:rounded-3xl">
-              <DynamicCoconut sentimentValue={5} />
+            <div className="h-[120px] w-[120px] md:h-[170px] md:w-[170px] mr-[5px] md:mr-[25px] rounded-md md:rounded-3xl">
+              <DynamicCoconut sentimentValue={65} />
             </div>
           </div>
           <div className="h-full w-full">
@@ -36,26 +35,10 @@ const ArticleItem: React.FC = () => {
                     {newsSource} • {formatDate(date)}
                   </div>
                 </div>
-                <div className="grow hidden md:block">
-                  <LinesEllipsis
-                    text={sampleLorm}
-                    maxLine="2"
-                    ellipsis="..."
-                    trimRight
-                    basedOn="letters"
-                  />
-                </div>
-                <div className="grow md:hidden">
-                  <LinesEllipsis
-                    text={sampleLorm}
-                    maxLine="1"
-                    ellipsis="..."
-                    trimRight
-                    basedOn="letters"
-                  />
-                </div>
+                {/* Apply the 'two-line-text' class to limit the text to two lines */}
+                <div className="grow two-line-text">{sampleLorm}</div>
               </div>
-              <div className="w-full md:text-end">
+              <div className="w-full text-end">
                 <ArticleRating />
               </div>
             </div>
