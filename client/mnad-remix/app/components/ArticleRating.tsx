@@ -1,5 +1,6 @@
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import { RiRobot2Line } from "react-icons/ri";
+import { motion } from "framer-motion";
 
 const ArticleRating: React.FC = () => {
   return (
@@ -12,8 +13,12 @@ const ArticleRating: React.FC = () => {
               <div>Sentiment Score: 5</div>
             </div>
             <div className="flex text-label">
-              <IoMdThumbsUp className="m-auto h-[25px] w-[25px] mr-3" />
-              <IoMdThumbsDown className="m-auto h-[25px] w-[25px]" />
+              <motion.button whileHover={{ scale: 1.2 }}>
+                <IoMdThumbsUp className="m-auto h-[25px] w-[25px] mr-3" />
+              </motion.button>
+              <motion.button whileHover={{ scale: 1.2 }}>
+                <IoMdThumbsDown className="m-auto h-[25px] w-[25px]" />
+              </motion.button>
             </div>
           </div>
         </div>

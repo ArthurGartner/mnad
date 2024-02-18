@@ -11,7 +11,7 @@ const BarSentimentBar: React.FC<BarSentimentBarProps> = ({ value }) => {
   return (
     <div>
       <div
-        className="w-full h-[17px] md:h-[50px] rounded-3xl overflow-hidden shadow-md"
+        className="w-full h-[17px] md:h-[30px] lg:h-[40px] xl:h-[50px] rounded-3xl overflow-hidden shadow-md"
         style={{ backgroundColor: "rgba(229, 231, 235, 0.3)" }} // bg-gray-200 with 30% opacity
       >
         <div

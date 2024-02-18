@@ -37,7 +37,7 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
   return (
     <>
       <div className="text-end font-semibold mt-[-5rem]">
-        <div className="text-[3rem] md:text-[10rem]">
+        <div className="text-[3rem] md:text-[6rem] lg:text-[10rem]">
           <TextAppearAnimation
             text={sentimentLabel}
             key={sentimentLabel}

@@ -15,7 +15,7 @@ export default function DrinkTitle({ drinkInfo }: DrinkTitleProps) {
   return (
     <>
       <div className="font-semibold z-50">
-        <div className="text-label text-label-sm h-[1.2rem] lg:text-[1.6rem] lg:h-[1.8rem]">
+        <div className="text-label text-label-sm h-[1.2rem] md:text-[1.2rem] md:h-[1.4rem] lg:text-[1.6rem] lg:h-[1.8rem]">
           Suggested Drink
         </div>
         <div className="flex justify-between items-center">

@@ -3,6 +3,7 @@ import ArticleRating from "./ArticleRating";
 import { useState } from "react";
 import LinesEllipsis from "react-lines-ellipsis";
 import DynamicCoconut from "./DynamicCoconut";
+import { motion } from "framer-motion";
 
 const ArticleItem: React.FC = () => {
   const [date, setDate] = useState(new Date());
@@ -14,7 +15,10 @@ const ArticleItem: React.FC = () => {
 
   return (
     <>
-      <div className="h-[130px] md:h-[200px] w-full rounded-xl">
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        className="h-[130px] md:h-[200px] w-full rounded-xl bg-teal-50 shadow-xl px-3 cursor-pointer"
+      >
         <div className="h-full py-[15px] flex">
           <div className="h-full">
             <div className="h-[100px] w-[100px] md:h-[170px] md:w-[170px] mr-[5px] md:mr-[25px] rounded-md md:rounded-3xl">
@@ -35,7 +39,7 @@ const ArticleItem: React.FC = () => {
                 <div className="grow hidden md:block">
                   <LinesEllipsis
                     text={sampleLorm}
-                    maxLine="2" // Adjust the number of lines as needed
+                    maxLine="2"
                     ellipsis="..."
                     trimRight
                     basedOn="letters"
@@ -44,7 +48,7 @@ const ArticleItem: React.FC = () => {
                 <div className="grow md:hidden">
                   <LinesEllipsis
                     text={sampleLorm}
-                    maxLine="1" // Adjust the number of lines as needed
+                    maxLine="1"
                     ellipsis="..."
                     trimRight
                     basedOn="letters"
@@ -57,7 +61,7 @@ const ArticleItem: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

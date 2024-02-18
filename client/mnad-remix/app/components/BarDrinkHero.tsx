@@ -15,7 +15,7 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
 }) => {
   return (
     <>
-      <div className="md:flex lg:h-[40vh] relative">
+      <div className="md:flex xl:h-[40vh] relative">
         <div className="lg:w-7/12 flex md:items-center md:justify-center w-full relative">
           <div className="w-full">
             <div className="w-full">

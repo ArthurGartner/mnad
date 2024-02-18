@@ -6,7 +6,7 @@ const ModalDidYouKnow: React.FC = () => {
 
   return (
     <>
-      <div className="w-[75vw] md:w-[50vw] font-semibold overflow-hidden">
+      <div className="w-[75vw] md:w-[50vw] max-h-[80vh] font-semibold overflow-hidden">
         <div className="pb-5">
           <div className="text-label text-label-sm h-[1.2rem]">
             Did You Know?
@@ -20,7 +20,7 @@ const ModalDidYouKnow: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="overflow-auto max-h-[400px] font-normal">
+        <div className="overflow-auto max-h-[35vh] font-normal">
           <p>
             The Moscow Mule, a cocktail that has surged in popularity in recent
             years, owes much of its distinctive character to its unique serving
