@@ -26,7 +26,7 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
             </div>
             <img
               src={bgIcon}
-              className="md:hidden absolute left-0 top-[20vh] scale-[1.5] z-[-1]"
+              className="md:hidden absolute right-0 top-[20vh] scale-[1.5] z-[-1]"
             />
             <div className="py-5">
               <div className="p-5 md:p-0 shadow-lg md:shadow-none bg-teal-50 md:bg-transparent rounded-lg border-5 border-neutral-100 md:border-none">
