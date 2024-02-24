@@ -1,8 +1,17 @@
 import DrinkGlass from "~/assets/copper_mug.svg";
 import { motion } from "framer-motion";
 import DrinkPicture from "./DrinkPicture";
+import { DrinkDetails, GlassDetails } from "~/util/types";
 
-export default function BarDrinkHeroPic() {
+interface BarDrinkHeroPicProps {
+  drinkGlass: GlassDetails;
+  drinkDetails: DrinkDetails;
+}
+
+const BarDrinkHeroPic: React.FC<BarDrinkHeroPicProps> = ({
+  drinkGlass,
+  drinkDetails,
+}) => {
   return (
     <>
       <div className="flex h-full w-full">
@@ -13,9 +22,15 @@ export default function BarDrinkHeroPic() {
           transition={{ duration: 0.5 }}
           exit={{ x: 200, opacity: 0 }}
         >
-          <DrinkPicture />
+          <DrinkPicture
+            liquidUrl={drinkGlass.liquid_url}
+            glassUrl={drinkGlass.glass_url}
+            drinkDetails={drinkDetails}
+          />
         </motion.div>
       </div>
     </>
   );
-}
+};
+
+export default BarDrinkHeroPic;

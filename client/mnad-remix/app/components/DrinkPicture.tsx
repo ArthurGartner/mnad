@@ -1,75 +1,87 @@
 import React, { useState, useEffect } from "react";
 import SVGImage from "~/components/SVGImage";
+import { DrinkDetails, Ingredients } from "~/util/types";
 
-const DrinkPicture = () => {
-  const drinkColor = "#AFE1AF";
-  //   const [drinkData, setDrinkData] = useState(null);
-  //   const [drinkColor, setDrinkColor] = useState("#FFFFFF");
+interface DrinkPictureProps {
+  glassUrl: string;
+  liquidUrl: string;
+  drinkDetails: DrinkDetails;
+}
 
-  //   useEffect(() => {
-  //     setDrinkData(props.drinkData);
-  //   }, [props]);
+const DrinkPicture: React.FC<DrinkPictureProps> = ({
+  glassUrl,
+  liquidUrl,
+  drinkDetails,
+}) => {
+  const [drinkData, setDrinkData] = useState<DrinkDetails | null>(null);
+  const [drinkColor, setDrinkColor] = useState("#FFFFFF");
 
-  //   useEffect(() => {
-  //     if (drinkData) {
-  //       mixColors(drinkData.ingredients);
-  //     }
-  //   }, [drinkData]);
+  useEffect(() => {
+    setDrinkData(drinkDetails);
+  }, [drinkDetails]);
 
-  //   if (!drinkData) {
-  //     return <></>;
-  //   }
+  useEffect(() => {
+    if (drinkData) {
+      mixColors(drinkData.ingredients);
+    }
+  }, [drinkData]);
 
-  //   function mixColors(objects) {
-  //     let totalVolume = 0;
-  //     let red = 0;
-  //     let green = 0;
-  //     let blue = 0;
+  if (!drinkData) {
+    return <></>;
+  }
 
-  //     // Calculate the total volume of all liquid ingredients
-  //     for (let object of objects) {
-  //       if (object.form === "liquid") {
-  //         totalVolume += parseFloat(object.volume_oz.$numberDecimal);
-  //       }
-  //     }
+  function mixColors(objects: Ingredients[]) {
+    let totalVolume: number = 0;
+    let red: number | string = 0;
+    let green: number | string = 0;
+    let blue: number | string = 0;
 
-  //     // If there is no liquid, return a default color (e.g., black)
-  //     if (totalVolume === 0) {
-  //       return "#FFFFFF";
-  //     }
+    // Calculate the total volume of all liquid ingredients
+    for (let object of objects) {
+      if (object.form === "liquid") {
+        totalVolume += object.volume_oz;
+      }
+    }
 
-  //     // Mix the colors
-  //     for (let object of objects) {
-  //       if (object.form === "liquid") {
-  //         let ratio = object.volume_oz.$numberDecimal / totalVolume;
-  //         let hexColor = object.color_hex;
-  //         let r = parseInt(hexColor.substr(1, 2), 16);
-  //         let g = parseInt(hexColor.substr(3, 2), 16);
-  //         let b = parseInt(hexColor.substr(5, 2), 16);
+    // If there is no liquid, return a default color (e.g., black)
+    if (totalVolume === 0) {
+      return "#FFFFFF";
+    }
 
-  //         red += r * ratio;
-  //         green += g * ratio;
-  //         blue += b * ratio;
-  //       }
-  //     }
+    // Mix the colors
+    for (let object of objects) {
+      if (object.form === "liquid") {
+        let ratio = object.volume_oz / totalVolume;
+        let hexColor = object.color_hex;
+        let r = parseInt(hexColor.substr(1, 2), 16);
+        let g = parseInt(hexColor.substr(3, 2), 16);
+        let b = parseInt(hexColor.substr(5, 2), 16);
 
-  //     // Find the maximum RGB component
-  //     const maxComponent = Math.max(red, green, blue);
+        red += r * ratio;
+        green += g * ratio;
+        blue += b * ratio;
+      }
+    }
 
-  //     // Normalize so that all components are within 0-255
-  //     if (maxComponent > 255) {
-  //       red = (red / maxComponent) * 255;
-  //       green = (green / maxComponent) * 255;
-  //       blue = (blue / maxComponent) * 255;
-  //     }
+    // Find the maximum RGB component
+    const maxComponent = Math.max(red, green, blue);
 
-  //     // Round and convert to hexadecimal
-  //     red = Math.round(red).toString(16).padStart(2, "0");
-  //     green = Math.round(green).toString(16).padStart(2, "0");
-  //     blue = Math.round(blue).toString(16).padStart(2, "0");
+    // Normalize so that all components are within 0-255
+    if (maxComponent > 255) {
+      red = (red / maxComponent) * 255;
+      green = (green / maxComponent) * 255;
+      blue = (blue / maxComponent) * 255;
+    }
 
-  //     setDrinkColor("#" + red + green + blue);
-  //   }
+    // Round and convert to hexadecimal
+    red = Math.round(red).toString(16).padStart(2, "0");
+    green = Math.round(green).toString(16).padStart(2, "0");
+    blue = Math.round(blue).toString(16).padStart(2, "0");
+
+    setDrinkColor("#" + red + green + blue);
+
+    console.log(drinkColor);
+  }
 
   return (
     <>
@@ -80,13 +92,13 @@ const DrinkPicture = () => {
               <img
                 className="h-full w-full object-contain"
                 // src={drinkData?.drinkGlass[0]?.glass_url}
-                src="https://mightneedadrink.s3.amazonaws.com/drink-images/beer_glass.svg"
+                src={glassUrl}
               />
               <div className="absolute top-0 h-full w-full object-cover">
                 {true && (
                   <SVGImage
                     key={drinkColor} // Key based on `drinkColor`
-                    url="https://mightneedadrink.s3.amazonaws.com/drink-images/beer_glass_full.svg"
+                    url={liquidUrl}
                     fillColor={drinkColor}
                   />
                 )}

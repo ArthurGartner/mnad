@@ -1,3 +1,4 @@
+import { ApiData, DrinkDetails, GlassDetails } from "~/util/types";
 import BarDrinkHeroPic from "./BarDrinkHeroPic";
 import BarDrinkHeroSummary from "./BarDrinkHeroSummary";
 import Button from "./Button";
@@ -7,11 +8,15 @@ import bgIcon from "~/assets/bg_vector_1.svg";
 interface BarDrinkHeroProps {
   openIngredients: () => void;
   openDidYouKnow: () => void;
+  drinkDetails: DrinkDetails;
+  drinkGlass: GlassDetails;
 }
 
 const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
   openIngredients,
   openDidYouKnow,
+  drinkDetails,
+  drinkGlass,
 }) => {
   return (
     <>
@@ -19,10 +24,13 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
         <div className="lg:w-7/12 flex md:items-center md:justify-center w-full relative">
           <div className="w-full">
             <div className="w-full">
-              <DrinkTitle drinkInfo={{ abv: 30, liked: 88 }} />
+              <DrinkTitle drinkDetails={drinkDetails} />
             </div>
             <div className="md:hidden w-full">
-              <BarDrinkHeroPic />
+              <BarDrinkHeroPic
+                drinkGlass={drinkGlass}
+                drinkDetails={drinkDetails}
+              />
             </div>
             <img
               src={bgIcon}
@@ -30,7 +38,7 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
             />
             <div className="py-5">
               <div className="p-5 md:p-0 shadow-lg md:shadow-none bg-teal-50 md:bg-transparent rounded-lg border-5 border-neutral-100 md:border-none">
-                <BarDrinkHeroSummary />
+                <BarDrinkHeroSummary summary={drinkDetails.drinkSummary} />
               </div>
             </div>
             <div className="flex">
@@ -50,7 +58,10 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
           </div>
         </div>
         <div className="hidden md:block w-3/5">
-          <BarDrinkHeroPic />
+          <BarDrinkHeroPic
+            drinkGlass={drinkGlass}
+            drinkDetails={drinkDetails}
+          />
         </div>
       </div>
     </>

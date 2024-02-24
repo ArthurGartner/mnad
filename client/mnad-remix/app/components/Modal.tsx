@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        className="fixed inset-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center"
+        className="fixed inset-0 w-full h-full bg-black bg-opacity-50 z-[100] flex justify-center items-center"
         variants={backdropVariants}
         initial="hidden"
         animate="visible"

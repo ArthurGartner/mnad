@@ -1,15 +1,15 @@
-import { Drink } from "~/util/types";
+import { DrinkDetails } from "~/util/types";
 import LikeDislike from "./LikeDislike";
 import AnimatedCaret from "./AnimatedCaret";
 import { TiStarFullOutline } from "react-icons/ti";
 
 type DrinkTitleProps = {
-  drinkInfo: Drink;
+  drinkDetails: DrinkDetails;
 };
 
 //Need to calculate day difference here server side
 
-export default function DrinkTitle({ drinkInfo }: DrinkTitleProps) {
+export default function DrinkTitle({ drinkDetails }: DrinkTitleProps) {
   const abvChange = 4;
 
   return (
@@ -20,7 +20,7 @@ export default function DrinkTitle({ drinkInfo }: DrinkTitleProps) {
         </div>
         <div className="flex justify-between items-center">
           <div className="text-[1.4rem] h-[1.8rem] sm:text-[1.6rem] sm:h-[2rem] lg:text-[2.5rem] lg:h-[3.2rem] my-auto">
-            Moscow Mule
+            {drinkDetails.strDrink}
           </div>
           <div className="my-auto">
             <LikeDislike />
@@ -28,11 +28,11 @@ export default function DrinkTitle({ drinkInfo }: DrinkTitleProps) {
         </div>
         <div className="text-label text-[.9rem] h-[.7rem] sm:text-[1rem] sm:h-[.8rem] lg:text-[1rem] flex items-center text-center">
           <div className="flex">
-            {`${drinkInfo.abv}`}% ABV{" "}
+            {`${drinkDetails.abv}`}% ABV{" "}
             <span className="ml-1">
               <AnimatedCaret value={abvChange} />
             </span>{" "}
-            {abvChange}% • {`${drinkInfo.liked}`}%{" "}
+            {abvChange}% • {`88`}%{" "}
             <span>
               <TiStarFullOutline className="text-balancedYellow-light h-full mx-1" />
             </span>{" "}
