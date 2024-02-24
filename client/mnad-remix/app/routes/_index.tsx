@@ -51,7 +51,9 @@ export default function Index() {
   };
 
   const openIngredientsModal = () => {
-    setModalContent(<ModalDrinkIngredients />);
+    setModalContent(
+      <ModalDrinkIngredients drinkDetails={data.drink_details} />
+    );
     setIsModalOpen(true);
   };
   const openDidYouKnowModal = () => {
@@ -74,10 +76,13 @@ export default function Index() {
             openIngredients={openIngredientsModal}
             openDidYouKnow={openDidYouKnowModal}
           />
-          <BarDinkSentimentReview sentimentValue={data.average_sentiment} />
+          <BarDinkSentimentReview
+            sentimentValue={data.average_sentiment}
+            articleCount={data.articles.length}
+          />
           <BarDayAnalytics sentimentValue={data.average_sentiment} />
           <BarDateSelect day={day} />
-          <BarArticlesReview />
+          <BarArticlesReview articles={data.articles} />
         </div>
       </div>
     </>

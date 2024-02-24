@@ -11,8 +11,8 @@ const ModalDidYouKnow: React.FC<ModalDidYouKnowProps> = ({ drinkDetails }) => {
 
   return (
     <>
-      <div className="w-[75vw] md:w-[50vw] max-h-[80vh] font-semibold overflow-hidden bg-white">
-        <div className="pb-5">
+      <div className="w-[75vw] md:w-[50vw] max-h-[80vh] overflow-hidden bg-white">
+        <div className="pb-5 font-semibold">
           <div className="text-label text-label-sm h-[1.2rem] md:text-[1.2rem] md:h-[1.4rem] lg:text-[1.6rem] lg:h-[1.8rem]">
             Did You Know?
           </div>

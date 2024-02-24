@@ -2,8 +2,13 @@ import { useState, useEffect } from "react";
 import AnimatedNumber from "./AnimatedNumber";
 import BarArticleList from "./BarArticleList";
 import bgIcon from "~/assets/bg_vector_2.svg";
+import { Article } from "~/util/types";
 
-const BarArticlesReview: React.FC = () => {
+interface BarArticlesReviewProps {
+  articles: Article[];
+}
+
+const BarArticlesReview: React.FC<BarArticlesReviewProps> = ({ articles }) => {
   const [numArticles, setNumArticles] = useState(0);
   const [numSources, setNumSources] = useState(0);
 
@@ -23,11 +28,11 @@ const BarArticlesReview: React.FC = () => {
         <div className="text-label text-[.9rem] lg:text-[1rem] h-[.8rem]">
           <div className="flex">
             <span style={{ marginRight: "4px" }}>
-              <AnimatedNumber value={numArticles} color={false} />
+              <AnimatedNumber value={articles.length} color={false} />
             </span>
             {` Articles • `}
             <span style={{ marginRight: "4px", marginLeft: "4px" }}>
-              <AnimatedNumber value={numSources} color={false} />
+              <AnimatedNumber value={articles.length} color={false} />
             </span>
             {` Sources`}
           </div>
@@ -38,7 +43,7 @@ const BarArticlesReview: React.FC = () => {
         />
       </div>
       <div className="pb-[150px]">
-        <BarArticleList />
+        <BarArticleList articles={articles} />
       </div>
     </>
   );

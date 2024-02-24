@@ -4,10 +4,10 @@ export interface DrinkDetails {
   strDrink: string;
   drinkSummary: string;
   drinkFact: string;
-  ingredients: Ingredients[];
+  ingredients: Ingredient[];
 }
 
-export interface Ingredients {
+export interface Ingredient {
   name: string;
   volume_oz: number;
   volume_str: string;
@@ -23,16 +23,17 @@ export interface GlassDetails {
   size_oz: number;
 }
 
-export interface ArticleDetails {
+export interface Article {
   article_url: string;
   category: string;
   description: string;
   sentiment_score: number;
   thumbnail: string;
+  headline: string;
 }
 
 export interface ApiData {
-  articles: ArticleDetails[];
+  articles: Article[];
   average_sentiment: number;
   drink_details: DrinkDetails;
   glass_details: GlassDetails;

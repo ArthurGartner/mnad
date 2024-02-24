@@ -7,10 +7,12 @@ import AnimatedCaret from "./AnimatedCaret";
 
 interface BarSentimentLabelProps {
   sentimentValue: number;
+  articleCount: number;
 }
 
 const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
   sentimentValue,
+  articleCount,
 }) => {
   const [sentimentLabel, setSentimentLabel] = useState(getSentimentLabel(0));
 
@@ -48,7 +50,7 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
         </div>
         <div className="text-label text-label-sm h-[1.2rem] md:text-[1.2rem] md:h-[1.4rem] lg:text-[1.6rem] lg:h-[1.8rem]">
           <AnimatedCaret value={sentimentChange} /> {Math.abs(sentimentChange)}%
-          • Based on 15 Articles
+          • Based on {articleCount} Articles
         </div>
       </div>
     </>
