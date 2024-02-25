@@ -139,7 +139,7 @@ export default function NavBar() {
       <div className="flex">
         <div className="relative">
           <div className="absolute right-0">
-            <BuildStatusLabel label="ALPHA" />
+            <BuildStatusLabel label="PRE-ALPHA" />
           </div>
         </div>
         <motion.div
