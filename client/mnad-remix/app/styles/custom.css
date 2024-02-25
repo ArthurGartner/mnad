@@ -35,3 +35,11 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.scrollable-modal-content {
+  -webkit-mask-image: linear-gradient(to bottom, black 93%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 93%, transparent 100%);
+  overflow-y: auto;
+  width: full;
+  max-height: 35vh;
+}

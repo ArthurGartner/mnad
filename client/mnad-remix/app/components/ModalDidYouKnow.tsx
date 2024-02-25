@@ -12,7 +12,7 @@ const ModalDidYouKnow: React.FC<ModalDidYouKnowProps> = ({ drinkDetails }) => {
   return (
     <>
       <div className="w-[75vw] md:w-[50vw] max-h-[80vh] overflow-hidden bg-white">
-        <div className="pb-5 font-semibold">
+        <div className="mb-2 font-semibold">
           <div className="text-label text-label-sm h-[1.2rem] md:text-[1.2rem] md:h-[1.4rem] lg:text-[1.6rem] lg:h-[1.8rem]">
             Did You Know?
           </div>
@@ -23,10 +23,10 @@ const ModalDidYouKnow: React.FC<ModalDidYouKnowProps> = ({ drinkDetails }) => {
             <div>XXXX • XXXXXXXXXXXXXXX</div>
           </div>
         </div>
-        <div className="overflow-y-auto max-h-[35vh] font-normal">
+        <div className="scrollable-modal-content max-h-[35vh] w-full font-normal pb-2">
           {drinkDetails.drinkFact}
         </div>
-        <div className="mt-2 flex justify-end">
+        <div className="flex justify-end">
           <GPTTrainer />
         </div>
       </div>
