@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SVGImage from "~/components/SVGImage";
-import { DrinkDetails, Ingredients } from "~/util/types";
+import { DrinkDetails, Ingredient } from "~/util/types";
 
 interface DrinkPictureProps {
   glassUrl: string;
@@ -30,7 +30,7 @@ const DrinkPicture: React.FC<DrinkPictureProps> = ({
     return <></>;
   }
 
-  function mixColors(objects: Ingredients[]) {
+  function mixColors(objects: Ingredient[]) {
     let totalVolume: number = 0;
     let red: number | string = 0;
     let green: number | string = 0;
@@ -79,8 +79,6 @@ const DrinkPicture: React.FC<DrinkPictureProps> = ({
     blue = Math.round(blue).toString(16).padStart(2, "0");
 
     setDrinkColor("#" + red + green + blue);
-
-    console.log(drinkColor);
   }
 
   return (

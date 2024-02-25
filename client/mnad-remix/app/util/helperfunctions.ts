@@ -54,3 +54,10 @@ export const formatDate = (date: Date): string => {
     day: "2-digit",
   }).format(date);
 };
+
+export const getApiUrlForDate = (date: Date): string => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  return `https://nef6oxnawh.execute-api.us-east-1.amazonaws.com/day-drink?month=${month}&day=${day}&year=${year}`;
+};

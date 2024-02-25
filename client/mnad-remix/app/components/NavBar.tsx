@@ -4,6 +4,7 @@ import MenuToggle from "./MenuToggle";
 import { motion, useCycle } from "framer-motion";
 import NavBarVerticalList from "./NavBarVerticalList";
 import TextAppearAnimation from "./TextAppearAnimation";
+import BuildStatusLabel from "./BuildStatusLabel";
 
 export default function NavBar() {
   const [underlineStyle, setUnderlineStyle] = useState({});
@@ -135,26 +136,33 @@ export default function NavBar() {
           gradient={false}
         />
       </div>
-      <motion.div
-        initial={false}
-        animate={isOpen ? "open" : "closed"}
-        custom={"1000px"}
-        ref={containerRef}
-        className="relative inline md:hidden w-[60px]"
-      >
-        <div className="text-end h-full flex justify-end">
-          <MenuToggle toggle={() => setIsOpen(!isOpen)} />
+      <div className="flex">
+        <div className="relative">
+          <div className="absolute right-0">
+            <BuildStatusLabel label="ALPHA" />
+          </div>
         </div>
         <motion.div
-          className={`absolute w-fit h-auto top-[40px] right-0 bg-background-light rounded-2xl overflow-hidden`}
-          variants={sidebar}
+          initial={false}
+          animate={isOpen ? "open" : "closed"}
+          custom={"1000px"}
+          ref={containerRef}
+          className="relative inline md:hidden w-[30px]"
         >
-          <NavBarVerticalList
-            navLinksObject={navLinks}
-            setCurPageName={setCurPageName}
-          />
+          <div className="text-end h-full flex justify-end mt-[1px]">
+            <MenuToggle toggle={() => setIsOpen(!isOpen)} />
+          </div>
+          <motion.div
+            className={`absolute w-fit h-auto top-[40px] right-0 bg-background-light rounded-2xl overflow-hidden`}
+            variants={sidebar}
+          >
+            <NavBarVerticalList
+              navLinksObject={navLinks}
+              setCurPageName={setCurPageName}
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </nav>
   );
 }
