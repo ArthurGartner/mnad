@@ -7,7 +7,6 @@ interface GPTTrainerProps {
 }
 
 const GPTTrainer: React.FC<GPTTrainerProps> = ({
-  label,
   labelStyle,
   tailwindClasses,
 }) => {
