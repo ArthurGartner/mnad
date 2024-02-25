@@ -13,7 +13,7 @@ const BuildStatusLabel: React.FC<BuildStatusLabelProps> = ({ label }) => {
         repeat: Infinity,
         repeatType: "reverse",
       }}
-      className="font-semibold"
+      className="font-semibold text-nowrap"
     >
       {label}
     </motion.div>

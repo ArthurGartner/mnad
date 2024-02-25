@@ -138,7 +138,7 @@ export default function NavBar() {
       </div>
       <div className="flex">
         <div className="relative">
-          <div className="absolute right-0">
+          <div className="absolute right-0 w-[200px]">
             <BuildStatusLabel label="PRE-ALPHA" />
           </div>
         </div>
