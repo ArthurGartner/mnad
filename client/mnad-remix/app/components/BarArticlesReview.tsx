@@ -39,7 +39,7 @@ const BarArticlesReview: React.FC<BarArticlesReviewProps> = ({ articles }) => {
         </div>
         <img
           src={bgIcon}
-          className="hidden md:block lg:hidden absolute left-0 top-0 scale-[1.4] z-[-1]"
+          className="hidden md:block lg:hidden absolute left-0 top-0 scale-[1.5] z-[-1]"
         />
       </div>
       <div className="pb-[150px]">

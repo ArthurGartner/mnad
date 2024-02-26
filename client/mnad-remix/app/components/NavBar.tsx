@@ -136,10 +136,10 @@ export default function NavBar() {
           gradient={false}
         />
       </div>
-      <div className="flex">
+      <div className="flex w-[80px] justify-end space-x-1">
         <div className="relative">
-          <div className="absolute right-0 w-[200px]">
-            <BuildStatusLabel label="PRE-ALPHA" />
+          <div className="absolute right-0 top-[-1px] md:top-[-3px]">
+            <BuildStatusLabel label="PRE_ALPHA" />
           </div>
         </div>
         <motion.div
@@ -147,7 +147,7 @@ export default function NavBar() {
           animate={isOpen ? "open" : "closed"}
           custom={"1000px"}
           ref={containerRef}
-          className="relative inline md:hidden w-[30px]"
+          className="relative inline md:hidden"
         >
           <div className="text-end h-full flex justify-end mt-[1px]">
             <MenuToggle toggle={() => setIsOpen(!isOpen)} />
