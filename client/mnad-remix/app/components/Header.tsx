@@ -25,12 +25,12 @@ const Header: React.FC = () => {
   return (
     <>
       <div
-        className={` z-20 sticky top-0 bg-background-light ${
+        className={`z-20 sticky top-0 bg-background-light ${
           isScrolled ? "shadow-xl" : ""
         }`}
         style={headerStyle}
       >
-        <div className="flex items-center h-[35px] lg:h-[50px] mx-auto 2xl:w-[2000px] px-3 md:px-0">
+        <div className="flex items-center h-[35px] lg:h-[50px] mx-auto 2xl:w-[1536px] px-3 md:px-[20px]">
           <div className="py-1 h-full w-[60px]">
             <img src={Icon} alt="Icon" className="h-full" />
           </div>
