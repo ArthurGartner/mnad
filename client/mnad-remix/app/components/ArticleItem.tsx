@@ -53,7 +53,10 @@ const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
                   title={article.headline}
                   publisher={article.publisher}
                 />
-                <div className="hidden lg:block">
+                <div className="hidden lg:block 2xl:hidden">
+                  <div className="one-line-text">{article.description}</div>
+                </div>
+                <div className="hidden 2xl:block">
                   <div className="two-line-text">{article.description}</div>
                 </div>
 
