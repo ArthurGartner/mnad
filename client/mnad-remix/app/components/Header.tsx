@@ -1,6 +1,7 @@
 import NavBar from "./NavBar";
 import Icon from "~/assets/coconut_icon.svg";
 import { useEffect, useState } from "react";
+import { Link } from "@remix-run/react";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,8 +32,10 @@ const Header: React.FC = () => {
         style={headerStyle}
       >
         <div className="flex items-center h-[35px] lg:h-[50px] mx-auto 2xl:w-[1536px] px-3 md:px-0">
-          <div className="py-1 h-full w-[80px]">
-            <img src={Icon} alt="Icon" className="h-full" />
+          <div className="py-1 h-full w-[80px] flex justify-start items-center">
+            <Link to="/">
+              <img src={Icon} alt="Icon" className="h-[30px] lg:h-[45px]" />
+            </Link>
           </div>
           <div className="w-full">
             <NavBar />
