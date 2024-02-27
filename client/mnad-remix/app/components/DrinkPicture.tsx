@@ -86,7 +86,7 @@ const DrinkPicture: React.FC<DrinkPictureProps> = ({
       <div className="h-full">
         <div className="relative drink-container h-full">
           <div className="h-full relative">
-            <div className="drink-glass h-full w-full overflow-hidden svg-drink relative md:scale-[1.5]">
+            <div className="drink-glass h-full w-full overflow-hidden svg-drink relative md:scale-[1.4]">
               <img
                 className="h-full w-full object-contain"
                 // src={drinkData?.drinkGlass[0]?.glass_url}

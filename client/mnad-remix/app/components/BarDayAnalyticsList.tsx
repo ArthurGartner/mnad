@@ -12,8 +12,12 @@ const BarDayAnalyticsList: React.FC = () => {
   return (
     <>
       <div>
-        {categories.map((cat) => (
-          <BarDayAnalyticsCategory category={cat.name} percent={cat.percent} />
+        {categories.map((cat, index) => (
+          <BarDayAnalyticsCategory
+            key={index}
+            category={cat.name}
+            percent={cat.percent}
+          />
         ))}
       </div>
     </>

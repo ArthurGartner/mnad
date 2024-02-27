@@ -36,7 +36,7 @@ const NavBarVerticalList: React.FC<NavBarVerticalListProps> = ({
   return (
     <motion.ul variants={variants} className="py-5 px-[40px]">
       {Object.entries(navLinksObject).map(([key, value]) => (
-        <div className="py-2 cursor-pointer">
+        <div className="py-2 cursor-pointer" key={key}>
           <SidebarMenuItem
             navLinkKey={key}
             navLinkValue={value}

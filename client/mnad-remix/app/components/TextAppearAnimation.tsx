@@ -6,7 +6,6 @@ import { interpolateColor } from "~/util/helperfunctions";
 interface TextAppearAnimationProps {
   text: string;
   delay?: number;
-  key: string;
   gradient?: boolean;
   color1?: string;
   color2?: string;
@@ -15,7 +14,6 @@ interface TextAppearAnimationProps {
 const TextAppearAnimation: React.FC<TextAppearAnimationProps> = ({
   text,
   delay = 0,
-  key,
   gradient = false,
   color1 = "#000000",
   color2 = "#000000",
@@ -43,7 +41,6 @@ const TextAppearAnimation: React.FC<TextAppearAnimationProps> = ({
 
   return (
     <motion.div
-      key={key}
       initial={{ opacity: 0, y: 20 }}
       animate={controls} // Use controls to animate the motion.div
       exit={exitAnimation} // Add exit animation
