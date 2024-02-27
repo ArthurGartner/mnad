@@ -2,44 +2,29 @@ import { DrinkDetails } from "~/util/types";
 import LikeDislike from "./LikeDislike";
 import AnimatedCaret from "./AnimatedCaret";
 import { TiStarFullOutline } from "react-icons/ti";
+import SectionHeader from "./SectionHeader";
+import DrinkSubtitle from "./DrinkSubtitle";
 
 type DrinkTitleProps = {
   drinkDetails: DrinkDetails;
 };
 
-//Need to calculate day difference here server side
-
 export default function DrinkTitle({ drinkDetails }: DrinkTitleProps) {
-  const abvChange = 4;
-
   return (
     <>
-      <div className="font-semibold z-50">
-        <div className="text-label text-label-sm h-[1.2rem] md:text-[1.2rem] md:h-[1.4rem] lg:text-[1.6rem] lg:h-[1.8rem]">
-          Suggested Drink
-        </div>
-        <div className="flex justify-between items-center">
-          <div className="text-[1.4rem] h-[1.8rem] sm:text-[1.6rem] sm:h-[2rem] lg:text-[2.5rem] lg:h-[3.2rem] my-auto">
-            {drinkDetails.strDrink}
-          </div>
-          <div className="my-auto">
-            <LikeDislike />
-          </div>
-        </div>
-        <div className="text-label text-[.9rem] h-[.7rem] sm:text-[1rem] sm:h-[.8rem] lg:text-[1rem] flex items-center text-center">
-          <div className="flex">
-            {`${drinkDetails.abv}`}% ABV{" "}
-            <span className="ml-1">
-              <AnimatedCaret value={abvChange} />
-            </span>{" "}
-            {abvChange}% • {`88`}%{" "}
-            <span>
-              <TiStarFullOutline className="text-balancedYellow-light h-full mx-1" />
-            </span>{" "}
-            • Suggested 27 Times
-          </div>
-        </div>
-      </div>
+      <SectionHeader
+        label="Suggested Drink"
+        title={drinkDetails.strDrink}
+        interaction={<LikeDislike />}
+        subtitle={
+          <DrinkSubtitle
+            abv={drinkDetails.abv}
+            abvDelta={4}
+            liked={88}
+            suggestedCount={20}
+          />
+        }
+      />
     </>
   );
 }

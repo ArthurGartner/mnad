@@ -14,15 +14,18 @@ export default function NavBar() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [curPageName, setCurPageName] = useState("");
 
+  // const navLinks = {
+  //   "The Bar": "",
+  //   "Analytics & Trends": "data",
+  //   "All Drinks": "drinks",
+  //   "Create Your Own": "create",
+  //   "Drinking Games": "games",
+  //   About: "about",
+  // };
   const navLinks = {
     "The Bar": "",
-    "Analytics & Trends": "data",
-    "All Drinks": "drinks",
-    "Create Your Own": "create",
-    "Drinking Games": "games",
     About: "about",
   };
-
   const updateUnderline = (element: Element) => {
     const itemRect = element.getBoundingClientRect();
     const navRect = navRef.current?.getBoundingClientRect();

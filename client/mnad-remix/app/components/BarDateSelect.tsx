@@ -14,7 +14,7 @@ const BarDateSelect: React.FC<BarDateSelectProps> = ({
 }) => {
   return (
     <>
-      <div className=" w-[90vw] md:w-[70vw] xl:w-[800px] h-[50px] lg:h-[75px] xl:h-[100px] bg-slate-200 bg-opacity-90 lg:bg-opacity-35 backdrop-blur-md fixed left-1/2 transform -translate-x-1/2 bottom-5 rounded-full shadow-lg z-50">
+      <div className=" w-[90vw] md:w-[70vw] xl:w-[800px] h-[40px] lg:h-[75px] bg-slate-200 bg-opacity-90 lg:bg-opacity-75 backdrop-blur-md fixed left-1/2 transform -translate-x-1/2 bottom-5 rounded-full shadow-lg z-50">
         <div className="flex justify-between items-center h-full">
           <div>
             <DirectionalButton direction="left" execAction={prevDay} />

@@ -19,7 +19,7 @@ const BarDinkSentimentReview: React.FC<BarDinkSentimentReviewProps> = ({
         <div className="2xl:w-3/5 z-10 overflow-hidden">
           <BarDrinkSentimentValue value={sentimentValue} />
         </div>
-        <div className="flex w-full items-center justify-end z-10">
+        <div className="flex w-full items-end justify-end z-10">
           <BarSentimentLabel
             sentimentValue={sentimentValue}
             articleCount={articleCount}

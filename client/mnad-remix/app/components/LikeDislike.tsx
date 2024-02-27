@@ -2,8 +2,11 @@ import { TiStarFullOutline } from "react-icons/ti";
 import { IoMdThumbsDown } from "react-icons/io";
 import AnimatedButton from "./AnimatedButton";
 import colors from "~/styles/colors";
+import { useState } from "react";
 
 const LikeDislike: React.FC = ({}) => {
+  const [liked, setLiked] = useState<boolean | null>(null);
+
   return (
     <>
       <div className="flex">
