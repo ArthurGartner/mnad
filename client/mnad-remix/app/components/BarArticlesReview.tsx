@@ -5,6 +5,7 @@ import bgIcon from "~/assets/bg_vector_2.svg";
 import { Article } from "~/util/types";
 import StandardLabel from "./StandardLabel";
 import SectionHeader from "./SectionHeader";
+import { countUniquePublishers } from "~/util/helperfunctions";
 
 interface BarArticlesReviewProps {
   articles: Article[];
@@ -32,7 +33,10 @@ const BarArticlesReview: React.FC<BarArticlesReviewProps> = ({ articles }) => {
                 </span>
                 {` Articles • `}
                 <span style={{ marginRight: "4px", marginLeft: "4px" }}>
-                  <AnimatedNumber value={articles.length} color={false} />
+                  <AnimatedNumber
+                    value={countUniquePublishers(articles)}
+                    color={false}
+                  />
                 </span>
                 {` Sources`}
               </div>

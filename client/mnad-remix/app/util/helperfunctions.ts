@@ -1,5 +1,6 @@
 import { sentimentLabels } from "./dictionary";
 import colors from "~/styles/colors";
+import { Article } from "./types";
 
 export const getSentimentLabel: (value: number) => string = (value) => {
   if (value < 0 || value > 100) return "Unknown";
@@ -60,4 +61,16 @@ export const getApiUrlForDate = (date: Date): string => {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
   return `https://nef6oxnawh.execute-api.us-east-1.amazonaws.com/day-drink?month=${month}&day=${day}&year=${year}`;
+};
+
+export const countUniquePublishers = (articles: Article[]): number => {
+  const publishers = new Set();
+
+  articles.forEach((article) => {
+    if (article.publisher) {
+      publishers.add(article.publisher);
+    }
+  });
+
+  return publishers.size;
 };

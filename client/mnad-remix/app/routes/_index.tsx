@@ -46,7 +46,6 @@ async function fetchDataForDate(
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
-  console.log("RUNNING LOADER");
   const attempts = 5;
   const url = new URL(request.url);
   const day = url.searchParams.get("day");

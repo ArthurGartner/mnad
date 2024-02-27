@@ -30,6 +30,7 @@ export interface Article {
   sentiment_score: number;
   thumbnail: string;
   headline: string;
+  publisher: string;
 }
 
 export interface ApiData {
