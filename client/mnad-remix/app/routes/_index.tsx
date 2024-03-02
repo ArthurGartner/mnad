@@ -143,6 +143,7 @@ export default function Index() {
             drinkGlass={data.glass_details}
             openIngredients={openIngredientsModal}
             openDidYouKnow={openDidYouKnowModal}
+            prevDrinkAbv={data.prev_drink_abv}
           />
           <BarDinkSentimentReview
             sentimentValue={data.average_sentiment}

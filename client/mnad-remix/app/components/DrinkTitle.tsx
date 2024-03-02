@@ -7,9 +7,15 @@ import DrinkSubtitle from "./DrinkSubtitle";
 
 type DrinkTitleProps = {
   drinkDetails: DrinkDetails;
+  prevDrinkAbv: number;
 };
 
-export default function DrinkTitle({ drinkDetails }: DrinkTitleProps) {
+export default function DrinkTitle({
+  drinkDetails,
+  prevDrinkAbv,
+}: DrinkTitleProps) {
+  console.log(drinkDetails.abv - (prevDrinkAbv ? prevDrinkAbv : 0));
+
   return (
     <>
       <SectionHeader
@@ -19,7 +25,7 @@ export default function DrinkTitle({ drinkDetails }: DrinkTitleProps) {
         subtitle={
           <DrinkSubtitle
             abv={drinkDetails.abv}
-            abvDelta={4}
+            abvDelta={drinkDetails.abv - (prevDrinkAbv ? prevDrinkAbv : 0)}
             liked={88}
             suggestedCount={20}
           />

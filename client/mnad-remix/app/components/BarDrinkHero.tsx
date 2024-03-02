@@ -10,6 +10,7 @@ interface BarDrinkHeroProps {
   openDidYouKnow: () => void;
   drinkDetails: DrinkDetails;
   drinkGlass: GlassDetails;
+  prevDrinkAbv: number;
 }
 
 const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
@@ -17,6 +18,7 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
   openDidYouKnow,
   drinkDetails,
   drinkGlass,
+  prevDrinkAbv,
 }) => {
   return (
     <>
@@ -24,7 +26,10 @@ const BarDrinkHero: React.FC<BarDrinkHeroProps> = ({
         <div className="lg:w-7/12 flex md:items-center md:justify-center w-full relative">
           <div className="w-full">
             <div className="w-full">
-              <DrinkTitle drinkDetails={drinkDetails} />
+              <DrinkTitle
+                drinkDetails={drinkDetails}
+                prevDrinkAbv={prevDrinkAbv}
+              />
             </div>
             <div className="md:hidden w-full">
               <BarDrinkHeroPic

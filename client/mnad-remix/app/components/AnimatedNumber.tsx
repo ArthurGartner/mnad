@@ -9,6 +9,7 @@ interface AnimatedNumberProps {
   color?: boolean;
   abs?: boolean;
   binary?: boolean;
+  decimal?: boolean;
 }
 
 const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
@@ -18,8 +19,9 @@ const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
   color = true,
   abs = false,
   binary = false,
+  decimal = false, // Initialize decimal flag
 }) => {
-  const [displayValue, setDisplayValue] = useState(value);
+  const [displayValue, setDisplayValue] = useState<number>(value);
   const [textColor, setTextColor] = useState("red");
 
   useEffect(() => {
@@ -41,6 +43,17 @@ const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
     window.requestAnimationFrame(step);
   }, [value, duration, displayValue]);
 
+  // Function to format the displayed value based on the decimal flag
+  const formatValue = (value: number) => {
+    if (decimal) {
+      // Show value with 2 decimal places if decimal flag is true
+      return value.toFixed(2);
+    } else {
+      // Round to nearest integer if decimal flag is false
+      return Math.round(value);
+    }
+  };
+
   return (
     <div
       style={
@@ -53,8 +66,10 @@ const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
           : {}
       }
     >
-      {plus && Math.round(displayValue) > 0 && "+"}
-      {abs ? Math.abs(Math.round(displayValue)) : Math.round(displayValue)}
+      {plus && displayValue > 0 && "+"}
+      {abs
+        ? Math.abs(Number(formatValue(displayValue)))
+        : formatValue(displayValue)}
     </div>
   );
 };
