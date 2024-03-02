@@ -5,15 +5,18 @@ import GradientText from "./GradientText";
 import { sentimentLabelColorRange } from "~/util/constants";
 import AnimatedCaret from "./AnimatedCaret";
 import StandardLabel from "./StandardLabel";
+import AnimatedNumber from "./AnimatedNumber";
 
 interface BarSentimentLabelProps {
   sentimentValue: number;
   articleCount: number;
+  sentimentDelta: number;
 }
 
 const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
   sentimentValue,
   articleCount,
+  sentimentDelta,
 }) => {
   const [sentimentLabel, setSentimentLabel] = useState(getSentimentLabel(0));
 
@@ -24,8 +27,6 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
     };
     updateSentimentLabel();
   }, [sentimentValue]);
-
-  const sentimentChange = -2;
 
   return (
     <>
@@ -41,9 +42,10 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
         </div>
         <StandardLabel
           label={
-            <div>
-              <AnimatedCaret value={sentimentChange} />
-              {Math.abs(sentimentChange)}% • Based on {articleCount} Articles
+            <div className="flex justify-end text-center items-center">
+              <AnimatedCaret value={sentimentDelta} />
+              <AnimatedNumber value={Math.abs(sentimentDelta)} color={false} />%
+              • Based on {articleCount} Articles
             </div>
           }
         />

@@ -78,8 +78,6 @@ export const countUniquePublishers = (articles: Article[]): number => {
 export const isValidImgUrl: (url: string) => boolean = (url) => {
   var isValid = false;
 
-  console.log(url);
-
   isValid = url ? !url.endsWith(".ico") : false;
 
   return isValid;

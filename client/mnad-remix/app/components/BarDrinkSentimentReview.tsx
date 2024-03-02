@@ -7,11 +7,13 @@ import bgIcon from "~/assets/bg_vector_1.svg";
 interface BarDinkSentimentReviewProps {
   sentimentValue: number;
   articleCount: number;
+  sentimentDelta: number;
 }
 
 const BarDinkSentimentReview: React.FC<BarDinkSentimentReviewProps> = ({
   sentimentValue,
   articleCount,
+  sentimentDelta,
 }) => {
   return (
     <div>
@@ -23,6 +25,7 @@ const BarDinkSentimentReview: React.FC<BarDinkSentimentReviewProps> = ({
           <BarSentimentLabel
             sentimentValue={sentimentValue}
             articleCount={articleCount}
+            sentimentDelta={sentimentDelta}
           />
         </div>
         <img

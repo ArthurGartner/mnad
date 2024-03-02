@@ -33,7 +33,8 @@ async function fetchDataForDate(
       );
     } else {
       const prevDay = new Date(date);
-      prevDay.setDate(date.getDate() - 1);
+      //Updated to convert to utc time. All time sent from frontend should be UTC
+      prevDay.setUTCDate(date.getUTCDate() - 1);
       return fetchDataForDate(prevDay, attempts - 1);
     }
   }
@@ -48,6 +49,7 @@ async function fetchDataForDate(
 export const loader: LoaderFunction = async ({ request }) => {
   const attempts = 5;
   const url = new URL(request.url);
+  //day, month and year should all be converted to utc
   const day = url.searchParams.get("day");
   const month = url.searchParams.get("month");
   const year = url.searchParams.get("year");
@@ -97,7 +99,7 @@ export default function Index() {
 
   const previousDay = () => {
     const prevDate = new Date(day);
-    prevDate.setDate(day.getDate() - 1);
+    prevDate.setUTCDate(day.getUTCDate() - 1);
     setDay(prevDate);
 
     fetcher.load(
@@ -109,7 +111,7 @@ export default function Index() {
 
   const nextDay = () => {
     const nextDate = new Date(day);
-    nextDate.setDate(day.getDate() + 1);
+    nextDate.setUTCDate(day.getUTCDate() + 1);
     setDay(nextDate);
 
     fetcher.load(
@@ -145,6 +147,10 @@ export default function Index() {
           <BarDinkSentimentReview
             sentimentValue={data.average_sentiment}
             articleCount={data.articles.length}
+            sentimentDelta={
+              data.average_sentiment -
+              (data.prev_average_sentiment ? data.prev_average_sentiment : 0)
+            }
           />
           <BarDayAnalytics sentimentValue={data.average_sentiment} />
           <BarDateSelect day={day} prevDay={previousDay} nextDay={nextDay} />

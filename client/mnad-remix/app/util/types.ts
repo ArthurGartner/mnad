@@ -39,4 +39,5 @@ export interface ApiData {
   drink_details: DrinkDetails;
   glass_details: GlassDetails;
   forDate: string;
+  prev_average_sentiment: number;
 }
