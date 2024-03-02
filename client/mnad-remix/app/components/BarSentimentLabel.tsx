@@ -42,7 +42,7 @@ const BarSentimentLabel: React.FC<BarSentimentLabelProps> = ({
         <StandardLabel
           label={
             <div>
-              <AnimatedCaret value={sentimentChange} />{" "}
+              <AnimatedCaret value={sentimentChange} />
               {Math.abs(sentimentChange)}% • Based on {articleCount} Articles
             </div>
           }

@@ -30,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
         onClick={onClose}
       >
         <motion.div
-          className="bg-white p-6 rounded-3xl shadow-lg"
+          className="bg-white p-6 rounded-3xl shadow-lg w-fit-content m-5 max-w-[1536px] max-h-[80vh]"
           variants={modalVariants}
           initial="hidden"
           animate="visible"

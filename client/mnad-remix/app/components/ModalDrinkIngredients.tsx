@@ -16,7 +16,7 @@ const ModalDrinkIngredients: React.FC<ModalDrinkIngredientsProps> = ({
 
   return (
     <>
-      <div className="max-w-[75vw] md:max-w-[50vw] font-semibold overflow-hidden">
+      <div className="font-semibold overflow-hidden">
         <SectionHeader
           label="Make Your Own"
           title={drinkDetails.strDrink}

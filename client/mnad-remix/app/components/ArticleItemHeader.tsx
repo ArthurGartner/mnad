@@ -9,10 +9,8 @@ const ArticleItemHeader: React.FC<ArticleItemHeaderProps> = ({
 }) => {
   return (
     <div className="font-semibold">
-      <div className="text-label md:text-[1.2rem]">{publisher}</div>
-      <div className="text-[1.1rem] md:text-[1.4rem] two-line-text">
-        {title}
-      </div>
+      <div className="text-label">{publisher}</div>
+      <div className="text-[1.2rem] two-line-text">{title}</div>
     </div>
   );
 };

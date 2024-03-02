@@ -12,7 +12,7 @@ const ModalDidYouKnow: React.FC<ModalDidYouKnowProps> = ({ drinkDetails }) => {
 
   return (
     <>
-      <div className="w-[75vw] md:w-[50vw] max-h-[80vh] overflow-hidden bg-white">
+      <div className="overflow-hidden bg-white">
         <SectionHeader title={drinkDetails.strDrink} label="Did You Know?" />
         <div className="scrollable-modal-content max-h-[35vh] w-full font-normal pb-2">
           {drinkDetails.drinkFact}
