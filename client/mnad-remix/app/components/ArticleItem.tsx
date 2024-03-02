@@ -1,4 +1,8 @@
-import { formatDate, interpolateColor } from "~/util/helperfunctions";
+import {
+  formatDate,
+  interpolateColor,
+  isValidImgUrl,
+} from "~/util/helperfunctions";
 import ArticleRating from "./ArticleRating";
 import { useState } from "react";
 import DynamicCoconut from "./DynamicCoconut";
@@ -36,13 +40,13 @@ const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
           <div className="h-full py-[15px] flex">
             <div className="h-full mr-[10px] md:mr-0">
               <div className="h-[120px] w-[120px] md:h-[170px] md:w-[170px] mr-[5px] md:mr-[25px] rounded-md md:rounded-3xl overflow-hidden">
-                {article.thumbnail && (
+                {isValidImgUrl(article.thumbnail) && (
                   <img
                     className="object-cover h-full w-full"
                     src={article.thumbnail}
                   />
                 )}
-                {!article.thumbnail && (
+                {!isValidImgUrl(article.thumbnail) && (
                   <DynamicCoconut sentimentValue={article.sentiment_score} />
                 )}
               </div>
