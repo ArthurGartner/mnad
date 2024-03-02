@@ -26,7 +26,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           <div className="my-auto">{interaction && interaction}</div>
         </div>
         {subtitle && (
-          <div className="text-label text-[.9rem] sm:text-[1rem] lg:text-[1rem] flex items-center text-center">
+          <div className="text-label text-[.9rem] sm:text-[1rem] lg:text-[1rem] flex items-center text-center mt-[-6px]">
             {subtitle}
           </div>
         )}
