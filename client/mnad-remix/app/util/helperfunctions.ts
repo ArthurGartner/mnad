@@ -57,9 +57,9 @@ export const formatDate = (date: Date): string => {
 };
 
 export const getApiUrlForDate = (date: Date): string => {
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
+  const day = date.getUTCDate();
+  const month = date.getUTCMonth() + 1;
+  const year = date.getUTCFullYear();
   return `https://nef6oxnawh.execute-api.us-east-1.amazonaws.com/day-drink?month=${month}&day=${day}&year=${year}`;
 };
 
