@@ -14,8 +14,6 @@ export default function DrinkTitle({
   drinkDetails,
   prevDrinkAbv,
 }: DrinkTitleProps) {
-  console.log(drinkDetails.abv - (prevDrinkAbv ? prevDrinkAbv : 0));
-
   return (
     <>
       <SectionHeader

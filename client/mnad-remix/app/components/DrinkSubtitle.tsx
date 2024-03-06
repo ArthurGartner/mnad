@@ -26,7 +26,7 @@ const DrinkSubtitle: React.FC<DrinkSubtitleProps> = ({
         <div className="mr-1">
           <AnimatedCaret value={abvDelta} />
         </div>
-        {Math.abs(abvDelta)}%
+        {Math.abs(Math.round((abvDelta + Number.EPSILON) * 100) / 100)}%
       </div>
       <div className="flex items-center">
         <span>
