@@ -66,6 +66,8 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   date.setHours(0, 0, 0, 0);
 
+  console.log(date);
+
   try {
     const data = await fetchDataForDate(date, attempts);
     return json(data);
