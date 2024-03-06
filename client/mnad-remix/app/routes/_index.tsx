@@ -64,6 +64,8 @@ export const loader: LoaderFunction = async ({ request }) => {
     date = new Date();
   }
 
+  date.setHours(0, 0, 0, 0);
+
   try {
     const data = await fetchDataForDate(date, attempts);
     return json(data);
@@ -99,32 +101,35 @@ export default function Index() {
 
   const previousDay = () => {
     const prevDate = new Date(day);
-    prevDate.setUTCDate(day.getUTCDate() - 1);
+    const prevDateUtc = new Date(day);
+    prevDateUtc.setUTCDate(day.getUTCDate() - 1);
+    prevDate.setDate(day.getDate() - 1);
     setDay(prevDate);
 
     fetcher.load(
-      `/?index&day=${prevDate.getDate()}&month=${
-        prevDate.getMonth() + 1
-      }&year=${prevDate.getFullYear()}`
+      `/?index&day=${prevDateUtc.getDate()}&month=${
+        prevDateUtc.getMonth() + 1
+      }&year=${prevDateUtc.getFullYear()}`
     );
   };
 
   const nextDay = () => {
     const nextDate = new Date(day);
-    nextDate.setUTCDate(day.getUTCDate() + 1);
+    const nextDateUtc = new Date(day);
+    nextDateUtc.setUTCDate(day.getUTCDate() + 1);
+    nextDate.setDate(day.getDate() + 1);
     setDay(nextDate);
 
     fetcher.load(
-      `/?index&day=${nextDate.getDate()}&month=${
-        nextDate.getMonth() + 1
-      }&year=${nextDate.getFullYear()}`
+      `/?index&day=${nextDateUtc.getDate()}&month=${
+        nextDateUtc.getMonth() + 1
+      }&year=${nextDateUtc.getFullYear()}`
     );
   };
 
   useEffect(() => {
     if (fetcher.data) {
       setData(fetcher.data);
-      console.log("FETCH DATA UPDATED");
     }
   }, [fetcher.data]);
 
