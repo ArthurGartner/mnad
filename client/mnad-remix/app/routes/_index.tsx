@@ -132,7 +132,7 @@ export default function Index() {
 
   useEffect(() => {
     console.log(data);
-    setDay(new Date(data.forDate));
+    setDay(new Date(data.day));
     setSentimentValue(data.average_sentiment);
   }, []);
 
