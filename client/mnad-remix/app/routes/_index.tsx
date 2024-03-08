@@ -26,6 +26,8 @@ async function fetchDataForDate(
   const apiUrl = getApiUrlForDate(date);
   const response = await fetch(apiUrl);
 
+  date.setHours(0, 0, 0, 0);
+
   if (!response.ok) {
     if (attempts <= 1) {
       throw new Error(
@@ -60,13 +62,8 @@ export const loader: LoaderFunction = async ({ request }) => {
     // If day, month, and year query parameters are provided, use them to construct the date
     date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
   } else {
-    // If no date query parameters are provided, default to the current date
     date = new Date();
   }
-
-  date.setHours(0, 0, 0, 0);
-
-  console.log(date);
 
   try {
     const data = await fetchDataForDate(date, attempts);
@@ -103,29 +100,27 @@ export default function Index() {
 
   const previousDay = () => {
     const prevDate = new Date(day);
-    const prevDateUtc = new Date(day);
-    prevDateUtc.setUTCDate(day.getUTCDate() - 1);
-    prevDate.setDate(day.getDate() - 1);
-    setDay(prevDate);
+    prevDate.setHours(0, 0, 0, 0);
+    prevDate.setUTCDate(day.getUTCDate() - 1);
+    setDay(new Date(prevDate));
 
     fetcher.load(
-      `/?index&day=${prevDateUtc.getDate()}&month=${
-        prevDateUtc.getMonth() + 1
-      }&year=${prevDateUtc.getFullYear()}`
+      `/?index&day=${prevDate.getDate()}&month=${
+        prevDate.getMonth() + 1
+      }&year=${prevDate.getFullYear()}`
     );
   };
 
   const nextDay = () => {
     const nextDate = new Date(day);
-    const nextDateUtc = new Date(day);
-    nextDateUtc.setUTCDate(day.getUTCDate() + 1);
-    nextDate.setDate(day.getDate() + 1);
-    setDay(nextDate);
+    nextDate.setHours(0, 0, 0, 0);
+    nextDate.setUTCDate(day.getUTCDate() + 1);
+    setDay(new Date(nextDate));
 
     fetcher.load(
-      `/?index&day=${nextDateUtc.getDate()}&month=${
-        nextDateUtc.getMonth() + 1
-      }&year=${nextDateUtc.getFullYear()}`
+      `/?index&day=${nextDate.getDate()}&month=${
+        nextDate.getMonth() + 1
+      }&year=${nextDate.getFullYear()}`
     );
   };
 

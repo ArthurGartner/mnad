@@ -57,9 +57,17 @@ export const formatDate = (date: Date): string => {
 };
 
 export const getApiUrlForDate = (date: Date): string => {
-  const day = date.getUTCDate();
-  const month = date.getUTCMonth() + 1;
-  const year = date.getUTCFullYear();
+  // Set the time to midnight in the local timezone
+  date.setHours(0, 0, 0, 0);
+
+  // Convert to UTC
+  const utcDate = new Date(date.toISOString());
+
+  // Retrieve the day, month, and year from the UTC date
+  const day = utcDate.getUTCDate();
+  const month = utcDate.getUTCMonth() + 1; // getUTCMonth returns a 0-indexed month, so we add 1 to get the correct month number
+  const year = utcDate.getUTCFullYear();
+
   return `https://nef6oxnawh.execute-api.us-east-1.amazonaws.com/day-drink?month=${month}&day=${day}&year=${year}`;
 };
 
