@@ -103,7 +103,6 @@ export default function Index() {
     prevDate.setHours(0, 0, 0, 0);
     prevDate.setUTCDate(prevDate.getUTCDate() - 1);
     setDay(new Date(prevDate));
-    console.log(prevDate);
 
     fetcher.load(
       `/?index&day=${prevDate.getDate()}&month=${
@@ -132,10 +131,8 @@ export default function Index() {
   }, [fetcher.data]);
 
   useEffect(() => {
-    console.log(data);
     setDay(new Date(data.day));
     setSentimentValue(data.average_sentiment);
-    console.log(day);
   }, []);
 
   return (
