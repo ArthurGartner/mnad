@@ -5,6 +5,7 @@ export interface DrinkDetails {
   drinkSummary: string;
   drinkFact: string;
   ingredients: Ingredient[];
+  strGlass: string;
 }
 
 export interface Ingredient {

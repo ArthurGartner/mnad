@@ -90,3 +90,12 @@ export const isValidImgUrl: (url: string) => boolean = (url) => {
 
   return isValid;
 };
+
+export const capitalizeFirstLetter: (inputString: string) => string = (
+  inputString
+) => {
+  return inputString
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};

@@ -101,8 +101,9 @@ export default function Index() {
   const previousDay = () => {
     const prevDate = new Date(day);
     prevDate.setHours(0, 0, 0, 0);
-    prevDate.setUTCDate(day.getUTCDate() - 1);
+    prevDate.setUTCDate(prevDate.getUTCDate() - 1);
     setDay(new Date(prevDate));
+    console.log(prevDate);
 
     fetcher.load(
       `/?index&day=${prevDate.getDate()}&month=${
@@ -114,7 +115,7 @@ export default function Index() {
   const nextDay = () => {
     const nextDate = new Date(day);
     nextDate.setHours(0, 0, 0, 0);
-    nextDate.setUTCDate(day.getUTCDate() + 1);
+    nextDate.setUTCDate(nextDate.getUTCDate() + 1);
     setDay(new Date(nextDate));
 
     fetcher.load(
@@ -134,6 +135,7 @@ export default function Index() {
     console.log(data);
     setDay(new Date(data.day));
     setSentimentValue(data.average_sentiment);
+    console.log(day);
   }, []);
 
   return (
